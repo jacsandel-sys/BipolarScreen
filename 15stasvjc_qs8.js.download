@@ -1,0 +1,1063 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="47de851f-c91c-2258-c3a0-340c9c20b7a8")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,820669,e=>{"use strict";var r=e.i(351623);let t=r.gql`
+    fragment CollaboratorCountV2Customer on Customer {
+  id
+  seats {
+    __typename
+    ... on CustomerSeats {
+      id
+      counts {
+        admin
+        guest
+        member
+      }
+      caps {
+        members
+      }
+    }
+  }
+  subscriptionSummary {
+    __typename
+    ... on CustomerSubscriptionSummarySelfServe {
+      plan {
+        ... on CustomerSubscriptionSummaryFlatSelfServePlan {
+          planPrefix
+        }
+        ... on CustomerSubscriptionSummaryTieredSelfServePlan {
+          planPrefix
+        }
+      }
+    }
+  }
+}
+    `;e.s(["CollaboratorCountV2CustomerFragmentDoc",0,t])},285832,e=>{"use strict";var r=e.i(351623),t=e.i(361116),o=e.i(344480);e.i(975473);let n={},i=r.gql`
+    fragment QuickDeployDialogHostingBuildArtifactFields on HostingBuildArtifact {
+  id
+  name
+  type
+  folderName
+  services {
+    id
+    name
+    paths
+    hasRunCommand
+  }
+}
+    `,s=r.gql`
+    fragment QuickDeployDialogCurrentBuild2 on HostingBuild {
+  id
+  status
+  timeCreated
+  suspendedReason
+  isPrivate
+  hasPrivatePassword
+  user {
+    id
+    displayName
+  }
+  repl {
+    id
+    hostingDeployment {
+      ... on HostingDeployment {
+        id
+        agentInboxEnabled
+        agentInboxConfig {
+          position
+          bgColor
+          logoSrc
+        }
+      }
+    }
+  }
+  artifacts {
+    ...QuickDeployDialogHostingBuildArtifactFields
+  }
+  ...PublishDomainsRow
+}
+    ${i}
+${t.PublishDomainsRowFragmentDoc}`,p=r.gql`
+    query SuggestDeployAuthz($replId: String!, $provider: HostingBuildProvider!) {
+  getRepl(id: $replId) {
+    ... on Repl {
+      id
+      authorizations {
+        editDeploymentSubdomain(provider: $provider) {
+          isAuthorized
+          message
+        }
+      }
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    `;e.s(["QuickDeployDialogCurrentBuild2FragmentDoc",0,s,"SuggestDeployAuthzDocument",0,p,"useSuggestDeployAuthzQuery",0,function(e){let r={...n,...e};return o.useQuery(p,r)}])},903021,e=>{"use strict";var r=e.i(351623);let t=r.gql`
+    fragment ArtifactUtilsHostingBuildArtifactFields on HostingBuildArtifact {
+  type
+  services {
+    paths
+    hasRunCommand
+  }
+}
+    `;e.s(["ArtifactUtilsHostingBuildArtifactFieldsFragmentDoc",0,t])},361116,e=>{"use strict";var r=e.i(351623),t=e.i(903021);let o=r.gql`
+    fragment PublishDomainsRow on HostingBuild {
+  id
+  provider
+  artifacts {
+    ...ArtifactUtilsHostingBuildArtifactFields
+  }
+  repl {
+    id
+    slug
+    owner {
+      ... on Team {
+        id
+        username
+      }
+      ... on User {
+        id
+        username
+      }
+    }
+    hostingDeployment {
+      ... on HostingDeployment {
+        id
+        replitAppSubdomain
+        domains2 {
+          id
+          domain
+          state
+        }
+      }
+    }
+  }
+}
+    ${t.ArtifactUtilsHostingBuildArtifactFieldsFragmentDoc}`;e.s(["PublishDomainsRowFragmentDoc",0,o])},288249,e=>{"use strict";var r=e.i(351623),t=e.i(846545);let o={},n=r.gql`
+    subscription CurrentUserReplAgentStatuses {
+  currentUserReplAgentStatuses {
+    replId
+    statusV2
+    label
+    updatedAt
+    appImageUrl
+  }
+}
+    `;e.s(["useCurrentUserReplAgentStatusesSubscription",0,function(e){let r={...o,...e};return t.useSubscription(n,r)}])},687693,e=>{"use strict";var r=e.i(351623),t=e.i(846545);let o={},n=r.gql`
+    subscription ReplAgentStates($authorizationEpoch: Int!, $replIds: [String!]!) {
+  replAgentStates(authorizationEpoch: $authorizationEpoch, replIds: $replIds) {
+    snapshot
+    updates {
+      replId
+      status
+      workingUntil
+      lastAgentActivityAt
+    }
+  }
+}
+    `;e.s(["useReplAgentStatesSubscription",0,function(e){let r={...o,...e};return t.useSubscription(n,r)}])},505294,e=>{"use strict";var r=e.i(389959),t=e.i(908796),o=e.i(687693);e.i(242933);var n=e.i(279606);e.i(925218);var i=e.i(112077);e.s(["useCurrentUserReplAgentStateSource",0,function(e,s){let p=(0,i.useCreateObservable)(new Map),[u,l]=(0,r.useState)(0),a=(0,r.useRef)(new Map);return(0,r.useEffect)(()=>{let e=a.current;return()=>{e.forEach(clearTimeout)}},[]),(0,r.useEffect)(()=>{let e=new Set(s);a.current.forEach((r,t)=>{e.has(t)||(clearTimeout(r),a.current.delete(t))}),p.update(r=>[...r.keys()].every(r=>e.has(r))?r:new Map([...r].filter(([r])=>e.has(r))))},[s,p]),(0,o.useReplAgentStatesSubscription)({skip:e,variables:{authorizationEpoch:u,replIds:[...s]},fetchPolicy:"no-cache",onComplete:()=>l(e=>e+1),onData:({data:{data:e}})=>{let r=e?.replAgentStates;if(r){if(r.snapshot){a.current.forEach(clearTimeout),a.current.clear(),p.set(new Map(r.updates.map(e=>[e.replId,{status:e.status,workingUntil:e.workingUntil??null,lastAgentActivityAt:e.lastAgentActivityAt??null}]))),r.updates.forEach(g);return}r.updates.forEach(g),p.update(e=>{let t=new Map(e);return r.updates.forEach(e=>{t.set(e.replId,{status:e.status,workingUntil:e.workingUntil??null,lastAgentActivityAt:e.lastAgentActivityAt??null})}),t})}}}),(0,r.useMemo)(()=>n.Observable.from(p),[p]);function g(e){let r=a.current.get(e.replId);if(r&&(clearTimeout(r),a.current.delete(e.replId)),e.status!==t.ReplAgentStatus.Working||!e.workingUntil)return;let o=Math.max(0,Date.parse(e.workingUntil)-Date.now());a.current.set(e.replId,setTimeout(()=>{p.update(r=>{let o=r.get(e.replId);if(!o||o.workingUntil!==e.workingUntil)return r;let n=new Map(r);return n.set(e.replId,{status:t.ReplAgentStatus.Idle,workingUntil:null,lastAgentActivityAt:o.lastAgentActivityAt}),n})},o))}}])},234504,e=>{"use strict";var r=e.i(276385),t=e.i(389959),o=e.i(288249);e.i(242933);var n=e.i(279606);e.i(925218);var i=e.i(112077),s=e.i(505294);let p=(0,t.createContext)(null),u=(0,t.createContext)(null),l=(0,t.createContext)(null),a=(0,t.createContext)(null),g=n.Observable.of(new Map),m=n.Observable.of(new Map);function c(e){let r=(0,i.useCreateObservable)(new Map);return(0,o.useCurrentUserReplAgentStatusesSubscription)({skip:e,fetchPolicy:"no-cache",onData:({data:{data:e}})=>{e?.currentUserReplAgentStatuses&&r.set(new Map(e.currentUserReplAgentStatuses.map(e=>[e.replId,{statusV2:e.statusV2,label:e.label,updatedAt:e.updatedAt,appImageUrl:e.appImageUrl}])))}}),(0,t.useMemo)(()=>n.Observable.from(r),[r])}function d(e){let r=(0,t.useRef)(new Map),[o,n]=(0,t.useState)([]),i=(0,s.useCurrentUserReplAgentStateSource)(!e||0===o.length,o),p=(0,t.useCallback)(()=>{n([...new Set([...r.current.values()].flat())])},[]),u=(0,t.useCallback)(e=>{let t=Symbol();return r.current.set(t,e),p(),()=>{r.current.delete(t),p()}},[p]);return(0,t.useMemo)(()=>({source:i,register:u}),[u,i])}e.s(["AgentStatusContext",0,p,"AgentStatusProvider",0,function({children:e,enabled:o=!0,replAgentStateEnabled:n=o}){let i=(0,t.useContext)(p),s=(0,t.useContext)(u),R=(0,t.useContext)(l),O=(0,t.useContext)(a),v=c(!o||null!==i||null!==R),f=d(n&&null===s&&null===O),G=O??f,I=n?s??G.source:m;return(0,r.jsx)(p.Provider,{value:o?i??R??v:g,children:(0,r.jsx)(a.Provider,{value:G,children:(0,r.jsx)(u.Provider,{value:I,children:e})})})},"AgentStatusSourceProvider",0,function({children:e,enabled:o=!0,replAgentStateEnabled:n=o}){let i=(0,t.useContext)(l),s=(0,t.useContext)(a),p=c(!o||null!==i),u=d(n&&null===s);return(0,r.jsx)(l.Provider,{value:i??(o?p:null),children:(0,r.jsx)(a.Provider,{value:s??(n?u:null),children:e})})},"default",0,function(){let e=(0,t.useContext)(p);if(null===e)throw Error("useCurrentUserAgentStatus must be used within an AgentStatusProvider");return e},"useCurrentUserReplAgentState",0,function(){let e=(0,t.useContext)(u);if(null===e)throw Error("useCurrentUserReplAgentState must be used within an AgentStatusProvider");return e},"useReplAgentStateDemand",0,function(e){let r=(0,t.useContext)(a);(0,t.useEffect)(()=>r?.register(e),[r,e])}])},99357,e=>{"use strict";var r=e.i(351623),t=e.i(667746),o=e.i(444008),n=e.i(820669),i=e.i(576954),s=e.i(130902);e.i(344480),e.i(975473);var p=e.i(299020);let u={},l=r.gql`
+    fragment ReplMultiplayerOrgV2 on Org {
+  ...OrgMetadata
+  membersCount
+  adminGroup: groups(input: {types: [system_admins]}) {
+    ... on OrgGroupConnection {
+      items {
+        id
+        memberCount
+        isMember
+      }
+    }
+  }
+  customer {
+    __typename
+    ... on Customer {
+      ...CollaboratorCountV2Customer
+      ...InvitePromotionsCustomer
+    }
+  }
+  authorizations {
+    editSubscription {
+      isAuthorized
+    }
+  }
+}
+    ${o.OrgMetadataFragmentDoc}
+${n.CollaboratorCountV2CustomerFragmentDoc}
+${i.InvitePromotionsCustomerFragmentDoc}`,a=r.gql`
+    fragment ReplMultiplayerOrgGroupV2 on OrgGroup {
+  ...OrgGroupsOrgGroup
+}
+    ${s.OrgGroupsOrgGroupFragmentDoc}`,g=r.gql`
+    fragment ReplMultiplayerGroupV2 on ReplMultiplayerGroupScope {
+  group {
+    __typename
+    ...ReplMultiplayerOrgGroupV2
+  }
+  options {
+    __typename
+    role
+    status
+  }
+}
+    ${a}`,m=r.gql`
+    fragment ReplMultiplayerIndividualV2 on ReplMultiplayerIndividualScope {
+  group {
+    __typename
+    ...ReplMultiplayerOrgGroupV2
+  }
+  user {
+    __typename
+    id
+    displayName
+    fullName
+    image
+    username
+  }
+  options {
+    __typename
+    role
+    status
+  }
+}
+    ${a}`,c=r.gql`
+    fragment ReplMultiplayerStatusV2 on Repl {
+  id
+  title
+  isPrivate
+  url
+  org {
+    ...ReplMultiplayerOrgV2
+  }
+  multiplayerStatus {
+    __typename
+    groups {
+      __typename
+      ...ReplMultiplayerGroupV2
+    }
+    individuals {
+      __typename
+      ...ReplMultiplayerIndividualV2
+    }
+    pendingInvites {
+      __typename
+      email
+    }
+  }
+  authorizations {
+    editPermissions {
+      isAuthorized
+      message
+    }
+    editVisibility {
+      isAuthorized
+      message
+    }
+    removeSelf {
+      isAuthorized
+      message
+    }
+    viewPermissions {
+      isAuthorized
+      message
+    }
+  }
+}
+    ${l}
+${g}
+${m}`,d=r.gql`
+    mutation UpdateOrgGroupScopesV2($input: UpdateOrgGroupScopesInput!) {
+  updateOrgGroupScopes(input: $input) {
+    __typename
+    ... on OrgGroup {
+      ...OrgGroupPermissionsGroup
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    ${t.OrgGroupPermissionsGroupFragmentDoc}`,R=r.gql`
+    mutation GrantReplAccessByEmail($input: GrantReplAccessByEmailInput!) {
+  grantReplAccessByEmail(input: $input) {
+    ... on Repl {
+      __typename
+      ...ReplMultiplayerStatusV2
+    }
+    ... on UnauthorizedError {
+      __typename
+      message
+    }
+    ... on NotFoundError {
+      __typename
+      message
+    }
+    ... on UserError {
+      __typename
+      message
+    }
+  }
+}
+    ${c}`;e.s(["ReplMultiplayerStatusV2FragmentDoc",0,c,"useGrantReplAccessByEmailMutation",0,function(e){let r={...u,...e};return p.useMutation(R,r)},"useUpdateOrgGroupScopesV2Mutation",0,function(e){let r={...u,...e};return p.useMutation(d,r)}])},576954,e=>{"use strict";var r=e.i(351623);let t=r.gql`
+    fragment InvitePromotionsCustomer on Customer {
+  id
+  authorizations {
+    enablePromotions {
+      isAuthorized
+    }
+  }
+}
+    `;e.s(["InvitePromotionsCustomerFragmentDoc",0,t])},970410,e=>{"use strict";var r=e.i(351623),t=e.i(444008);let o=r.gql`
+    fragment OrgGroupMetadata on OrgGroup {
+  id
+  color
+  slug
+  type
+  name
+}
+    `;t.OrgCurrentUserFragmentDoc,t.OrgMetadataFragmentDoc,e.s(["OrgGroupMetadataFragmentDoc",0,o])},667746,e=>{"use strict";var r=e.i(351623),t=e.i(970410),o=e.i(861326),n=e.i(427144),i=e.i(939307),s=e.i(394352);let p=r.gql`
+    fragment OrgGroupPermissionsGroup on OrgGroup {
+  ...OrgGroupMetadata
+  permissions {
+    editPermissions
+    viewPermissions
+  }
+  ...OrgGroupPermissionsOrgGroup
+  ...OrgGroupPermissionsGroupsGroup
+  ...OrgGroupPermissionsReplsGroup
+  ...ReplScopeSelectionGroup
+}
+    ${t.OrgGroupMetadataFragmentDoc}
+${o.OrgGroupPermissionsOrgGroupFragmentDoc}
+${n.OrgGroupPermissionsGroupsGroupFragmentDoc}
+${i.OrgGroupPermissionsReplsGroupFragmentDoc}
+${s.ReplScopeSelectionGroupFragmentDoc}`,u=r.gql`
+    fragment OrgGroupPermissionsOrg on Org {
+  ...OrgGroupPermissionsOrgOrg
+  ...OrgGroupPermissionsGroupsOrg
+  ...OrgGroupPermissionsReplsOrg
+}
+    ${o.OrgGroupPermissionsOrgOrgFragmentDoc}
+${n.OrgGroupPermissionsGroupsOrgFragmentDoc}
+${i.OrgGroupPermissionsReplsOrgFragmentDoc}`;e.s(["OrgGroupPermissionsGroupFragmentDoc",0,p,"OrgGroupPermissionsOrgFragmentDoc",0,u])},427144,e=>{"use strict";var r=e.i(351623),t=e.i(299020),o=e.i(344480);e.i(975473);let n={},i=r.gql`
+    fragment OrgGroupPermissionsGroupsGroup on OrgGroup {
+  id
+  name
+  permissions {
+    editPermissions
+  }
+}
+    `,s=r.gql`
+    fragment OrgGroupPermissionsGroupsOption on OrgGroup {
+  id
+  slug
+  name
+  type
+}
+    `,p=r.gql`
+    fragment OrgGroupPermissionsGroupsOrg on Org {
+  id
+  slug
+}
+    `,u=r.gql`
+    fragment OrgGroupOption on OrgGroupScopeOption {
+  status
+  role
+}
+    `,l=r.gql`
+    fragment OrgGroupOptions on OrgGroupScopeOptions {
+  targetGroupId
+  options {
+    __typename
+    ...OrgGroupOption
+  }
+}
+    ${u}`,a=r.gql`
+    mutation UpdateOrgGroupGroupScopes($input: UpdateOrgGroupScopesInput!) {
+  updateOrgGroupScopes(input: $input) {
+    __typename
+    ... on OrgGroup {
+      ...OrgGroupPermissionsGroupsGroup
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    ${i}`,g=r.gql`
+    query OrgGroupPermissionsGroups($orgId: String, $input: OrgGroupsInput) {
+  currentUser {
+    __typename
+    id
+    org(orgId: $orgId) {
+      __typename
+      ... on Org {
+        id
+        groups(input: $input) {
+          __typename
+          ... on OrgGroupConnection {
+            pageInfo {
+              hasNextPage
+              nextCursor
+            }
+            items {
+              ...OrgGroupPermissionsGroupsOption
+            }
+          }
+          ... on UserError {
+            message
+          }
+        }
+      }
+      ... on NotFoundError {
+        message
+      }
+    }
+  }
+}
+    ${s}`,m=r.gql`
+    query OrgGroupScopeOptions($orgId: String!, $groupId: String!, $input: OrgGroupGroupScopeOptionsInput!) {
+  currentUser {
+    __typename
+    id
+    org(orgId: $orgId) {
+      __typename
+      ... on Org {
+        id
+        group(orgGroupId: $groupId) {
+          __typename
+          ... on OrgGroup {
+            __typename
+            id
+            groupScopeOptions(input: $input) {
+              __typename
+              ... on OrgGroupGroupScopeOptions {
+                items {
+                  ...OrgGroupOptions
+                }
+              }
+              ... on UnauthorizedError {
+                message
+              }
+            }
+          }
+          ... on NotFoundError {
+            message
+          }
+        }
+      }
+      ... on NotFoundError {
+        message
+      }
+    }
+  }
+}
+    ${l}`;e.s(["OrgGroupPermissionsGroupsGroupFragmentDoc",0,i,"OrgGroupPermissionsGroupsOrgFragmentDoc",0,p,"useOrgGroupPermissionsGroupsQuery",0,function(e){let r={...n,...e};return o.useQuery(g,r)},"useOrgGroupScopeOptionsQuery",0,function(e){let r={...n,...e};return o.useQuery(m,r)},"useUpdateOrgGroupGroupScopesMutation",0,function(e){let r={...n,...e};return t.useMutation(a,r)}])},861326,e=>{"use strict";var r=e.i(351623),t=e.i(299020);let o={},n=r.gql`
+    fragment OrgGroupPermissionsOrgScopeOption on OrgScopeOption {
+  __typename
+  role
+  status
+}
+    `,i=r.gql`
+    fragment OrgGroupPermissionsOrgGroup on OrgGroup {
+  id
+  permissions {
+    editPermissions
+  }
+  orgScopeOptions {
+    ...OrgGroupPermissionsOrgScopeOption
+  }
+}
+    ${n}`,s=r.gql`
+    fragment OrgGroupPermissionsOrgOrg on Org {
+  id
+  name
+}
+    `,p=r.gql`
+    mutation UpdateOrgGroupOrgScopes($input: UpdateOrgGroupScopesInput!) {
+  updateOrgGroupScopes(input: $input) {
+    __typename
+    ... on OrgGroup {
+      ...OrgGroupPermissionsOrgGroup
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    ${i}`;e.s(["OrgGroupPermissionsOrgGroupFragmentDoc",0,i,"OrgGroupPermissionsOrgOrgFragmentDoc",0,s,"useUpdateOrgGroupOrgScopesMutation",0,function(e){let r={...o,...e};return t.useMutation(p,r)}])},939307,e=>{"use strict";var r=e.i(351623),t=e.i(319801),o=e.i(344480);e.i(975473);let n={},i=r.gql`
+    fragment OrgGroupPermissionsReplsGroup on OrgGroup {
+  id
+  name
+}
+    `,s=r.gql`
+    fragment OrgGroupPermissionsReplsOrg on Org {
+  id
+}
+    `,p=r.gql`
+    fragment OrgGroupRepl on Repl {
+  id
+  title
+  iconUrl
+  ...ReplLinkRepl
+  authorizations {
+    editPermissions {
+      isAuthorized
+    }
+  }
+}
+    ${t.ReplLinkReplFragmentDoc}`,u=r.gql`
+    fragment GroupReplsPage on ReplConnection {
+  pageInfo {
+    hasNextPage
+    nextCursor
+    previousCursor
+  }
+  items {
+    __typename
+    ...OrgGroupRepl
+  }
+}
+    ${p}`,l=r.gql`
+    fragment ReplScopeOption on ReplScopeOption {
+  status
+  role
+}
+    `,a=r.gql`
+    fragment ReplScopeOptions on ReplScopeOptions {
+  replId
+  options {
+    __typename
+    ...ReplScopeOption
+  }
+}
+    ${l}`,g=r.gql`
+    query OrgGroupPermissionsRepls($orgId: String, $input: OrgReplsInput!) {
+  currentUser {
+    __typename
+    id
+    org(orgId: $orgId) {
+      __typename
+      ... on Org {
+        id
+        replsCount
+        repls(input: $input) {
+          __typename
+          ... on ReplConnection {
+            ...GroupReplsPage
+          }
+          ... on UserError {
+            message
+          }
+        }
+      }
+      ... on NotFoundError {
+        message
+      }
+    }
+  }
+}
+    ${u}`,m=r.gql`
+    query OrgGroupReplScopeOptions($orgId: String!, $groupId: String!, $input: OrgGroupReplScopeOptionsInput!) {
+  currentUser {
+    __typename
+    id
+    org(orgId: $orgId) {
+      __typename
+      ... on Org {
+        id
+        group(orgGroupId: $groupId) {
+          __typename
+          ... on OrgGroup {
+            __typename
+            id
+            replScopeOptions(input: $input) {
+              __typename
+              ... on OrgGroupReplScopeOptions {
+                items {
+                  ...ReplScopeOptions
+                }
+              }
+              ... on UnauthorizedError {
+                message
+              }
+            }
+          }
+          ... on NotFoundError {
+            message
+          }
+        }
+      }
+      ... on NotFoundError {
+        message
+      }
+    }
+  }
+}
+    ${a}`;e.s(["OrgGroupPermissionsReplsGroupFragmentDoc",0,i,"OrgGroupPermissionsReplsOrgFragmentDoc",0,s,"useOrgGroupPermissionsReplsQuery",0,function(e){let r={...n,...e};return o.useQuery(g,r)},"useOrgGroupReplScopeOptionsQuery",0,function(e){let r={...n,...e};return o.useQuery(m,r)}])},394352,e=>{"use strict";var r=e.i(351623),t=e.i(299020);let o={},n=r.gql`
+    fragment ReplScopeSelectionGroup on OrgGroup {
+  id
+  name
+}
+    `,i=r.gql`
+    mutation UpdateOrgGroupReplScopes($input: UpdateOrgGroupScopesInput!) {
+  updateOrgGroupScopes(input: $input) {
+    __typename
+    ... on OrgGroup {
+      id
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    `;e.s(["ReplScopeSelectionGroupFragmentDoc",0,n,"useUpdateOrgGroupReplScopesMutation",0,function(e){let r={...o,...e};return t.useMutation(i,r)}])},260666,e=>{"use strict";var r=e.i(351623),t=e.i(285832),o=e.i(344480);e.i(975473);let n={};t.QuickDeployDialogCurrentBuild2FragmentDoc;let i=r.gql`
+    fragment DeployRepl on Repl {
+  id
+  hostingDeployment {
+    ... on HostingDeployment {
+      id
+      replitAppSubdomain
+      currentBuild {
+        id
+        status
+        provider
+      }
+      inProgressBuild {
+        id
+        status
+      }
+    }
+  }
+}
+    `,s=r.gql`
+    query DeployPreloadedRepl($replId: String!) {
+  getRepl(id: $replId) {
+    ... on Repl {
+      ...DeployRepl
+    }
+  }
+}
+    ${i}`;e.s(["DeployReplFragmentDoc",0,i,"useDeployPreloadedReplQuery",0,function(e){let r={...n,...e};return o.useQuery(s,r)}])},669011,e=>{"use strict";var r=e.i(351623),t=e.i(99357),o=e.i(344480);e.i(975473);let n={},i=r.gql`
+    fragment ReplEnvironmentHeaderInviteButtonRepl on Repl {
+  id
+  owner {
+    ... on User {
+      id
+    }
+    ... on Team {
+      id
+    }
+  }
+  org {
+    id
+  }
+  authorizations {
+    editPermissions {
+      isAuthorized
+    }
+  }
+}
+    `,s=r.gql`
+    query InviteButtonOrgReplPerms($replId: String!) {
+  currentUser {
+    id
+    username
+    fullName
+    image
+  }
+  getRepl(id: $replId) {
+    __typename
+    ... on Repl {
+      __typename
+      ...ReplMultiplayerStatusV2
+    }
+  }
+}
+    ${t.ReplMultiplayerStatusV2FragmentDoc}`;e.s(["ReplEnvironmentHeaderInviteButtonReplFragmentDoc",0,i,"useInviteButtonOrgReplPermsQuery",0,function(e){let r={...n,...e};return o.useQuery(s,r)}])},663197,e=>{"use strict";var r=e.i(351623);let t=r.gql`
+    fragment ReplInfoRepl on Repl {
+  id
+  title
+  iconUrl
+}
+    `;e.s(["ReplInfoReplFragmentDoc",0,t])},951894,e=>{"use strict";var r=e.i(351623),t=e.i(663197),o=e.i(669011);let n=r.gql`
+    fragment ReplEnvironmentHeaderRepl on Repl {
+  id
+  authorizations {
+    viewPermissions {
+      isAuthorized
+    }
+    viewDeploymentConfig {
+      isAuthorized
+    }
+    viewFreemiumExperience {
+      isAuthorized
+    }
+  }
+  config {
+    isInPlanningPhase
+  }
+  ...ReplInfoRepl
+  ...ReplEnvironmentHeaderInviteButtonRepl
+}
+    ${t.ReplInfoReplFragmentDoc}
+${o.ReplEnvironmentHeaderInviteButtonReplFragmentDoc}`;e.s(["ReplEnvironmentHeaderReplFragmentDoc",0,n])},122126,e=>{"use strict";var r=e.i(351623),t=e.i(458511);let o=r.gql`
+    fragment ReplEnvironmentDesktopReplInfraHooksRepl on Repl {
+  id
+  slug
+  org {
+    id
+  }
+  origin {
+    id
+  }
+  language
+  user {
+    id
+  }
+  authorizations {
+    editFileContents {
+      isAuthorized
+    }
+  }
+  ...WorkspaceToolPanesRepl
+}
+    ${t.WorkspaceToolPanesReplFragmentDoc}`,n=r.gql`
+    fragment ReplEnvironmentDesktopReplInfraHooksCurrentUser on CurrentUser {
+  id
+  username
+  isAdmin: hasRole(role: ADMIN)
+}
+    `;e.s(["ReplEnvironmentDesktopReplInfraHooksCurrentUserFragmentDoc",0,n,"ReplEnvironmentDesktopReplInfraHooksReplFragmentDoc",0,o])},809541,e=>{"use strict";var r=e.i(351623),t=e.i(29530),o=e.i(922819),n=e.i(122126);let i=r.gql`
+    fragment ReplEnvironmentDesktopTopLevelHooksRepl on Repl {
+  id
+  ...PageTitleRepl
+  ...ReplEnvironmentDesktopAgentSessionHooksRepl
+  ...ReplEnvironmentDesktopReplInfraHooksRepl
+}
+    ${t.PageTitleReplFragmentDoc}
+${o.ReplEnvironmentDesktopAgentSessionHooksReplFragmentDoc}
+${n.ReplEnvironmentDesktopReplInfraHooksReplFragmentDoc}`,s=r.gql`
+    fragment ReplEnvironmentDesktopTopLevelHooksCurrentUser on CurrentUser {
+  ...ReplEnvironmentDesktopReplInfraHooksCurrentUser
+}
+    ${n.ReplEnvironmentDesktopReplInfraHooksCurrentUserFragmentDoc}`;e.s(["ReplEnvironmentDesktopTopLevelHooksCurrentUserFragmentDoc",0,s,"ReplEnvironmentDesktopTopLevelHooksReplFragmentDoc",0,i])},913864,e=>{"use strict";var r=e.i(351623),t=e.i(383889),o=e.i(764992),n=e.i(809541),i=e.i(575872),s=e.i(951894),p=e.i(147381),u=e.i(879106),l=e.i(689736);let a=r.gql`
+    fragment ReplEnvironmentDesktopCurrentUser on CurrentUser {
+  id
+  ...WorkspaceAdminRoles
+  ...CrosisContextCurrentUser
+  ...ReplEnvironmentDesktopTopLevelHooksCurrentUser
+  workspacePreferences
+  ...WorkspaceDoGitProviderImportCurrentUser
+}
+    ${t.WorkspaceAdminRolesFragmentDoc}
+${o.CrosisContextCurrentUserFragmentDoc}
+${n.ReplEnvironmentDesktopTopLevelHooksCurrentUserFragmentDoc}
+${i.WorkspaceDoGitProviderImportCurrentUserFragmentDoc}`,g=r.gql`
+    fragment WorkspaceConnectAuthorization on ReplAuthorizations {
+  connectToWorkspace {
+    isAuthorized
+    code
+  }
+}
+    `,m=r.gql`
+    fragment ReplEnvironmentDesktopRepl on Repl {
+  id
+  layoutState
+  initialEditorMode
+  description
+  config {
+    isAgentStack
+    isWebDesignMockup
+    zealot
+    agentHarness
+  }
+  ...CrosisContextRepl
+  authorizations {
+    ...WorkspaceConnectAuthorization
+  }
+  ...WorkspaceDoGitProviderImportRepl
+  ...ReplEnvironmentHeaderRepl
+  ...FigmaImportFlowRepl
+  ...LovableZipImportFlowRepl
+  ...ReplEnvironmentDesktopTopLevelHooksRepl
+  ...HandleReplRedirectionRepl
+}
+    ${o.CrosisContextReplFragmentDoc}
+${g}
+${i.WorkspaceDoGitProviderImportReplFragmentDoc}
+${s.ReplEnvironmentHeaderReplFragmentDoc}
+${p.FigmaImportFlowReplFragmentDoc}
+${u.LovableZipImportFlowReplFragmentDoc}
+${n.ReplEnvironmentDesktopTopLevelHooksReplFragmentDoc}
+${l.HandleReplRedirectionReplFragmentDoc}`;e.s(["ReplEnvironmentDesktopCurrentUserFragmentDoc",0,a,"ReplEnvironmentDesktopReplFragmentDoc",0,m,"WorkspaceConnectAuthorizationFragmentDoc",0,g])},147381,e=>{"use strict";var r=e.i(351623),t=e.i(344480);e.i(975473);var o=e.i(299020);let n={},i=r.gql`
+    fragment FigmaImportFlowRepl on Repl {
+  id
+  config {
+    figmaUrl
+    figmaImportStatus
+  }
+}
+    `,s=r.gql`
+    query FigmaImportFlow($replId: String!) {
+  getRepl(id: $replId) {
+    ... on Repl {
+      id
+      ...FigmaImportFlowRepl
+    }
+  }
+}
+    ${i}`,p=r.gql`
+    mutation UpdateReplForFigmaImport($input: UpdateReplInput!) {
+  updateRepl(input: $input) {
+    repl {
+      id
+      isRenamed
+      title
+      ...FigmaImportFlowRepl
+    }
+  }
+}
+    ${i}`,u=r.gql`
+    mutation GetFigmaIntermediateToken($input: GetFigmaIntermediateTokenInput!) {
+  getFigmaIntermediateToken(input: $input) {
+    ... on FigmaImportIntermediateToken {
+      token
+    }
+    ... on NoOAuthFoundError {
+      message
+    }
+    ... on InvalidFigmaUrlError {
+      message
+    }
+    ... on FigmaRateLimitError {
+      message
+    }
+  }
+}
+    `;e.s(["FigmaImportFlowReplFragmentDoc",0,i,"useFigmaImportFlowQuery",0,function(e){let r={...n,...e};return t.useQuery(s,r)},"useGetFigmaIntermediateTokenMutation",0,function(e){let r={...n,...e};return o.useMutation(u,r)},"useUpdateReplForFigmaImportMutation",0,function(e){let r={...n,...e};return o.useMutation(p,r)}])},764992,e=>{"use strict";var r=e.i(351623);let t=r.gql`
+    fragment CrosisContextCurrentUser on CurrentUser {
+  id
+  username
+}
+    `,o=r.gql`
+    fragment CrosisContextRepl on Repl {
+  id
+  language
+  authorizations {
+    editFileContents {
+      isAuthorized
+    }
+  }
+}
+    `;e.s(["CrosisContextCurrentUserFragmentDoc",0,t,"CrosisContextReplFragmentDoc",0,o])},689736,e=>{"use strict";var r=e.i(351623),t=e.i(319801),o=e.i(344480);e.i(975473);let n={},i=r.gql`
+    fragment HandleReplRedirectionReplRedirect on ReplRedirect {
+  replUrl
+}
+    `,s=r.gql`
+    fragment HandleReplRedirectionSubscriptionExpired on ReplSubscriptionExpired {
+  isOwner
+  replId
+}
+    `,p=r.gql`
+    fragment HandleReplRedirectionRepl on Repl {
+  id
+  language
+  ...ReplLinkRepl
+  authorizations {
+    connectToWorkspace {
+      isAuthorized
+    }
+  }
+  org {
+    id
+  }
+}
+    ${t.ReplLinkReplFragmentDoc}`,u=r.gql`
+    query HandleReplRedirection($replId: String!) {
+  getRepl(id: $replId) {
+    ... on Repl {
+      ...HandleReplRedirectionRepl
+      heliumMigrationStatus {
+        isUsingHelium
+        shouldMigrateToHelium
+      }
+    }
+    ... on ReplRedirect {
+      ...HandleReplRedirectionReplRedirect
+    }
+    ... on ReplSubscriptionExpired {
+      ...HandleReplRedirectionSubscriptionExpired
+    }
+  }
+}
+    ${p}
+${i}
+${s}`;e.s(["HandleReplRedirectionReplFragmentDoc",0,p,"HandleReplRedirectionReplRedirectFragmentDoc",0,i,"HandleReplRedirectionSubscriptionExpiredFragmentDoc",0,s,"useHandleReplRedirectionQuery",0,function(e){let r={...n,...e};return o.useQuery(u,r)}])},29530,e=>{"use strict";var r=e.i(351623);let t=r.gql`
+    fragment PageTitleRepl on Repl {
+  id
+  title
+}
+    `;e.s(["PageTitleReplFragmentDoc",0,t])},922819,e=>{"use strict";var r=e.i(351623);let t=r.gql`
+    fragment ReplEnvironmentDesktopAgentSessionHooksRepl on Repl {
+  id
+  config {
+    isInPlanningPhase
+  }
+  origin {
+    id
+  }
+}
+    `;e.s(["ReplEnvironmentDesktopAgentSessionHooksReplFragmentDoc",0,t])},575872,e=>{"use strict";var r=e.i(351623),t=e.i(344480);e.i(975473);var o=e.i(299020);let n={},i=r.gql`
+    fragment WorkspaceDoGitProviderImportCurrentUser on CurrentUser {
+  id
+  username
+}
+    `,s=r.gql`
+    fragment WorkspaceDoGitProviderImportRepl on Repl {
+  id
+  org {
+    id
+  }
+  config {
+    gitRemoteUrl
+    doClone
+    isAgentRepl
+    enablePrWorkflow
+  }
+}
+    `,p=r.gql`
+    query WorkspaceDoGitProviderImportFlow($replId: String!) {
+  getRepl(id: $replId) {
+    ...WorkspaceDoGitProviderImportRepl
+  }
+  currentUser {
+    ...WorkspaceDoGitProviderImportCurrentUser
+  }
+}
+    ${s}
+${i}`,u=r.gql`
+    query WorkspaceDoGitProviderImportConnectorBaseUrl($input: GitProviderContextInput) {
+  currentUser {
+    id
+    gitHubInfoV2(input: $input) {
+      webBaseUrl
+      apiBaseUrl
+    }
+  }
+}
+    `,l=r.gql`
+    mutation WorkspaceDoGitProviderImportFlowFinishClone($input: UpdateReplInput!) {
+  updateRepl(input: $input) {
+    repl {
+      id
+      config {
+        doClone
+      }
+    }
+  }
+}
+    `,a=r.gql`
+    query GitHubImportGetTopLanguages($input: GitHubRepoInfoInput!) {
+  githubRepoInfo(input: $input) {
+    ... on GitHubRepoInfoOutput {
+      topLanguages
+      repositorySource
+    }
+    ... on TooManyRequestsError {
+      message
+    }
+    ... on UnauthorizedError {
+      message
+    }
+    ... on ServiceUnavailable {
+      message
+    }
+    ... on UserError {
+      message
+    }
+    ... on NotFoundError {
+      message
+    }
+  }
+}
+    `,g=r.gql`
+    query BitbucketImportGetTopLanguages($input: BitbucketRepoInfoInput!) {
+  bitbucketRepoInfo(input: $input) {
+    ... on BitbucketRepoInfoOutput {
+      topLanguages
+      repositorySource
+    }
+    ... on UnauthorizedError {
+      message
+    }
+    ... on ServiceUnavailable {
+      message
+    }
+    ... on UserError {
+      message
+    }
+    ... on NotFoundError {
+      message
+    }
+  }
+}
+    `;e.s(["WorkspaceDoGitProviderImportCurrentUserFragmentDoc",0,i,"WorkspaceDoGitProviderImportReplFragmentDoc",0,s,"useBitbucketImportGetTopLanguagesQuery",0,function(e){let r={...n,...e};return t.useQuery(g,r)},"useGitHubImportGetTopLanguagesQuery",0,function(e){let r={...n,...e};return t.useQuery(a,r)},"useWorkspaceDoGitProviderImportConnectorBaseUrlQuery",0,function(e){let r={...n,...e};return t.useQuery(u,r)},"useWorkspaceDoGitProviderImportFlowFinishCloneMutation",0,function(e){let r={...n,...e};return o.useMutation(l,r)},"useWorkspaceDoGitProviderImportFlowQuery",0,function(e){let r={...n,...e};return t.useQuery(p,r)}])},879106,e=>{"use strict";var r=e.i(351623),t=e.i(344480);e.i(975473);var o=e.i(299020),n=e.i(846545);let i={},s=r.gql`
+    fragment LovableZipImportFlowRepl on Repl {
+  id
+  config {
+    zipImportSource
+    zipImportStatus
+  }
+}
+    `,p=r.gql`
+    query LovableZipImportFlow($replId: String!) {
+  getRepl(id: $replId) {
+    ... on Repl {
+      id
+      ...LovableZipImportFlowRepl
+    }
+  }
+}
+    ${s}`,u=r.gql`
+    mutation UpdateReplForLovableZipImport($input: UpdateReplInput!) {
+  updateRepl(input: $input) {
+    repl {
+      id
+      ...LovableZipImportFlowRepl
+    }
+  }
+}
+    ${s}`,l=r.gql`
+    subscription LovableImportZipProgress($replId: String!) {
+  importZipProgress(replId: $replId)
+}
+    `;e.s(["LovableZipImportFlowReplFragmentDoc",0,s,"useLovableImportZipProgressSubscription",0,function(e){let r={...i,...e};return n.useSubscription(l,r)},"useLovableZipImportFlowQuery",0,function(e){let r={...i,...e};return t.useQuery(p,r)},"useUpdateReplForLovableZipImportMutation",0,function(e){let r={...i,...e};return o.useMutation(u,r)}])},383889,e=>{"use strict";var r=e.i(351623),t=e.i(344480);e.i(975473);let o={},n=r.gql`
+    fragment WorkspaceAdminRoles on CurrentUser {
+  isAdmin: hasRole(role: ADMIN)
+  isStaff: hasRole(role: REPLIT_STAFF)
+}
+    `,i=r.gql`
+    query WorkspaceShowAdmin {
+  currentUser {
+    id
+    ...WorkspaceAdminRoles
+  }
+}
+    ${n}`;e.s(["WorkspaceAdminRolesFragmentDoc",0,n,"useWorkspaceShowAdminQuery",0,function(e){let r={...o,...e};return t.useQuery(i,r)}])},458511,e=>{"use strict";var r=e.i(351623);let t=r.gql`
+    fragment WorkspaceToolPanesRepl on Repl {
+  authorizations {
+    editPermissions {
+      isAuthorized
+    }
+    viewDeploymentConfig {
+      isAuthorized
+    }
+  }
+  config {
+    initialStackBlueprint
+  }
+}
+    `;e.s(["WorkspaceToolPanesReplFragmentDoc",0,t])}]);
+
+//# debugId=47de851f-c91c-2258-c3a0-340c9c20b7a8
+//# sourceMappingURL=1e3p31kv3x-mf.js.map

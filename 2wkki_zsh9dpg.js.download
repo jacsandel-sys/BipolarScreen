@@ -1,0 +1,208 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="d98a8763-6a65-5df2-8f69-af7a8b315997")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,61786,(e,n,t)=>{function a(e,n,t,a){Object.defineProperty(e,n,{get:t,set:a,enumerable:!0,configurable:!0})}a(n.exports,"showEntri",()=>r),a(n.exports,"checkDomain",()=>d),a(n.exports,"purchaseDomain",()=>l),a(n.exports,"close",()=>c),a(n.exports,"load",()=>u),a(n.exports,"loadSharedFlow",()=>m);var i={};function o(e){return new Promise((n,t)=>{let a=window.entri;if(a)return void n(a);let i=document.createElement("script");i.type="text/javascript",i.src="https://cdn.goentri.com/entri.js",i.addEventListener("load",()=>{let a=window.entri;a?(e&&a.load(e),n(a)):t(Error("Entri SDK did not initialize correctly."))}),i.addEventListener("error",()=>{t(Error("Failed to load the Entri SDK."))}),document.body.appendChild(i)})}i=JSON.parse('{"name":"entrijs","version":"1.0.2","description":"Entri","source":"src/index.ts","main":"dist/main.js","types":"dist/types.d.ts","files":["dist"],"scripts":{"build":"parcel build --no-cache","prepublishOnly":"npm run build","test":"echo \\"Error: no test specified\\" && exit 1"},"author":"Entri LLC","license":"MIT","dependencies":{"react":"^19.2.4"},"devDependencies":{"@parcel/packager-ts":"^2.12.0","@parcel/transformer-typescript-types":"^2.12.0","parcel":"^2.12.0","typescript":"^5.5.4"}}');let s=e=>{var n;return{...e,npm:!0,npmVersion:((n=i)&&n.__esModule?n.default:n)?.version??""}},r=async e=>(await o()).showEntri(s(e)),d=async(e,n)=>(await o()).checkDomain(e,n),l=async e=>(await o()).purchaseDomain(s(e)),c=async()=>(await o()).close(),u=async e=>await o(e),m=async e=>(await o()).loadSharedFlow(e)},613608,e=>{e.v({tooltipIcon:"DomainEmailVerificationStatus-module__DCsiCG__tooltipIcon"})},454665,e=>{"use strict";var n=e.i(276385),t=e.i(906026),a=e.i(416746),i=e.i(403649),o=e.i(562782),s=e.i(108431),r=e.i(8047),d=e.i(244945),l=e.i(613608);e.s(["DomainEmailVerificationStatus",0,function({isVerified:e,purchaseDate:c}){if(null===e||!0===e)return null;let u=c?Math.max(0,15-(0,t.differenceInDays)(new Date,new Date(c))):15;return(0,n.jsx)(s.StatusBanner,{colorway:"warning",icon:(0,n.jsx)(i.default,{}),title:"Email Verification Required",text:(0,n.jsxs)(r.Text,{variant:"small",children:["A verification email was sent to your domain registration contact email. Please verify within ",(0,o.default)("day",u,!0)," to avoid service disruptions."," ",(0,n.jsx)("span",{clsx:l.default.tooltipIcon,children:(0,n.jsx)(d.Tooltip,{tooltip:"After verifying your email, it may take up to 15 minutes for your verification status to update.",children:(0,n.jsx)(a.default,{size:16})})})]})})}])},782980,e=>{"use strict";var n=e.i(351623),t=e.i(317906),a=e.i(344480);e.i(975473);var i=e.i(299020);let o={},s=n.gql`
+    fragment LinkablePurchasedDomains on CurrentUser {
+  domainPurchases {
+    id
+    domain
+  }
+}
+    `,r=n.gql`
+    fragment MinimalHostingDeploymentDomains on HostingDeployment {
+  id
+  domains2 {
+    id
+    domain
+  }
+}
+    `,d=n.gql`
+    query DomainManagementLinkablePurchasedDomains {
+  currentUser {
+    id
+    ...LinkablePurchasedDomains
+  }
+}
+    ${s}`,l=n.gql`
+    mutation UnlinkDomain($input: UnlinkHostingDeploymentDomainInput!) {
+  unlinkHostingDeploymentDomain(input: $input) {
+    ... on HostingDeployment {
+      id
+      ...MinimalHostingDeploymentDomains
+      repl {
+        ...PendingDomainsRepl
+      }
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    ${r}
+${t.PendingDomainsReplFragmentDoc}`,c=n.gql`
+    mutation DeleteDnsRecord($input: DeleteDnsRecordInput!) {
+  deleteDnsRecord(input: $input) {
+    ... on Error {
+      message
+    }
+    ... on DeleteDnsRecordOutput {
+      domain {
+        id
+        dnsRecords {
+          id
+        }
+      }
+    }
+  }
+}
+    `,u=n.gql`
+    mutation SetShouldAutoRenew($input: SetShouldDomainAutoRenewInput!) {
+  setShouldDomainAutoRenew(input: $input) {
+    ... on Error {
+      message
+    }
+    ... on SetShouldDomainAutoRenewResult {
+      domain {
+        id
+        autorenew
+      }
+    }
+  }
+}
+    `;t.DomainFieldsFragmentDoc;let m=n.gql`
+    mutation CreateDnsRecord($input: CreateDnsRecordInput!) {
+  createDnsRecord(input: $input) {
+    ... on Error {
+      message
+    }
+    ... on CreateDnsRecordOutput {
+      domain {
+        id
+        ...DomainFields
+      }
+    }
+  }
+}
+    ${t.DomainFieldsFragmentDoc}`,p=n.gql`
+    query ReplLinkingStatuses($replId: String!) {
+  getRepl(id: $replId) {
+    ... on Repl {
+      ...DomainLinkingStatusesRepl
+    }
+  }
+}
+    ${t.DomainLinkingStatusesReplFragmentDoc}`;e.s(["DomainManagementLinkablePurchasedDomainsDocument",0,d,"useCreateDnsRecordMutation",0,function(e){let n={...o,...e};return i.useMutation(m,n)},"useDeleteDnsRecordMutation",0,function(e){let n={...o,...e};return i.useMutation(c,n)},"useReplLinkingStatusesQuery",0,function(e){let n={...o,...e};return a.useQuery(p,n)},"useSetShouldAutoRenewMutation",0,function(e){let n={...o,...e};return i.useMutation(u,n)},"useUnlinkDomainMutation",0,function(e){let n={...o,...e};return i.useMutation(l,n)}])},436492,e=>{e.v({accordionCard:"DomainManagement-module__f5enUa__accordionCard",accordionFooter:"DomainManagement-module__f5enUa__accordionFooter",addRow:"DomainManagement-module__f5enUa__addRow",addRowHasMx:"DomainManagement-module__f5enUa__addRowHasMx",dnsRecordsAccordionHeader:"DomainManagement-module__f5enUa__dnsRecordsAccordionHeader",key:"DomainManagement-module__f5enUa__key",sectionRow:"DomainManagement-module__f5enUa__sectionRow"})},361623,e=>{"use strict";var n=e.i(276385),t=e.i(36454),a=e.i(389959),i=e.i(782980),o=e.i(656077),s=e.i(526017),r=e.i(534141),d=e.i(178496),l=e.i(927225),c=e.i(40916),u=e.i(491194),m=e.i(205158),p=e.i(403649),g=e.i(978066),f=e.i(320216);e.i(214847);var x=e.i(20397),h=e.i(864300),D=e.i(634392),y=e.i(356048),w=e.i(454665),j=e.i(947076),M=e.i(604365),R=e.i(667285),v=e.i(940083),S=e.i(429421),C=e.i(638901),b=e.i(835685),k=e.i(643484),E=e.i(142406),A=e.i(903790),I=e.i(480890),F=e.i(190545),T=e.i(488299),_=e.i(528710),P=e.i(33583),V=e.i(585544),L=e.i(295231),q=e.i(528326),U=e.i(19322),N=e.i(108431),$=e.i(327391),H=e.i(8047),O=e.i(845415),B=e.i(472499),G=e.i(61732),W=e.i(436492);let X=(0,n.jsx)(n.Fragment,{children:"—"}),z=[{label:"A",value:"A"},{label:"TXT",value:"TXT"},{label:"MX",value:"MX"},{label:"CNAME",value:"CNAME"}];function K(e){let t=(0,h.useIntl)();return(0,n.jsx)(L.MenuItem,{label:t.formatMessage({id:"deployments.domainManagementDisconnectDomain",defaultMessage:"Disconnect this domain"}),isDestructive:!0,icon:(0,n.jsx)(m.default,{}),onAction:e.onOpen})}function Q(e){let t=(0,h.useIntl)(),{showError:a}=(0,f.default)(),[o,{loading:s}]=(0,i.useUnlinkDomainMutation)({awaitRefetchQueries:!0,refetchQueries:[{query:i.DomainManagementLinkablePurchasedDomainsDocument}],onCompleted:n=>{let t=n.unlinkHostingDeploymentDomain;t?.__typename==="UnauthorizedError"||t?.__typename==="NotFoundError"||t?.__typename==="ServiceUnavailable"?a(t.message):(e.onRequestClose(),e.onBack?.())}});return(0,n.jsx)(q.Modal,{isOpen:e.isOpen,onRequestClose:e.onRequestClose,centered:!0,maxWidth:480,children:(0,n.jsx)(E.default,{prompt:t.formatMessage({id:"deployments.domainManagementUnlinkPrompt",defaultMessage:"Disconnect this domain?"}),desc:(0,n.jsxs)(G.View,{gap:8,children:[(0,n.jsx)(H.Text,{children:(0,n.jsx)(x.FormattedMessage,{id:"deployments.domainManagementUnlinkDescription",defaultMessage:"You are about to disconnect <b>{domain}</b> from this deployment. Your site will no longer be accessible at this domain.",values:{domain:e.domain.domain,b:e=>(0,n.jsx)("b",{children:e})}})}),e.domain.managed?(0,n.jsx)(H.Text,{children:(0,n.jsx)(x.FormattedMessage,{id:"deployments.domainManagementUnlinkManagedNote",defaultMessage:"It will still be available to link to your other apps."})}):null]}),confirmText:t.formatMessage({id:"deployments.domainManagementUnlinkConfirm",defaultMessage:"Disconnect"}),danger:!0,icon:(0,n.jsx)(m.default,{}),loading:s,onCancel:e.onRequestClose,onConfirm:function(){o({variables:{input:{hostingDeploymentDomainId:e.domain.id}}})}})})}function Y(e){let t=(0,h.useIntl)(),{showError:a}=(0,f.default)(),[o,{loading:s}]=(0,i.useSetShouldAutoRenewMutation)({onCompleted:e=>{"SetShouldDomainAutoRenewResult"!==e.setShouldDomainAutoRenew.__typename&&a(e.setShouldDomainAutoRenew.message)}});return(0,n.jsxs)(G.View,{clsx:W.default.sectionRow,row:!0,gap:70,py:8,children:[(0,n.jsxs)(G.View,{gap:8,children:[(0,n.jsxs)(G.View,{row:!0,gap:8,align:"center",justify:"space-between",children:[(0,n.jsx)(H.Text,{variant:"text",clsx:W.default.key,children:(0,n.jsx)(x.FormattedMessage,{id:"deployments.domainManagementProvider",defaultMessage:"Provider"})}),(0,n.jsx)(H.Text,{children:(0,n.jsx)(x.FormattedMessage,{id:"deployments.domainManagementProviderReplit",defaultMessage:"Replit"})})]}),(0,n.jsxs)(G.View,{row:!0,gap:8,align:"center",justify:"space-between",children:[(0,n.jsx)(H.Text,{variant:"text",clsx:W.default.key,children:(0,n.jsx)(x.FormattedMessage,{id:"deployments.domainManagementAge",defaultMessage:"Age"})}),e.domain.whois?.creationDate?(0,n.jsx)(B.Timestamp,{date:new Date(e.domain.whois.creationDate),dateFormat:"relative"}):(0,n.jsx)(n.Fragment,{children:X})]})]}),e.domain.isApexRegistration?(0,n.jsxs)(G.View,{gap:8,grow:!0,shrink:!0,children:[(0,n.jsxs)(G.View,{row:!0,gap:8,align:"center",justify:"space-between",children:[(0,n.jsx)(H.Text,{variant:"text",clsx:W.default.key,children:e.domain.autorenew?t.formatMessage({id:"deployments.domainManagementRenewalDate",defaultMessage:"Renewal date"}):t.formatMessage({id:"deployments.domainManagementExpirationDate",defaultMessage:"Expiration date"})}),e.domain.whois?.expiryDate?(0,n.jsx)(B.Timestamp,{date:new Date(e.domain.whois.expiryDate),dateFormat:"absolute",absoluteFormat:{year:"numeric",month:"short",day:"numeric"}}):(0,n.jsx)(H.Text,{children:X})]}),(0,n.jsxs)(G.View,{row:!0,gap:8,align:"center",justify:"space-between",children:[(0,n.jsx)(H.Text,{variant:"text",clsx:W.default.key,children:(0,n.jsx)(x.FormattedMessage,{id:"deployments.domainManagementRenewalPrice",defaultMessage:"Renewal price"})}),(0,n.jsx)(H.Text,{children:"number"==typeof e.domain.renewalPriceCents?`$${(e.domain.renewalPriceCents/100).toFixed(2)}`:X})]}),(0,n.jsxs)(G.View,{row:!0,gap:8,align:"center",justify:"space-between",children:[(0,n.jsx)(H.Text,{variant:"text",clsx:W.default.key,children:(0,n.jsx)(x.FormattedMessage,{id:"deployments.domainManagementAutoRenewal",defaultMessage:"Auto renewal"})}),(0,n.jsx)($.Switch,{size:"small",isSelected:e.domain.autorenew,onChange:n=>{o({variables:{input:{domainId:e.domain.id,shouldAutoRenew:n}}})},isReadOnly:s,"aria-label":t.formatMessage({id:"deployments.domainManagementAutoRenewalToggleAriaLabel",defaultMessage:"Toggle auto renewal"})})]})]}):null]})}function J(e){let t,a=(0,h.useIntl)(),i=e.domain.whois?.registrar?.trim()||null,o=!!i&&(e.dns?.currentDnsRecords?.A?.length??0)>1;return t=i?o?a.formatMessage({id:"deployments.domainManagementProviderRegistrarProxy",defaultMessage:"{registrar} (Proxy)"},{registrar:i}):i:a.formatMessage({id:"deployments.domainManagementProviderUnknown",defaultMessage:"Unknown"}),(0,n.jsxs)(G.View,{clsx:W.default.sectionRow,row:!0,gap:70,py:8,children:[(0,n.jsx)(G.View,{gap:8,children:(0,n.jsxs)(G.View,{row:!0,gap:8,align:"center",justify:"space-between",children:[(0,n.jsx)(H.Text,{variant:"text",clsx:W.default.key,children:(0,n.jsx)(x.FormattedMessage,{id:"deployments.domainManagementProvider",defaultMessage:"Provider"})}),(0,n.jsx)(H.Text,{children:t})]})}),(0,n.jsx)(G.View,{gap:8,children:(0,n.jsxs)(G.View,{row:!0,gap:8,align:"center",justify:"space-between",children:[(0,n.jsx)(H.Text,{variant:"text",clsx:W.default.key,children:(0,n.jsx)(x.FormattedMessage,{id:"deployments.domainManagementAge",defaultMessage:"Age"})}),e.domain.whois?.creationDate?(0,n.jsx)(B.Timestamp,{date:new Date(e.domain.whois.creationDate),dateFormat:"relative"}):(0,n.jsx)(H.Text,{children:X})]})})]})}function Z(e){let t=(0,h.useIntl)(),[i,o]=(0,a.useState)(null);return(0,n.jsxs)(G.View,{clsx:W.default.accordionCard,br:8,children:[(0,n.jsx)(b.AccordionItem,{chevron:"none",round:!1,headerContent:({isExpanded:e})=>(0,n.jsxs)(G.View,{clsx:W.default.dnsRecordsAccordionHeader,grow:!0,children:[(0,n.jsxs)(G.View,{gap:2,grow:!0,children:[(0,n.jsx)(H.Text,{children:(0,n.jsx)(x.FormattedMessage,{id:"deployments.domainManagementDnsRecords",defaultMessage:"DNS Records"})}),(0,n.jsx)(H.Text,{variant:"small",color:"dimmer",children:(0,n.jsx)(x.FormattedMessage,{id:"deployments.domainManagementManagedDnsRecordsHint",defaultMessage:"Manually configure your domain’s DNS records"})})]}),e?(0,n.jsx)(s.default,{}):(0,n.jsx)(d.default,{})]}),defaultExpanded:!1,variant:"compact",children:e.dns?(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(y.DnsRecords,{dnsRecords:e.domain.dnsRecords.map(e=>({id:String(e.id),type:e.type,hostname:(0,C.formatHostForDisplay)(e.host),record:e.answer})),actions:e=>(0,n.jsx)(T.IconButton,{alt:t.formatMessage({id:"deployments.domainManagementDeleteRecordAlt",defaultMessage:"Delete this record"}),onClick:()=>o(e),children:(0,n.jsx)(u.default,{})})}),(0,n.jsx)(et,{...e})]}):null}),(0,n.jsx)(ee,{...e,record:i,isOpen:!!i,onRequestClose:()=>o(null)})]})}function ee(e){let t=(0,h.useIntl)(),[a,{loading:o}]=(0,i.useDeleteDnsRecordMutation)({errorPolicy:"all"}),{showError:s}=(0,f.default)();async function r(){if(!e.record)return;let n=t.formatMessage({id:"deployments.domainManagementGenericError",defaultMessage:"Something went wrong"});try{let t=await a({variables:{input:{domainId:e.domain.id,recordId:Number(e.record.id)}}});if((0,D.hasMutationError)(t)||!t.data)return void s(n);if("DeleteDnsRecordOutput"!==t.data.deleteDnsRecord.__typename)return void s(t.data.deleteDnsRecord.message)}catch(e){s(n);return}finally{e.onRequestClose()}}return e.record?(0,n.jsx)(q.Modal,{isOpen:e.isOpen,onRequestClose:e.onRequestClose,centered:!0,maxWidth:480,children:(0,n.jsx)(E.default,{prompt:t.formatMessage({id:"deployments.domainManagementDeleteRecordPrompt",defaultMessage:"Delete this record?"}),desc:(0,n.jsx)(H.Text,{children:(0,n.jsx)(x.FormattedMessage,{id:"deployments.domainManagementDeleteRecordDescription",defaultMessage:"You are about to delete the {recordType} record for <b>{hostname}</b>. This action cannot be undone.",values:{recordType:e.record.type,hostname:e.record.hostname,b:e=>(0,n.jsx)("b",{children:e})}})}),confirmText:t.formatMessage({id:"deployments.domainManagementDeleteRecordConfirm",defaultMessage:"Delete"}),danger:!0,icon:(0,n.jsx)(u.default,{}),loading:o,onCancel:e.onRequestClose,onConfirm:r})}):null}function en(e){if(!e.dns)return null;let a=(e.domain.expectedDnsRecords??[]).filter(e=>"CNAME"===e.type).map(n=>({id:`clerk-cname-${n.host}`,type:"CNAME",hostname:(0,C.formatClerkCnameHostname)(n.host,e.domain.domain),record:n.expectedValue})),i=[...(0,y.getExternalDnsRecords)(e.dns),...a];return(0,n.jsx)(G.View,{clsx:W.default.accordionCard,br:8,children:(0,n.jsx)(b.AccordionItem,{chevron:"none",round:!1,headerContent:({isExpanded:e})=>(0,n.jsxs)(G.View,{clsx:W.default.dnsRecordsAccordionHeader,grow:!0,children:[(0,n.jsxs)(G.View,{gap:2,grow:!0,children:[(0,n.jsx)(H.Text,{children:(0,n.jsx)(x.FormattedMessage,{id:"deployments.domainManagementDnsRecords",defaultMessage:"DNS Records"})}),(0,n.jsx)(H.Text,{variant:"small",color:"dimmer",children:(0,n.jsx)(x.FormattedMessage,{id:"deployments.domainManagementExternalDnsRecordsHint",defaultMessage:"The DNS records your domain uses. <link>Learn more</link>",values:{link:e=>(0,n.jsx)(t.default,{href:"https://docs.replit.com/cloud-services/deployments/custom-domains",target:"_blank",rel:"noopener",children:e})}})})]}),e?(0,n.jsx)(s.default,{}):(0,n.jsx)(d.default,{})]}),defaultExpanded:!1,variant:"compact",children:(0,n.jsx)(y.DnsRecords,{dnsRecords:i,showCopyButton:!0})})})}function et(e){let[t,o]=(0,a.useState)(!1),[s,r]=(0,a.useState)(null),[d,l]=(0,a.useState)(null),u="MX"===s,m=(0,C.scopeHostForDomain)(e.domain.domain),{showError:p}=(0,f.default)(),[x,{loading:h}]=(0,i.useCreateDnsRecordMutation)({errorPolicy:"all"});async function y(n){n.preventDefault();let t=new FormData(n.target),a=t.get("type"),i=t.get("hostname"),s=t.get("priority"),d=t.get("record");if("string"!=typeof a||""===a.trim())return void p("Type is required");if("string"!=typeof i||""===i.trim())return void p("Hostname is required");let c=(0,C.resolveScopedHost)(i,e.domain.domain);if("error"in c){l(c.error),p(c.error);return}if("string"!=typeof d||""===d.trim())return void p("Record is required");let m=u?Number(s):void 0;if(u){if(void 0===m||isNaN(m))return void p("Priority must be provided as a number");if(m<0||m>65535)return void p("Priority must be between 0 and 65535")}try{let n=await x({variables:{input:{domainId:e.domain.id,host:c.host,type:a,answer:d,priority:m}}});if((0,D.hasMutationError)(n))return void p("Something went wrong");if(!n.data)return;if("CreateDnsRecordOutput"!==n.data.createDnsRecord.__typename)return void p(n.data.createDnsRecord.message);o(!1),r(null),l(null)}catch(n){(0,g.sendSentryError)({error:n instanceof Error?n:Error(String(n)),context:"createDnsRecord",extras:{domainId:e.domain.id,hostname:i,type:a,record:d,priority:m}}),p("An unexpected error occurred. Please try again.")}}return t?(0,n.jsxs)(F.Form,{onSubmit:y,p:8,clsx:W.default.accordionFooter,gap:12,children:[(0,n.jsxs)(G.View,{clsx:[W.default.addRow,{[W.default.addRowHasMx]:u}],gap:12,align:"start",children:[(0,n.jsx)(G.View,{children:(0,n.jsx)(U.Select,{label:"Type",items:z,placeholder:"Select type",onSelectionChange:e=>{r(e?String(e):null)},name:"type",isInvalid:!1,children:e=>(0,n.jsx)(V.ListBoxItem,{id:e.value,label:e.label},e.value)})}),(0,n.jsx)(G.View,{children:(0,n.jsxs)(O.TextField,{isInvalid:!!d,children:[(0,n.jsx)(P.Label,{children:"Hostname"}),(0,n.jsx)(_.Input,{placeholder:m,name:"hostname",autoComplete:"off",required:!0,onChange:n=>{let t=(0,C.resolveScopedHost)(n.target.value,e.domain.domain);l("error"in t?t.error:null)}}),(0,n.jsx)(I.FieldError,{children:d})]})}),u?(0,n.jsx)(G.View,{children:(0,n.jsxs)(O.TextField,{children:[(0,n.jsx)(P.Label,{children:"Priority"}),(0,n.jsx)(_.Input,{placeholder:"10",type:"number",min:0,max:65535,name:"priority",autoComplete:"off",required:!0})]})}):null,(0,n.jsx)(G.View,{grow:!0,children:(0,n.jsxs)(O.TextField,{children:[(0,n.jsx)(P.Label,{children:"Record"}),(0,n.jsx)(_.Input,{name:"record",autoComplete:"off",required:!0})]})})]}),(0,n.jsxs)(G.View,{row:!0,justify:"end",align:"center",gap:8,children:[(0,n.jsx)(k.Button,{variant:"nofill",text:"Cancel",onClick:()=>{o(!1),r(null),l(null)},type:"button",disabled:h}),(0,n.jsx)(k.Button,{text:h?"Adding...":"Add record",type:"submit",loading:h,disabled:h})]})]}):(0,n.jsx)(G.View,{p:8,align:"end",clsx:W.default.accordionFooter,children:(0,n.jsx)(k.Button,{text:"Add DNS record",variant:"nofill",iconLeft:(0,n.jsx)(c.default,{}),onClick:()=>{r(null),o(!0),l(null)}})})}e.s(["DomainManagement",0,function(e){let s=(0,h.useIntl)(),[d,c]=(0,a.useState)(!1),[u,m]=(0,a.useState)(!1),{data:g,loading:D}=(0,i.useReplLinkingStatusesQuery)({variables:{replId:e.dns?.replId||""},skip:!e.dns?.replId,fetchPolicy:"cache-and-network",ssr:!1}),y=g?.getRepl&&"domainLinkingStatuses"in g.getRepl?g.getRepl.domainLinkingStatuses?.find(n=>n.domainId===e.domain.id):void 0,b=!y,E=D&&e.dns?.replId&&!y,{showError:I}=(0,f.default)(),{start:F,isActive:_}=(0,S.useStartEntriConnect)({target:{kind:"deployment",deploymentId:e.deploymentId},onManualFallback:()=>I("Couldn't open the guided DNS flow. You can add the records manually below."),onServerManualFallback:()=>{},onSuccess:()=>e.onDnsSetupComplete?.(),onPreflightError:I,onAlreadyConfigured:()=>e.onDnsSetupComplete?.()}),{onRecheckDns:P}=e,[V,q]=(0,a.useState)(!1),U=P?async()=>{q(!0);try{await P()}finally{q(!1)}}:void 0,$=(e.domain.expectedDnsRecords??[]).filter(e=>!e.isConfigured).map(n=>({id:`${n.type}-${n.host}`,type:n.type,hostname:"CNAME"===n.type?(0,C.formatClerkCnameHostname)(n.host,e.domain.domain):n.host,record:n.expectedValue})),[O,B]=(0,a.useState)((0,C.isPastDnsGracePeriod)(e.domain.timeCreated)),W=(0,a.useRef)(e.onGracePeriodElapsed);W.current=e.onGracePeriodElapsed;let X=e.domain.timeCreated;(0,a.useEffect)(()=>{if(O)return;let e=setTimeout(()=>{B(!0),W.current?.()},Math.max(0,C.DNS_WARNING_GRACE_PERIOD_MS-(Date.now()-new Date(X).getTime())));return()=>clearTimeout(e)},[O,X]);let z=!e.domain.managed&&O&&$.length>0;return(0,n.jsxs)(G.View,{gap:32,p:24,children:[(0,n.jsx)(G.View,{row:!0,gap:8,align:"center",children:(0,n.jsx)(k.Button,{size:"small",variant:"outlined",iconLeft:(0,n.jsx)(o.default,{}),text:s.formatMessage({id:"deployments.domainManagementBack",defaultMessage:"Back"}),onClick:e.onBack})}),(0,n.jsxs)(G.View,{gap:16,children:[(0,n.jsxs)(G.View,{row:!0,gap:8,align:"center",justify:"space-between",py:8,children:[(0,n.jsxs)(G.View,{gap:6,grow:!0,children:[(0,n.jsx)(H.Text,{variant:"headerDefault",children:e.domain.domain}),b?(0,n.jsx)(M.DomainVerificationStatus,{state:e.domain.state}):null]}),(0,n.jsxs)(L.PopupMenu,{"aria-label":s.formatMessage({id:"deployments.domainManagementOptionsAriaLabel",defaultMessage:"Domain options"}),trigger:(0,n.jsx)(T.IconButton,{alt:s.formatMessage({id:"deployments.domainManagementMoreOptionsAlt",defaultMessage:"More options"}),children:(0,n.jsx)(l.default,{})}),children:[e.domain.isApexRegistration?(0,n.jsx)(L.MenuItem,{label:s.formatMessage({id:"deployments.domainManagementUpdateContactInfo",defaultMessage:"Update contact info"}),icon:(0,n.jsx)(r.default,{}),onAction:()=>m(!0)}):null,(0,n.jsx)(K,{...e,onOpen:()=>c(!0)})]})]}),E?(0,n.jsx)(j.DomainLinkingProgressBannerSkeleton,{}):null,E||!y||b?null:(0,n.jsx)(j.DomainLinkingProgressBanner,{status:y}),e.domain.isApexRegistration?(0,n.jsx)(w.DomainEmailVerificationStatus,{isVerified:e.domain.registrantEmailVerified??null,purchaseDate:e.domain.purchaseDate??null}):null,(0,n.jsx)(A.DividerH,{}),(0,n.jsxs)(G.View,{gap:12,children:[(0,n.jsxs)(G.View,{gap:32,children:[(0,n.jsx)(G.View,{gap:16,children:e.domain.managed?(0,n.jsx)(Y,{...e}):(0,n.jsx)(J,{...e})}),e.domain.managed?(0,n.jsx)(Z,{...e}):(0,n.jsx)(en,{...e})]}),y&&"verified"!==e.domain.state&&(0,j.getDomainLinkingWarning)(y)?(0,n.jsx)(N.StatusBanner,{colorway:"warning",icon:(0,n.jsx)(p.default,{}),text:s.formatMessage({id:"deployments.domainManagementNonMatchingAaaaRecordsWarning",defaultMessage:"Non-matching A and AAAA records were found. Turning on IP proxying (e.g. Cloudflare orange cloud) can trigger this warning. If you have added your A record and have not added any AAAA records, domain verification should still complete."})}):null,z?(0,n.jsx)(R.MissingDnsRecordsWarning,{missingRecords:$,onSetUpDns:()=>void F(e.domain.domain),isSettingUpDns:_,onRecheck:U?()=>void U():void 0,isRechecking:V}):null]})]}),(0,n.jsx)(H.Text,{variant:"small",color:"dimmer",children:(0,n.jsx)(x.FormattedMessage,{id:"deployments.domainManagementTransferNote",defaultMessage:"We support the transfer of custom domains purchased through Replit. To request one, reach out to <supportLink>Replit Support</supportLink>.",values:{supportLink:e=>(0,n.jsx)(t.default,{href:"https://replit.com/support",target:"_blank",rel:"noopener",children:e})}})}),(0,n.jsx)(Q,{...e,isOpen:d,onRequestClose:()=>c(!1)}),e.domain.isApexRegistration?(0,n.jsx)(v.UpdateDomainContactModal,{isOpen:u,onRequestClose:()=>m(!1),domainId:e.domain.id,domainName:e.domain.domain}):null]})},"ManagedAddDnsRecordForm",0,et])},756691,e=>{"use strict";var n=e.i(351623);let t=n.gql`
+    fragment DomainVerificationStatus on Domain {
+  state
+}
+    `;e.s(["DomainVerificationStatusFragmentDoc",0,t])},317906,e=>{"use strict";var n=e.i(351623),t=e.i(756691);let a=n.gql`
+    fragment ExpectedDnsRecordFields on ExpectedDnsRecord {
+  type
+  host
+  expectedValue
+  currentValue
+  isConfigured
+}
+    `,i=n.gql`
+    fragment DomainFields on Domain {
+  id
+  state
+  domain
+  managed
+  isApexRegistration
+  ...DomainVerificationStatus
+  dnsRecords {
+    id
+    answer
+    type
+    host
+  }
+  whois {
+    registrar
+    creationDate
+    expiryDate
+  }
+  currentDnsRecords {
+    A
+    TXT
+  }
+  renewalPriceCents
+  autorenew
+  timeCreated
+  purchaseDate
+  registrantEmailVerified
+  user {
+    id
+  }
+  expectedDnsRecords {
+    ...ExpectedDnsRecordFields
+  }
+}
+    ${t.DomainVerificationStatusFragmentDoc}
+${a}`,o=n.gql`
+    fragment PendingDomainsRepl on Repl {
+  id
+  pendingDomains {
+    domainName
+    status
+    message
+    ownerUserId
+  }
+}
+    `,s=n.gql`
+    fragment DomainLinkingStatus on DomainLinkingStatus {
+  domainId
+  domainName
+  currentPhase
+  currentStatus
+  message
+  steps {
+    phase
+    status
+    message
+    timestamp
+  }
+  updatedAt
+}
+    `,r=n.gql`
+    fragment DomainLinkingStatusesRepl on Repl {
+  id
+  domainLinkingStatuses {
+    ...DomainLinkingStatus
+  }
+}
+    ${s}`;e.s(["DomainFieldsFragmentDoc",0,i,"DomainLinkingStatusesReplFragmentDoc",0,r,"ExpectedDnsRecordFieldsFragmentDoc",0,a,"PendingDomainsReplFragmentDoc",0,o])},607028,e=>{"use strict";var n=e.i(389959),t=e.i(61786);e.i(214847);var a=e.i(864300),i=e.i(345449),o=e.i(182256);let s=new Set(["en","es","pt","pt-br","pt-pt","fr","it","de","nl","pl","tr","ja","da","sv"]);e.s(["useEntriConnect",0,function(){let{colorScheme:e}=(0,i.useTheme)(),r=(0,a.useIntl)(),[d,l]=(0,n.useState)(!1),c=(0,n.useRef)(null);return(0,n.useEffect)(()=>{function e(e){l(!1);let n=c.current;c.current=null,n?.onClose(e)}function n(n){let t=n.detail;"object"==typeof t&&null!==t&&!0===t.success&&"string"==typeof t.domain&&"string"==typeof t.setupType&&"string"==typeof t.provider&&"string"==typeof t.jobId&&(void 0===t.freeDomain||"boolean"==typeof t.freeDomain)&&e({reason:"success",detail:t})}function a(n){let t=n.detail??void 0;t?.success===!0?e({reason:"success",detail:t}):t?.error!==void 0||t?.lastStatus==="EXIT_WITH_ERROR"?e({reason:"error",detail:t}):e({reason:"abandon",detail:t})}return window.addEventListener("onSuccess",n),window.addEventListener("onEntriClose",a),()=>{window.removeEventListener("onSuccess",n),window.removeEventListener("onEntriClose",a),null!==c.current&&(0,t.close)().catch(()=>{})}},[]),{openEntri:(0,n.useCallback)((n,a)=>{c.current=a,l(!0);let i=e===o.ColorScheme.Dark?"enabled":"disabled",d=function(e){let n=e.toLowerCase();if(s.has(n))return n;let t=n.split("-")[0];if(t&&s.has(t))return t}(r.locale);(0,t.showEntri)({applicationId:n.applicationId,token:n.token,userId:n.userId,prefilledDomain:n.prefilledDomain,dnsRecords:n.dnsRecords,iframeSandbox:!0,applicationName:"Replit",manualSetupDocumentation:"https://docs.replit.com/cloud-services/deployments/custom-domains",...void 0!==d?{locale:d}:{},whiteLabel:{logo:"https://replit.com/public/icons/favicon-prompt-192-rebrand.png",theme:{darkMode:i}}}).catch(()=>{l(!1),c.current=null,a.onError()})},[e,r.locale]),closeEntri:(0,n.useCallback)(()=>{(0,t.close)().catch(()=>{})},[]),isOpen:d}}])},429421,e=>{"use strict";var n=e.i(232682),t=e.i(570438),a=e.i(607028);e.s(["useStartEntriConnect",0,function({target:e,onManualFallback:i,onServerManualFallback:o,onSuccess:s,onPreflightError:r,onAlreadyConfigured:d}){let l=(0,t.useCurrentUserId)(),{openEntri:c,closeEntri:u,isOpen:m}=(0,a.useEntriConnect)(),[p,{loading:g}]=(0,n.usePrepareEntriConnectSessionMutation)();return{start:async function(n){let t;try{t=await p({variables:{input:{hostingDeploymentId:"deployment"===e.kind?e.deploymentId:void 0,replId:"repl"===e.kind?e.replId:void 0,domain:n}}})}catch{r("Couldn't reach the server to set up DNS. Please try again.");return}let a=t.data?.prepareEntriConnectSession;if(a?.__typename!=="PrepareEntriConnectSessionResult")return void r(a&&"message"in a&&a.message?a.message:"Couldn't prepare domain linking.");if("ALREADY_CONFIGURED"===a.outcome)return void d(n);let u=(a.dnsRecords??[]).map(e=>({id:`${e.type}-${e.host}`,type:e.type,hostname:e.host,record:e.value}));"MANUAL_FALLBACK"===a.outcome?o(n,u):a.applicationId&&a.token&&a.prefilledDomain&&a.dnsRecords&&null!=l?c({applicationId:a.applicationId,token:a.token,userId:String(l),prefilledDomain:a.prefilledDomain,dnsRecords:a.dnsRecords.map(e=>({type:e.type,host:e.host,value:e.value,ttl:e.ttl}))},{onClose:e=>{"error"===e.reason?i(n,u):"abandon"!==e.reason&&s(n,e)},onError:()=>i(n,u)}):i(n,u)},closeEntri:u,isActive:g||m}}])},232682,e=>{"use strict";var n=e.i(351623),t=e.i(299020);let a={},i=n.gql`
+    mutation PrepareEntriConnectSession($input: PrepareEntriConnectSessionInput!) {
+  prepareEntriConnectSession(input: $input) {
+    __typename
+    ... on PrepareEntriConnectSessionResult {
+      outcome
+      applicationId
+      token
+      prefilledDomain
+      dnsRecords {
+        type
+        host
+        value
+        ttl
+      }
+    }
+    ... on UnauthorizedError {
+      message
+    }
+    ... on NotFoundError {
+      message
+    }
+    ... on TooManyRequestsError {
+      message
+    }
+    ... on UserError {
+      message
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    `;e.s(["usePrepareEntriConnectSessionMutation",0,function(e){let n={...a,...e};return t.useMutation(i,n)}])}]);
+
+//# debugId=d98a8763-6a65-5df2-8f69-af7a8b315997
+//# sourceMappingURL=3y_niqr_6w0kx.js.map

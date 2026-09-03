@@ -1,0 +1,1458 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="b987bcf4-9154-c0a8-3ad5-06bea8346237")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,411719,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"LoadableContext",{enumerable:!0,get:function(){return i}});let i=e.r(2879)._(e.r(389959)).default.createContext(null)},46147,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"default",{enumerable:!0,get:function(){return d}});let i=e.r(2879)._(e.r(389959)),n=e.r(411719),s=[],o=[],a=!1;function l(e){let t=e(),r={loading:!0,loaded:null,error:null};return r.promise=t.then(e=>(r.loading=!1,r.loaded=e,e)).catch(e=>{throw r.loading=!1,r.error=e,e}),r}class u{constructor(e,t){this._loadFn=e,this._opts=t,this._callbacks=new Set,this._delay=null,this._timeout=null,this.retry()}promise(){return this._res.promise}retry(){this._clearTimeouts(),this._res=this._loadFn(this._opts.loader),this._state={pastDelay:!1,timedOut:!1};let{_res:e,_opts:t}=this;e.loading&&("number"==typeof t.delay&&(0===t.delay?this._state.pastDelay=!0:this._delay=setTimeout(()=>{this._update({pastDelay:!0})},t.delay)),"number"==typeof t.timeout&&(this._timeout=setTimeout(()=>{this._update({timedOut:!0})},t.timeout))),this._res.promise.then(()=>{this._update({}),this._clearTimeouts()}).catch(e=>{this._update({}),this._clearTimeouts()}),this._update({})}_update(e){this._state={...this._state,error:this._res.error,loaded:this._res.loaded,loading:this._res.loading,...e},this._callbacks.forEach(e=>e())}_clearTimeouts(){clearTimeout(this._delay),clearTimeout(this._timeout)}getCurrentValue(){return this._state}subscribe(e){return this._callbacks.add(e),()=>{this._callbacks.delete(e)}}}function p(t){return function(t,r){let l=Object.assign({loader:null,loading:null,delay:200,timeout:null,webpack:null,modules:null},r),p=null;function c(){if(!p){let e=new u(t,l);p={getCurrentValue:e.getCurrentValue.bind(e),subscribe:e.subscribe.bind(e),retry:e.retry.bind(e),promise:e.promise.bind(e)}}return p.promise()}if("u"<typeof window&&s.push(c),!a&&"u">typeof window){let t=l.webpack&&"function"==typeof e.t.resolveWeak?l.webpack():l.modules;t&&o.push(e=>{for(let r of t)if(e.includes(r))return c()})}function d(e,t){let r;c(),(r=i.default.useContext(n.LoadableContext))&&Array.isArray(l.modules)&&l.modules.forEach(e=>{r(e)});let s=i.default.useSyncExternalStore(p.subscribe,p.getCurrentValue,p.getCurrentValue);return i.default.useImperativeHandle(t,()=>({retry:p.retry}),[]),i.default.useMemo(()=>{var t;return s.loading||s.error?i.default.createElement(l.loading,{isLoading:s.loading,pastDelay:s.pastDelay,timedOut:s.timedOut,error:s.error,retry:p.retry}):s.loaded?i.default.createElement((t=s.loaded)&&t.default?t.default:t,e):null},[e,s])}return d.preload=()=>c(),d.displayName="LoadableComponent",i.default.forwardRef(d)}(l,t)}function c(e,t){let r=[];for(;e.length;){let i=e.pop();r.push(i(t))}return Promise.all(r).then(()=>{if(e.length)return c(e,t)})}p.preloadAll=()=>new Promise((e,t)=>{c(s).then(e,t)}),p.preloadReady=(e=[])=>new Promise(t=>{let r=()=>(a=!0,t());c(o,e).then(r,r)}),"u">typeof window&&(window.__NEXT_PRELOADREADY=p.preloadReady);let d=p},493092,(e,t,r)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i={default:function(){return c},noSSR:function(){return p}};for(var n in i)Object.defineProperty(r,n,{enumerable:!0,get:i[n]});let s=e.r(2879),o=e.r(478902);e.r(389959);let a=s._(e.r(46147)),l="u"<typeof window;function u(e){return{default:e?.default||e}}function p(e,t){if(delete t.webpack,delete t.modules,!l)return e(t);let r=t.loading;return()=>(0,o.jsx)(r,{error:null,isLoading:!0,pastDelay:!1,timedOut:!1})}function c(e,t){let r=a.default,i={loading:({error:e,isLoading:t,pastDelay:r})=>null};e instanceof Promise?i.loader=()=>e:"function"==typeof e?i.loader=e:"object"==typeof e&&(i={...i,...e});let n=(i={...i,...t}).loader;return(i.loadableGenerated&&(i={...i,...i.loadableGenerated},delete i.loadableGenerated),"boolean"!=typeof i.ssr||i.ssr)?r({...i,loader:()=>null!=n?n().then(u):Promise.resolve(u(()=>null))}):(delete i.webpack,delete i.modules,p(r,i))}("function"==typeof r.default||"object"==typeof r.default&&null!==r.default)&&void 0===r.default.__esModule&&(Object.defineProperty(r.default,"__esModule",{value:!0}),Object.assign(r.default,r),t.exports=r.default)},196786,(e,t,r)=>{t.exports=e.r(493092)},223481,e=>{"use strict";var t=e.i(105349);e.s(["validate",()=>t.default])},820669,e=>{"use strict";var t=e.i(351623);let r=t.gql`
+    fragment CollaboratorCountV2Customer on Customer {
+  id
+  seats {
+    __typename
+    ... on CustomerSeats {
+      id
+      counts {
+        admin
+        guest
+        member
+      }
+      caps {
+        members
+      }
+    }
+  }
+  subscriptionSummary {
+    __typename
+    ... on CustomerSubscriptionSummarySelfServe {
+      plan {
+        ... on CustomerSubscriptionSummaryFlatSelfServePlan {
+          planPrefix
+        }
+        ... on CustomerSubscriptionSummaryTieredSelfServePlan {
+          planPrefix
+        }
+      }
+    }
+  }
+}
+    `;e.s(["CollaboratorCountV2CustomerFragmentDoc",0,r])},517414,e=>{"use strict";var t=e.i(351623),r=e.i(317349),i=e.i(748538),n=e.i(781258),s=e.i(394701),o=e.i(80593),a=e.i(299020);let l={},u=t.gql`
+    fragment ComponentsReplActions on Repl {
+  id
+  url
+  title
+  slug
+  user {
+    id
+    username
+  }
+  ...DeleteReplDialogRepl
+  ...EditReplFormRepl
+  ...TransferReplToOrgDialogRepl
+  ...TransferReplBetweenWorkspacesDialogRepl
+  ...LeaveMultiplayerReplDialogRepl
+  owner {
+    __typename
+    ... on Team {
+      id
+    }
+    ... on User {
+      id
+    }
+  }
+  org {
+    id
+  }
+  isCurrentUserStarred
+  isStackTemplate
+  authorizations {
+    deleteRepl {
+      isAuthorized
+    }
+    editFolder {
+      isAuthorized
+    }
+    fork {
+      isAuthorized
+    }
+    removeSelf {
+      isAuthorized
+    }
+    star {
+      isAuthorized
+    }
+  }
+}
+    ${r.DeleteReplDialogReplFragmentDoc}
+${i.EditReplFormReplFragmentDoc}
+${n.TransferReplToOrgDialogReplFragmentDoc}
+${s.TransferReplBetweenWorkspacesDialogReplFragmentDoc}
+${o.LeaveMultiplayerReplDialogReplFragmentDoc}`,p=t.gql`
+    mutation ReplActionsToggleReplPin($input: ToggleReplPinInput!) {
+  toggleReplPin(input: $input) {
+    ... on Repl {
+      id
+      isCurrentUserStarred
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    `,c=t.gql`
+    mutation AddOrgStackTemplate($orgId: String!, $replId: String!, $order: Float) {
+  addOrgStackTemplate(orgId: $orgId, replId: $replId, order: $order) {
+    success
+    message
+    repl {
+      id
+      isStackTemplate
+    }
+  }
+}
+    `,d=t.gql`
+    mutation RemoveOrgStackTemplate($orgId: String!, $replId: String!) {
+  removeOrgStackTemplate(orgId: $orgId, replId: $replId) {
+    success
+    message
+    repl {
+      id
+      isStackTemplate
+    }
+  }
+}
+    `,g=t.gql`
+    mutation ReplActionsMoveToFolder($replIds: [String!]!, $folderIds: [String!]!, $destFolderId: String!) {
+  moveItemsToFolder(
+    replIds: $replIds
+    folderIds: $folderIds
+    destFolderId: $destFolderId
+  ) {
+    ... on Repl {
+      __typename
+      id
+    }
+  }
+}
+    `;e.s(["ComponentsReplActionsFragmentDoc",0,u,"useAddOrgStackTemplateMutation",0,function(e){let t={...l,...e};return a.useMutation(c,t)},"useRemoveOrgStackTemplateMutation",0,function(e){let t={...l,...e};return a.useMutation(d,t)},"useReplActionsMoveToFolderMutation",0,function(e){let t={...l,...e};return a.useMutation(g,t)},"useReplActionsToggleReplPinMutation",0,function(e){let t={...l,...e};return a.useMutation(p,t)}])},921125,e=>{"use strict";var t=e.i(276385),r=e.i(36454),i=e.i(569910),n=e.i(568087);let s=window.location.origin,o=(e={})=>{let t={};switch(e.initialPaneType){case"deployments":t.deploymentPane="true";break;case"securityScan":t.securityScanPane="true";break;case void 0:break;default:(0,i.default)(e.initialPaneType)}return e.enterInAgentMode&&(t.enterInAgentMode="true"),e.autorun&&(t.run="true"),e.initialQueuedPromptKey&&(t.initialQueuedPromptKey=e.initialQueuedPromptKey),e.initialEditorMode&&(t.initialEditorMode=e.initialEditorMode),t},a=(e,t={})=>({href:{pathname:e.nextPagePathname,query:((e,t={})=>({replId:e.id,...o(t)}))(e,t)},as:{pathname:e.url,query:o(t),...t.suppressIosUniversalLinkBanner&&{hash:n.NO_UNIVERSAL_LINKS_FRAGMENT}}}),l=(e,t={})=>{let r=new URLSearchParams(o(t)),i=r.size>=1?`?${r.toString()}`:"",s=t.suppressIosUniversalLinkBanner?n.NO_UNIVERSAL_LINKS_HASH:"";return`${e.url}${i}${s}`};e.s(["default",0,({repl:e,children:i,options:n,...s})=>(0,t.jsx)(r.default,{...s,...a(e,n),children:i}),"replLinkFullUrl",0,(e,t={})=>`${s}${l(e,t)}`,"replLinkPath",0,l,"replLinkProps",0,a,"replViewLinkProps",0,e=>({as:e.org?.id?{pathname:`${e.url}/view`}:{pathname:e.url,query:{v:"1"}},href:{pathname:"/replView",query:{replId:e.id}}})])},738720,e=>{"use strict";var t=e.i(389959),r=e.i(908833);e.i(81282);var i=e.i(750185);e.i(257697);var n=e.i(312806),s=e.i(223481),o=e.i(908796),a=e.i(569910),l=e.i(776065);let u=i.Type.Union([i.Type.Literal(o.CurrentUserReplsSortTypeEnum.CreationDate),i.Type.Literal(o.CurrentUserReplsSortTypeEnum.LastOpened),i.Type.Literal(o.CurrentUserReplsSortTypeEnum.LastUpdated),i.Type.Literal(o.CurrentUserReplsSortTypeEnum.PublishedAt)]),p=i.Type.Union([i.Type.Literal(o.CurrentUserReplsSortDirectionEnum.Ascending),i.Type.Literal(o.CurrentUserReplsSortDirectionEnum.Descending)]),c=i.Type.Union([i.Type.Literal(o.CurrentUserReplsDeploymentStatusEnum.Deployed),i.Type.Literal(o.CurrentUserReplsDeploymentStatusEnum.Failed),i.Type.Literal(o.CurrentUserReplsDeploymentStatusEnum.NotDeployed),i.Type.Literal(o.CurrentUserReplsDeploymentStatusEnum.Success)]),d=i.Type.Union([i.Type.Literal("grid"),i.Type.Literal("table")]),g=i.Type.Union([i.Type.Literal("__MULTIPLAYER_REPLS__"),i.Type.String({pattern:"^__TEAM__\\d+__$"})]),m={lastUpdated:o.CurrentUserReplsSortTypeEnum.LastOpened,createdAt:o.CurrentUserReplsSortTypeEnum.CreationDate};e.s(["COLUMN_TO_SORT_TYPE",0,m,"EMPTY_ITEMS",0,[],"PAGE_SIZE",0,24,"REPLS_REFETCH_QUERIES",0,["CurrentUserRepls","OrgReplsV2","ReplsList"],"buildFiltersFromQueryParams",0,function({availableFilters:e,statusFilter:t,selectedCreators:r,folderFilter:i,buildTypeFilter:n}){return(e.includes("buildType")?e:[...e,"buildType"]).map(e=>{switch(e){case"publishedStatus":return{type:"publishedStatus",value:t};case"creator":return{type:"creator",value:r};case"folder":return{type:"folder",value:i};case"buildType":return{type:"buildType",value:n}}})},"buildSharedFilters",0,function({filters:e,publishedOnly:t}){let r={},i=!1;for(let t of e)switch(t.type){case"publishedStatus":t.value&&(r.deploymentStatus=t.value,i=!0);break;case"creator":t.value.size>0&&(r.createdBy={userIds:Array.from(t.value)});break;case"folder":t.value&&(r.folderId=t.value);break;case"buildType":t.value&&(r.artifactKind=t.value);break;default:(0,a.default)(t)}return!i&&t&&(r.deploymentStatus=o.CurrentUserReplsDeploymentStatusEnum.Deployed),r},"buildSort",0,function({sortType:e,sortDirection:t,defaultSortType:r=o.CurrentUserReplsSortTypeEnum.LastUpdated}){return{sortType:e??r,direction:t??o.CurrentUserReplsSortDirectionEnum.Descending,pinnedFirst:!0}},"useReplsQueryParams",0,function(){let e=(0,l.useQueryParam)("sort","string"),i=(0,l.useQueryParam)("order","string"),o=(0,l.useQueryParam)("search","string"),a=(0,l.useQueryParam)("status","string"),m=(0,l.useQueryParam)("creator","string"),f=(0,l.useQueryParam)("view","string"),y=(0,l.useQueryParam)("folder","string"),T=(0,l.useQueryParam)("buildType","string");return(0,t.useMemo)(()=>{let t=n.Value.Check(u,e)?e:void 0,l=n.Value.Check(p,i)?i:void 0,R=n.Value.Check(c,a)?a:void 0,h=new Set;m&&m.split(",").filter(Boolean).map(Number).filter(e=>!Number.isNaN(e)&&e>0).forEach(e=>h.add(e));let v=n.Value.Check(d,f)?f:void 0;return{sortType:t,sortDirection:l,search:o,statusFilter:R,selectedCreators:h,view:v,folderFilter:y&&((0,s.validate)(y)||n.Value.Check(g,y))?y:void 0,buildTypeFilter:n.Value.Check(r.ArtifactSchema.properties.kind,T)?T:void 0}},[e,i,o,a,m,f,y,T])}])},394701,e=>{"use strict";var t=e.i(351623),r=e.i(344480);e.i(975473);var i=e.i(299020);let n={},s=t.gql`
+    fragment TransferReplBetweenWorkspacesDialogRepl on Repl {
+  id
+  title
+}
+    `,o=t.gql`
+    query TransferReplBetweenWorkspacesDialogDestinations($replId: String!) {
+  getRepl(id: $replId) {
+    __typename
+    ... on Repl {
+      id
+      transferDestinationOrgs {
+        __typename
+        ... on ReplTransferDestinationOrgsSuccess {
+          items {
+            id
+            name
+            slug
+            image
+          }
+        }
+        ... on Error {
+          message
+        }
+      }
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    `,a=t.gql`
+    mutation TransferReplBetweenWorkspacesDialogTransfer($replId: String!, $destinationOrgId: String!) {
+  transferReplBetweenOrganizations(
+    input: {replId: $replId, destinationOrgId: $destinationOrgId}
+  ) {
+    __typename
+    ... on TransferReplBetweenOrganizationsSuccess {
+      runId
+      repl {
+        id
+      }
+    }
+    ... on NotFoundError {
+      message
+    }
+    ... on UnauthorizedError {
+      message
+    }
+    ... on UserError {
+      message
+    }
+    ... on TooManyRequestsError {
+      message
+    }
+  }
+}
+    `;e.s(["TransferReplBetweenWorkspacesDialogReplFragmentDoc",0,s,"useTransferReplBetweenWorkspacesDialogDestinationsQuery",0,function(e){let t={...n,...e};return r.useQuery(o,t)},"useTransferReplBetweenWorkspacesDialogTransferMutation",0,function(e){let t={...n,...e};return i.useMutation(a,t)}])},781258,e=>{"use strict";var t=e.i(351623),r=e.i(344480);e.i(975473);var i=e.i(299020);let n={},s=t.gql`
+    fragment TransferReplToOrgDialogRepl on Repl {
+  id
+  title
+  slug
+  owner {
+    ... on User {
+      id
+      username
+    }
+    ... on Team {
+      id
+      username
+    }
+  }
+}
+    `,o=t.gql`
+    query TransferReplToOrgDialogOrgs {
+  currentUser {
+    id
+    orgs(count: 30) {
+      __typename
+      ... on CurrentUserOrganizationConnection {
+        items {
+          org {
+            id
+            name
+            slug
+            image
+            type
+          }
+          type
+        }
+      }
+      ... on Error {
+        message
+      }
+    }
+  }
+}
+    `,a=t.gql`
+    mutation TransferReplToOrgDialogTransfer($orgId: String!, $replIds: [String!]!) {
+  transferReplToOrganization(input: {orgId: $orgId, replIds: $replIds}) {
+    ... on TransferReplToOrganizationSuccess {
+      runId
+      results {
+        replId
+        success
+        error
+      }
+      successCount
+      errorCount
+    }
+    ... on UnauthorizedError {
+      message
+    }
+    ... on UserError {
+      message
+    }
+    ... on TooManyRequestsError {
+      message
+    }
+  }
+}
+    `;e.s(["TransferReplToOrgDialogReplFragmentDoc",0,s,"useTransferReplToOrgDialogOrgsQuery",0,function(e){let t={...n,...e};return r.useQuery(o,t)},"useTransferReplToOrgDialogTransferMutation",0,function(e){let t={...n,...e};return i.useMutation(a,t)}])},742881,e=>{"use strict";var t=e.i(598986);function r(e){return`remix-gallery:autostart:${e}`}e.s(["consumeRemixGalleryAutostart",0,function(e){let i=r(e),n=t.default.get(i,"object");return null===n?null:(t.default.remove(i),{autostart:!0===n.autostart,canvasMode:!0===n.canvasMode})},"markRemixGalleryAutostart",0,function(e,i){t.default.set(r(e),i)}])},989074,e=>{"use strict";var t=e.i(351623);let r=t.gql`
+    fragment BuildStatusBadgeHostingDeployment on HostingDeployment {
+  id
+  currentBuild {
+    id
+    status
+    timeCreated
+    provider
+    user {
+      id
+      displayName
+    }
+  }
+}
+    `;e.s(["BuildStatusBadgeHostingDeploymentFragmentDoc",0,r])},113212,e=>{"use strict";var t=e.i(351623),r=e.i(989074),i=e.i(323604);let n=t.gql`
+    fragment ReplCardArtifact on ReplArtifact {
+  artifactId
+  title
+  kind
+  previewPath
+  latestScreenshotUri
+  latestScreenshotUrl
+}
+    `;r.BuildStatusBadgeHostingDeploymentFragmentDoc,i.DeploymentLinkFragmentDoc,e.s(["ReplCardArtifactFragmentDoc",0,n])},285832,e=>{"use strict";var t=e.i(351623),r=e.i(361116),i=e.i(344480);e.i(975473);let n={},s=t.gql`
+    fragment QuickDeployDialogHostingBuildArtifactFields on HostingBuildArtifact {
+  id
+  name
+  type
+  folderName
+  services {
+    id
+    name
+    paths
+    hasRunCommand
+  }
+}
+    `,o=t.gql`
+    fragment QuickDeployDialogCurrentBuild2 on HostingBuild {
+  id
+  status
+  timeCreated
+  suspendedReason
+  isPrivate
+  hasPrivatePassword
+  user {
+    id
+    displayName
+  }
+  repl {
+    id
+    hostingDeployment {
+      ... on HostingDeployment {
+        id
+        agentInboxEnabled
+        agentInboxConfig {
+          position
+          bgColor
+          logoSrc
+        }
+      }
+    }
+  }
+  artifacts {
+    ...QuickDeployDialogHostingBuildArtifactFields
+  }
+  ...PublishDomainsRow
+}
+    ${s}
+${r.PublishDomainsRowFragmentDoc}`,a=t.gql`
+    query SuggestDeployAuthz($replId: String!, $provider: HostingBuildProvider!) {
+  getRepl(id: $replId) {
+    ... on Repl {
+      id
+      authorizations {
+        editDeploymentSubdomain(provider: $provider) {
+          isAuthorized
+          message
+        }
+      }
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    `;e.s(["QuickDeployDialogCurrentBuild2FragmentDoc",0,o,"SuggestDeployAuthzDocument",0,a,"useSuggestDeployAuthzQuery",0,function(e){let t={...n,...e};return i.useQuery(a,t)}])},903021,e=>{"use strict";var t=e.i(351623);let r=t.gql`
+    fragment ArtifactUtilsHostingBuildArtifactFields on HostingBuildArtifact {
+  type
+  services {
+    paths
+    hasRunCommand
+  }
+}
+    `;e.s(["ArtifactUtilsHostingBuildArtifactFieldsFragmentDoc",0,r])},361116,e=>{"use strict";var t=e.i(351623),r=e.i(903021);let i=t.gql`
+    fragment PublishDomainsRow on HostingBuild {
+  id
+  provider
+  artifacts {
+    ...ArtifactUtilsHostingBuildArtifactFields
+  }
+  repl {
+    id
+    slug
+    owner {
+      ... on Team {
+        id
+        username
+      }
+      ... on User {
+        id
+        username
+      }
+    }
+    hostingDeployment {
+      ... on HostingDeployment {
+        id
+        replitAppSubdomain
+        domains2 {
+          id
+          domain
+          state
+        }
+      }
+    }
+  }
+}
+    ${r.ArtifactUtilsHostingBuildArtifactFieldsFragmentDoc}`;e.s(["PublishDomainsRowFragmentDoc",0,i])},566977,e=>{"use strict";var t=e.i(351623),r=e.i(319801),i=e.i(517414),n=e.i(113212),s=e.i(676107);let o=t.gql`
+    fragment ReplCardRepl on Repl {
+  id
+  title
+  iconUrl
+  isPrivate
+  isCurrentUserStarred
+  timeUpdated
+  lastOpened
+  latestAgentScreenshotUrl
+  ...ReplLinkRepl
+  ...ComponentsReplActions
+  artifacts {
+    ...ReplCardArtifact
+  }
+  user {
+    id
+    username
+    fullName
+    image
+  }
+  hostingDeployment {
+    __typename
+    ... on HostingDeployment {
+      id
+      ...DeploymentItem
+      latestBuildStatus
+      currentBuild {
+        id
+        status
+        timeCreated
+        artifacts {
+          ...HostingBuildArtifactFields
+        }
+        user {
+          id
+          displayName
+        }
+      }
+    }
+  }
+  authorizations {
+    star {
+      isAuthorized
+    }
+    viewFileContents {
+      isAuthorized
+    }
+    editFileContents {
+      isAuthorized
+      code
+      message
+    }
+  }
+}
+    ${r.ReplLinkReplFragmentDoc}
+${i.ComponentsReplActionsFragmentDoc}
+${n.ReplCardArtifactFragmentDoc}
+${s.DeploymentItemFragmentDoc}
+${s.HostingBuildArtifactFieldsFragmentDoc}`;e.s(["ReplCardReplFragmentDoc",0,o])},288249,e=>{"use strict";var t=e.i(351623),r=e.i(846545);let i={},n=t.gql`
+    subscription CurrentUserReplAgentStatuses {
+  currentUserReplAgentStatuses {
+    replId
+    statusV2
+    label
+    updatedAt
+    appImageUrl
+  }
+}
+    `;e.s(["useCurrentUserReplAgentStatusesSubscription",0,function(e){let t={...i,...e};return r.useSubscription(n,t)}])},687693,e=>{"use strict";var t=e.i(351623),r=e.i(846545);let i={},n=t.gql`
+    subscription ReplAgentStates($authorizationEpoch: Int!, $replIds: [String!]!) {
+  replAgentStates(authorizationEpoch: $authorizationEpoch, replIds: $replIds) {
+    snapshot
+    updates {
+      replId
+      status
+      workingUntil
+      lastAgentActivityAt
+    }
+  }
+}
+    `;e.s(["useReplAgentStatesSubscription",0,function(e){let t={...i,...e};return r.useSubscription(n,t)}])},505294,e=>{"use strict";var t=e.i(389959),r=e.i(908796),i=e.i(687693);e.i(242933);var n=e.i(279606);e.i(925218);var s=e.i(112077);e.s(["useCurrentUserReplAgentStateSource",0,function(e,o){let a=(0,s.useCreateObservable)(new Map),[l,u]=(0,t.useState)(0),p=(0,t.useRef)(new Map);return(0,t.useEffect)(()=>{let e=p.current;return()=>{e.forEach(clearTimeout)}},[]),(0,t.useEffect)(()=>{let e=new Set(o);p.current.forEach((t,r)=>{e.has(r)||(clearTimeout(t),p.current.delete(r))}),a.update(t=>[...t.keys()].every(t=>e.has(t))?t:new Map([...t].filter(([t])=>e.has(t))))},[o,a]),(0,i.useReplAgentStatesSubscription)({skip:e,variables:{authorizationEpoch:l,replIds:[...o]},fetchPolicy:"no-cache",onComplete:()=>u(e=>e+1),onData:({data:{data:e}})=>{let t=e?.replAgentStates;if(t){if(t.snapshot){p.current.forEach(clearTimeout),p.current.clear(),a.set(new Map(t.updates.map(e=>[e.replId,{status:e.status,workingUntil:e.workingUntil??null,lastAgentActivityAt:e.lastAgentActivityAt??null}]))),t.updates.forEach(c);return}t.updates.forEach(c),a.update(e=>{let r=new Map(e);return t.updates.forEach(e=>{r.set(e.replId,{status:e.status,workingUntil:e.workingUntil??null,lastAgentActivityAt:e.lastAgentActivityAt??null})}),r})}}}),(0,t.useMemo)(()=>n.Observable.from(a),[a]);function c(e){let t=p.current.get(e.replId);if(t&&(clearTimeout(t),p.current.delete(e.replId)),e.status!==r.ReplAgentStatus.Working||!e.workingUntil)return;let i=Math.max(0,Date.parse(e.workingUntil)-Date.now());p.current.set(e.replId,setTimeout(()=>{a.update(t=>{let i=t.get(e.replId);if(!i||i.workingUntil!==e.workingUntil)return t;let n=new Map(t);return n.set(e.replId,{status:r.ReplAgentStatus.Idle,workingUntil:null,lastAgentActivityAt:i.lastAgentActivityAt}),n})},i))}}])},234504,e=>{"use strict";var t=e.i(276385),r=e.i(389959),i=e.i(288249);e.i(242933);var n=e.i(279606);e.i(925218);var s=e.i(112077),o=e.i(505294);let a=(0,r.createContext)(null),l=(0,r.createContext)(null),u=(0,r.createContext)(null),p=(0,r.createContext)(null),c=n.Observable.of(new Map),d=n.Observable.of(new Map);function g(e){let t=(0,s.useCreateObservable)(new Map);return(0,i.useCurrentUserReplAgentStatusesSubscription)({skip:e,fetchPolicy:"no-cache",onData:({data:{data:e}})=>{e?.currentUserReplAgentStatuses&&t.set(new Map(e.currentUserReplAgentStatuses.map(e=>[e.replId,{statusV2:e.statusV2,label:e.label,updatedAt:e.updatedAt,appImageUrl:e.appImageUrl}])))}}),(0,r.useMemo)(()=>n.Observable.from(t),[t])}function m(e){let t=(0,r.useRef)(new Map),[i,n]=(0,r.useState)([]),s=(0,o.useCurrentUserReplAgentStateSource)(!e||0===i.length,i),a=(0,r.useCallback)(()=>{n([...new Set([...t.current.values()].flat())])},[]),l=(0,r.useCallback)(e=>{let r=Symbol();return t.current.set(r,e),a(),()=>{t.current.delete(r),a()}},[a]);return(0,r.useMemo)(()=>({source:s,register:l}),[l,s])}e.s(["AgentStatusContext",0,a,"AgentStatusProvider",0,function({children:e,enabled:i=!0,replAgentStateEnabled:n=i}){let s=(0,r.useContext)(a),o=(0,r.useContext)(l),f=(0,r.useContext)(u),y=(0,r.useContext)(p),T=g(!i||null!==s||null!==f),R=m(n&&null===o&&null===y),h=y??R,v=n?o??h.source:d;return(0,t.jsx)(a.Provider,{value:i?s??f??T:c,children:(0,t.jsx)(p.Provider,{value:h,children:(0,t.jsx)(l.Provider,{value:v,children:e})})})},"AgentStatusSourceProvider",0,function({children:e,enabled:i=!0,replAgentStateEnabled:n=i}){let s=(0,r.useContext)(u),o=(0,r.useContext)(p),a=g(!i||null!==s),l=m(n&&null===o);return(0,t.jsx)(u.Provider,{value:s??(i?a:null),children:(0,t.jsx)(p.Provider,{value:o??(n?l:null),children:e})})},"default",0,function(){let e=(0,r.useContext)(a);if(null===e)throw Error("useCurrentUserAgentStatus must be used within an AgentStatusProvider");return e},"useCurrentUserReplAgentState",0,function(){let e=(0,r.useContext)(l);if(null===e)throw Error("useCurrentUserReplAgentState must be used within an AgentStatusProvider");return e},"useReplAgentStateDemand",0,function(e){let t=(0,r.useContext)(p);(0,r.useEffect)(()=>t?.register(e),[t,e])}])},714562,e=>{"use strict";var t=e.i(351623),r=e.i(299020);let i={},n=t.gql`
+    mutation ForkReplCreateRepl($input: CreateReplInput!, $isTitleAutoGenerated: Boolean) {
+  createRepl(input: $input, isTitleAutoGenerated: $isTitleAutoGenerated) {
+    ... on Repl {
+      id
+      org {
+        id
+      }
+      url
+      isPrivate
+      language
+      nextPagePathname
+      config {
+        isAgentRepl
+      }
+      origin {
+        id
+        isOwner
+      }
+      source {
+        release {
+          id
+          repl {
+            id
+            title
+            owner {
+              ... on User {
+                id
+                username
+              }
+              ... on Team {
+                id
+                username
+              }
+            }
+          }
+        }
+      }
+    }
+    ... on UserError {
+      message
+    }
+  }
+}
+    `;e.s(["ForkReplCreateReplDocument",0,n,"useForkReplCreateReplMutation",0,function(e){let t={...i,...e};return r.useMutation(n,t)}])},738522,e=>{"use strict";var t=e.i(15801),r=e.i(389959),i=e.i(714562),n=e.i(871203),s=e.i(151027),o=e.i(320216),a=e.i(370511),l=e.i(415541),u=e.i(709485),p=e.i(540742),c=e.i(921125);e.s(["default",0,function({onFork:e,onError:d,onNavigationComplete:g,replLinkOptions:m}={}){let f=(0,t.useRouter)(),{showError:y}=(0,o.default)(),T=(0,p.default)(),[R,h]=(0,i.useForkReplCreateReplMutation)({onCompleted:t=>{let r=t?.createRepl.__typename==="Repl"?t.createRepl:null;if(!r)return;e&&e(t);let i=(0,n.shouldMigrateReplToNix)(r);if("/replEnvironmentDesktop"===f.pathname||"/replEnvironmentMobile"===f.pathname||"/replView"===f.pathname&&i){window.location.href=(0,c.replLinkFullUrl)(r,m);return}let s=(0,c.replLinkProps)(r,m);f.push({...s.href,pathname:T},s.as).then(e=>{e&&g?.()})}}),v=h.data?.createRepl.__typename==="UserError"?h.data?.createRepl.message:h.error?.message;return(0,r.useEffect)(()=>{v&&(y(v??"Failed to fork repl"),d&&d())},[v,y,d]),[(0,r.useCallback)(({originId:e,replReleaseId:t,title:r,description:i,isPrivate:n,folderId:o,trackingData:p,forkToPersonal:c,orgId:d,connectionIds:g,zealot:m,isWebDesignMockup:f,copyDatabase:y,isTitleAutoGenerated:T})=>{(0,l.track)(u.events.FORK_REQUESTED,p),R({variables:{isTitleAutoGenerated:T,input:{originId:e,replReleaseId:t,title:r,isPrivate:n,description:i,folderId:o,forkToPersonal:c,gitRemoteUrl:"",orgId:d,connectionIds:g,zealot:m,isWebDesignMockup:f,copyDatabase:y}}}).then(r=>{let i=r.data?.createRepl.__typename==="Repl"?r.data.createRepl:null;i&&(0,l.track)(u.events.REPL_CREATED,{isSignup:!1,isOnboarding:!1,...p,isForked:!0,isPrivate:i.isPrivate,replId:i.id,isRenamed:!1,language:i.language,isSelfForked:!!i.origin?.isOwner,isTemplateFork:!!t,originId:e,templateReplId:i.source?.release?.repl?.id||void 0,templateTitle:i.source?.release?.repl?.title,templateOwner:i.source?.release?.repl?.owner?.username,templateType:i.source?.release?.repl?(0,a.getTemplateTrackingType)(i.source.release.repl):void 0,orgContext:(0,s.getOrgTrackingContext)(i.org?{id:i.org.id}:void 0)})})},[R]),{loading:!!h.loading||!!h.data&&"Repl"===h.data.createRepl.__typename}]}])},370511,e=>{"use strict";var t,r=e.i(761201),i=((t=i||{}).Community="community",t.Official="official",t);e.s(["getTemplateTrackingType",0,function(e){return e.owner?.username===r.OFFICIAL_TEMPLATE_USERNAME?"official":"community"}])},540742,e=>{"use strict";var t=e.i(15801),r=e.i(780902),i=e.i(753451);let n=new Set(["/replEnvironmentDesktop","/replEnvironmentMobile"]);e.s(["default",0,function(){let e=(0,i.isInBonsaiWebview)((0,t.useRouter)());return(0,r.useIsMobile)({tablet:!1})||e?"/replEnvironmentMobile":"/replEnvironmentDesktop"},"isWorkspacePathname",0,function(e){return n.has(e)}])},99357,e=>{"use strict";var t=e.i(351623),r=e.i(667746),i=e.i(444008),n=e.i(820669),s=e.i(576954),o=e.i(130902);e.i(344480),e.i(975473);var a=e.i(299020);let l={},u=t.gql`
+    fragment ReplMultiplayerOrgV2 on Org {
+  ...OrgMetadata
+  membersCount
+  adminGroup: groups(input: {types: [system_admins]}) {
+    ... on OrgGroupConnection {
+      items {
+        id
+        memberCount
+        isMember
+      }
+    }
+  }
+  customer {
+    __typename
+    ... on Customer {
+      ...CollaboratorCountV2Customer
+      ...InvitePromotionsCustomer
+    }
+  }
+  authorizations {
+    editSubscription {
+      isAuthorized
+    }
+  }
+}
+    ${i.OrgMetadataFragmentDoc}
+${n.CollaboratorCountV2CustomerFragmentDoc}
+${s.InvitePromotionsCustomerFragmentDoc}`,p=t.gql`
+    fragment ReplMultiplayerOrgGroupV2 on OrgGroup {
+  ...OrgGroupsOrgGroup
+}
+    ${o.OrgGroupsOrgGroupFragmentDoc}`,c=t.gql`
+    fragment ReplMultiplayerGroupV2 on ReplMultiplayerGroupScope {
+  group {
+    __typename
+    ...ReplMultiplayerOrgGroupV2
+  }
+  options {
+    __typename
+    role
+    status
+  }
+}
+    ${p}`,d=t.gql`
+    fragment ReplMultiplayerIndividualV2 on ReplMultiplayerIndividualScope {
+  group {
+    __typename
+    ...ReplMultiplayerOrgGroupV2
+  }
+  user {
+    __typename
+    id
+    displayName
+    fullName
+    image
+    username
+  }
+  options {
+    __typename
+    role
+    status
+  }
+}
+    ${p}`,g=t.gql`
+    fragment ReplMultiplayerStatusV2 on Repl {
+  id
+  title
+  isPrivate
+  url
+  org {
+    ...ReplMultiplayerOrgV2
+  }
+  multiplayerStatus {
+    __typename
+    groups {
+      __typename
+      ...ReplMultiplayerGroupV2
+    }
+    individuals {
+      __typename
+      ...ReplMultiplayerIndividualV2
+    }
+    pendingInvites {
+      __typename
+      email
+    }
+  }
+  authorizations {
+    editPermissions {
+      isAuthorized
+      message
+    }
+    editVisibility {
+      isAuthorized
+      message
+    }
+    removeSelf {
+      isAuthorized
+      message
+    }
+    viewPermissions {
+      isAuthorized
+      message
+    }
+  }
+}
+    ${u}
+${c}
+${d}`,m=t.gql`
+    mutation UpdateOrgGroupScopesV2($input: UpdateOrgGroupScopesInput!) {
+  updateOrgGroupScopes(input: $input) {
+    __typename
+    ... on OrgGroup {
+      ...OrgGroupPermissionsGroup
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    ${r.OrgGroupPermissionsGroupFragmentDoc}`,f=t.gql`
+    mutation GrantReplAccessByEmail($input: GrantReplAccessByEmailInput!) {
+  grantReplAccessByEmail(input: $input) {
+    ... on Repl {
+      __typename
+      ...ReplMultiplayerStatusV2
+    }
+    ... on UnauthorizedError {
+      __typename
+      message
+    }
+    ... on NotFoundError {
+      __typename
+      message
+    }
+    ... on UserError {
+      __typename
+      message
+    }
+  }
+}
+    ${g}`;e.s(["ReplMultiplayerStatusV2FragmentDoc",0,g,"useGrantReplAccessByEmailMutation",0,function(e){let t={...l,...e};return a.useMutation(f,t)},"useUpdateOrgGroupScopesV2Mutation",0,function(e){let t={...l,...e};return a.useMutation(m,t)}])},576954,e=>{"use strict";var t=e.i(351623);let r=t.gql`
+    fragment InvitePromotionsCustomer on Customer {
+  id
+  authorizations {
+    enablePromotions {
+      isAuthorized
+    }
+  }
+}
+    `;e.s(["InvitePromotionsCustomerFragmentDoc",0,r])},970410,e=>{"use strict";var t=e.i(351623),r=e.i(444008);let i=t.gql`
+    fragment OrgGroupMetadata on OrgGroup {
+  id
+  color
+  slug
+  type
+  name
+}
+    `;r.OrgCurrentUserFragmentDoc,r.OrgMetadataFragmentDoc,e.s(["OrgGroupMetadataFragmentDoc",0,i])},667746,e=>{"use strict";var t=e.i(351623),r=e.i(970410),i=e.i(861326),n=e.i(427144),s=e.i(939307),o=e.i(394352);let a=t.gql`
+    fragment OrgGroupPermissionsGroup on OrgGroup {
+  ...OrgGroupMetadata
+  permissions {
+    editPermissions
+    viewPermissions
+  }
+  ...OrgGroupPermissionsOrgGroup
+  ...OrgGroupPermissionsGroupsGroup
+  ...OrgGroupPermissionsReplsGroup
+  ...ReplScopeSelectionGroup
+}
+    ${r.OrgGroupMetadataFragmentDoc}
+${i.OrgGroupPermissionsOrgGroupFragmentDoc}
+${n.OrgGroupPermissionsGroupsGroupFragmentDoc}
+${s.OrgGroupPermissionsReplsGroupFragmentDoc}
+${o.ReplScopeSelectionGroupFragmentDoc}`,l=t.gql`
+    fragment OrgGroupPermissionsOrg on Org {
+  ...OrgGroupPermissionsOrgOrg
+  ...OrgGroupPermissionsGroupsOrg
+  ...OrgGroupPermissionsReplsOrg
+}
+    ${i.OrgGroupPermissionsOrgOrgFragmentDoc}
+${n.OrgGroupPermissionsGroupsOrgFragmentDoc}
+${s.OrgGroupPermissionsReplsOrgFragmentDoc}`;e.s(["OrgGroupPermissionsGroupFragmentDoc",0,a,"OrgGroupPermissionsOrgFragmentDoc",0,l])},427144,e=>{"use strict";var t=e.i(351623),r=e.i(299020),i=e.i(344480);e.i(975473);let n={},s=t.gql`
+    fragment OrgGroupPermissionsGroupsGroup on OrgGroup {
+  id
+  name
+  permissions {
+    editPermissions
+  }
+}
+    `,o=t.gql`
+    fragment OrgGroupPermissionsGroupsOption on OrgGroup {
+  id
+  slug
+  name
+  type
+}
+    `,a=t.gql`
+    fragment OrgGroupPermissionsGroupsOrg on Org {
+  id
+  slug
+}
+    `,l=t.gql`
+    fragment OrgGroupOption on OrgGroupScopeOption {
+  status
+  role
+}
+    `,u=t.gql`
+    fragment OrgGroupOptions on OrgGroupScopeOptions {
+  targetGroupId
+  options {
+    __typename
+    ...OrgGroupOption
+  }
+}
+    ${l}`,p=t.gql`
+    mutation UpdateOrgGroupGroupScopes($input: UpdateOrgGroupScopesInput!) {
+  updateOrgGroupScopes(input: $input) {
+    __typename
+    ... on OrgGroup {
+      ...OrgGroupPermissionsGroupsGroup
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    ${s}`,c=t.gql`
+    query OrgGroupPermissionsGroups($orgId: String, $input: OrgGroupsInput) {
+  currentUser {
+    __typename
+    id
+    org(orgId: $orgId) {
+      __typename
+      ... on Org {
+        id
+        groups(input: $input) {
+          __typename
+          ... on OrgGroupConnection {
+            pageInfo {
+              hasNextPage
+              nextCursor
+            }
+            items {
+              ...OrgGroupPermissionsGroupsOption
+            }
+          }
+          ... on UserError {
+            message
+          }
+        }
+      }
+      ... on NotFoundError {
+        message
+      }
+    }
+  }
+}
+    ${o}`,d=t.gql`
+    query OrgGroupScopeOptions($orgId: String!, $groupId: String!, $input: OrgGroupGroupScopeOptionsInput!) {
+  currentUser {
+    __typename
+    id
+    org(orgId: $orgId) {
+      __typename
+      ... on Org {
+        id
+        group(orgGroupId: $groupId) {
+          __typename
+          ... on OrgGroup {
+            __typename
+            id
+            groupScopeOptions(input: $input) {
+              __typename
+              ... on OrgGroupGroupScopeOptions {
+                items {
+                  ...OrgGroupOptions
+                }
+              }
+              ... on UnauthorizedError {
+                message
+              }
+            }
+          }
+          ... on NotFoundError {
+            message
+          }
+        }
+      }
+      ... on NotFoundError {
+        message
+      }
+    }
+  }
+}
+    ${u}`;e.s(["OrgGroupPermissionsGroupsGroupFragmentDoc",0,s,"OrgGroupPermissionsGroupsOrgFragmentDoc",0,a,"useOrgGroupPermissionsGroupsQuery",0,function(e){let t={...n,...e};return i.useQuery(c,t)},"useOrgGroupScopeOptionsQuery",0,function(e){let t={...n,...e};return i.useQuery(d,t)},"useUpdateOrgGroupGroupScopesMutation",0,function(e){let t={...n,...e};return r.useMutation(p,t)}])},861326,e=>{"use strict";var t=e.i(351623),r=e.i(299020);let i={},n=t.gql`
+    fragment OrgGroupPermissionsOrgScopeOption on OrgScopeOption {
+  __typename
+  role
+  status
+}
+    `,s=t.gql`
+    fragment OrgGroupPermissionsOrgGroup on OrgGroup {
+  id
+  permissions {
+    editPermissions
+  }
+  orgScopeOptions {
+    ...OrgGroupPermissionsOrgScopeOption
+  }
+}
+    ${n}`,o=t.gql`
+    fragment OrgGroupPermissionsOrgOrg on Org {
+  id
+  name
+}
+    `,a=t.gql`
+    mutation UpdateOrgGroupOrgScopes($input: UpdateOrgGroupScopesInput!) {
+  updateOrgGroupScopes(input: $input) {
+    __typename
+    ... on OrgGroup {
+      ...OrgGroupPermissionsOrgGroup
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    ${s}`;e.s(["OrgGroupPermissionsOrgGroupFragmentDoc",0,s,"OrgGroupPermissionsOrgOrgFragmentDoc",0,o,"useUpdateOrgGroupOrgScopesMutation",0,function(e){let t={...i,...e};return r.useMutation(a,t)}])},939307,e=>{"use strict";var t=e.i(351623),r=e.i(319801),i=e.i(344480);e.i(975473);let n={},s=t.gql`
+    fragment OrgGroupPermissionsReplsGroup on OrgGroup {
+  id
+  name
+}
+    `,o=t.gql`
+    fragment OrgGroupPermissionsReplsOrg on Org {
+  id
+}
+    `,a=t.gql`
+    fragment OrgGroupRepl on Repl {
+  id
+  title
+  iconUrl
+  ...ReplLinkRepl
+  authorizations {
+    editPermissions {
+      isAuthorized
+    }
+  }
+}
+    ${r.ReplLinkReplFragmentDoc}`,l=t.gql`
+    fragment GroupReplsPage on ReplConnection {
+  pageInfo {
+    hasNextPage
+    nextCursor
+    previousCursor
+  }
+  items {
+    __typename
+    ...OrgGroupRepl
+  }
+}
+    ${a}`,u=t.gql`
+    fragment ReplScopeOption on ReplScopeOption {
+  status
+  role
+}
+    `,p=t.gql`
+    fragment ReplScopeOptions on ReplScopeOptions {
+  replId
+  options {
+    __typename
+    ...ReplScopeOption
+  }
+}
+    ${u}`,c=t.gql`
+    query OrgGroupPermissionsRepls($orgId: String, $input: OrgReplsInput!) {
+  currentUser {
+    __typename
+    id
+    org(orgId: $orgId) {
+      __typename
+      ... on Org {
+        id
+        replsCount
+        repls(input: $input) {
+          __typename
+          ... on ReplConnection {
+            ...GroupReplsPage
+          }
+          ... on UserError {
+            message
+          }
+        }
+      }
+      ... on NotFoundError {
+        message
+      }
+    }
+  }
+}
+    ${l}`,d=t.gql`
+    query OrgGroupReplScopeOptions($orgId: String!, $groupId: String!, $input: OrgGroupReplScopeOptionsInput!) {
+  currentUser {
+    __typename
+    id
+    org(orgId: $orgId) {
+      __typename
+      ... on Org {
+        id
+        group(orgGroupId: $groupId) {
+          __typename
+          ... on OrgGroup {
+            __typename
+            id
+            replScopeOptions(input: $input) {
+              __typename
+              ... on OrgGroupReplScopeOptions {
+                items {
+                  ...ReplScopeOptions
+                }
+              }
+              ... on UnauthorizedError {
+                message
+              }
+            }
+          }
+          ... on NotFoundError {
+            message
+          }
+        }
+      }
+      ... on NotFoundError {
+        message
+      }
+    }
+  }
+}
+    ${p}`;e.s(["OrgGroupPermissionsReplsGroupFragmentDoc",0,s,"OrgGroupPermissionsReplsOrgFragmentDoc",0,o,"useOrgGroupPermissionsReplsQuery",0,function(e){let t={...n,...e};return i.useQuery(c,t)},"useOrgGroupReplScopeOptionsQuery",0,function(e){let t={...n,...e};return i.useQuery(d,t)}])},394352,e=>{"use strict";var t=e.i(351623),r=e.i(299020);let i={},n=t.gql`
+    fragment ReplScopeSelectionGroup on OrgGroup {
+  id
+  name
+}
+    `,s=t.gql`
+    mutation UpdateOrgGroupReplScopes($input: UpdateOrgGroupScopesInput!) {
+  updateOrgGroupScopes(input: $input) {
+    __typename
+    ... on OrgGroup {
+      id
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    `;e.s(["ReplScopeSelectionGroupFragmentDoc",0,n,"useUpdateOrgGroupReplScopesMutation",0,function(e){let t={...i,...e};return r.useMutation(s,t)}])},260666,e=>{"use strict";var t=e.i(351623),r=e.i(285832),i=e.i(344480);e.i(975473);let n={};r.QuickDeployDialogCurrentBuild2FragmentDoc;let s=t.gql`
+    fragment DeployRepl on Repl {
+  id
+  hostingDeployment {
+    ... on HostingDeployment {
+      id
+      replitAppSubdomain
+      currentBuild {
+        id
+        status
+        provider
+      }
+      inProgressBuild {
+        id
+        status
+      }
+    }
+  }
+}
+    `,o=t.gql`
+    query DeployPreloadedRepl($replId: String!) {
+  getRepl(id: $replId) {
+    ... on Repl {
+      ...DeployRepl
+    }
+  }
+}
+    ${s}`;e.s(["DeployReplFragmentDoc",0,s,"useDeployPreloadedReplQuery",0,function(e){let t={...n,...e};return i.useQuery(o,t)}])},669011,e=>{"use strict";var t=e.i(351623),r=e.i(99357),i=e.i(344480);e.i(975473);let n={},s=t.gql`
+    fragment ReplEnvironmentHeaderInviteButtonRepl on Repl {
+  id
+  owner {
+    ... on User {
+      id
+    }
+    ... on Team {
+      id
+    }
+  }
+  org {
+    id
+  }
+  authorizations {
+    editPermissions {
+      isAuthorized
+    }
+  }
+}
+    `,o=t.gql`
+    query InviteButtonOrgReplPerms($replId: String!) {
+  currentUser {
+    id
+    username
+    fullName
+    image
+  }
+  getRepl(id: $replId) {
+    __typename
+    ... on Repl {
+      __typename
+      ...ReplMultiplayerStatusV2
+    }
+  }
+}
+    ${r.ReplMultiplayerStatusV2FragmentDoc}`;e.s(["ReplEnvironmentHeaderInviteButtonReplFragmentDoc",0,s,"useInviteButtonOrgReplPermsQuery",0,function(e){let t={...n,...e};return i.useQuery(o,t)}])},663197,e=>{"use strict";var t=e.i(351623);let r=t.gql`
+    fragment ReplInfoRepl on Repl {
+  id
+  title
+  iconUrl
+}
+    `;e.s(["ReplInfoReplFragmentDoc",0,r])},951894,e=>{"use strict";var t=e.i(351623),r=e.i(663197),i=e.i(669011);let n=t.gql`
+    fragment ReplEnvironmentHeaderRepl on Repl {
+  id
+  authorizations {
+    viewPermissions {
+      isAuthorized
+    }
+    viewDeploymentConfig {
+      isAuthorized
+    }
+    viewFreemiumExperience {
+      isAuthorized
+    }
+  }
+  config {
+    isInPlanningPhase
+  }
+  ...ReplInfoRepl
+  ...ReplEnvironmentHeaderInviteButtonRepl
+}
+    ${r.ReplInfoReplFragmentDoc}
+${i.ReplEnvironmentHeaderInviteButtonReplFragmentDoc}`;e.s(["ReplEnvironmentHeaderReplFragmentDoc",0,n])},122126,e=>{"use strict";var t=e.i(351623),r=e.i(458511);let i=t.gql`
+    fragment ReplEnvironmentDesktopReplInfraHooksRepl on Repl {
+  id
+  slug
+  org {
+    id
+  }
+  origin {
+    id
+  }
+  language
+  user {
+    id
+  }
+  authorizations {
+    editFileContents {
+      isAuthorized
+    }
+  }
+  ...WorkspaceToolPanesRepl
+}
+    ${r.WorkspaceToolPanesReplFragmentDoc}`,n=t.gql`
+    fragment ReplEnvironmentDesktopReplInfraHooksCurrentUser on CurrentUser {
+  id
+  username
+  isAdmin: hasRole(role: ADMIN)
+}
+    `;e.s(["ReplEnvironmentDesktopReplInfraHooksCurrentUserFragmentDoc",0,n,"ReplEnvironmentDesktopReplInfraHooksReplFragmentDoc",0,i])},809541,e=>{"use strict";var t=e.i(351623),r=e.i(29530),i=e.i(922819),n=e.i(122126);let s=t.gql`
+    fragment ReplEnvironmentDesktopTopLevelHooksRepl on Repl {
+  id
+  ...PageTitleRepl
+  ...ReplEnvironmentDesktopAgentSessionHooksRepl
+  ...ReplEnvironmentDesktopReplInfraHooksRepl
+}
+    ${r.PageTitleReplFragmentDoc}
+${i.ReplEnvironmentDesktopAgentSessionHooksReplFragmentDoc}
+${n.ReplEnvironmentDesktopReplInfraHooksReplFragmentDoc}`,o=t.gql`
+    fragment ReplEnvironmentDesktopTopLevelHooksCurrentUser on CurrentUser {
+  ...ReplEnvironmentDesktopReplInfraHooksCurrentUser
+}
+    ${n.ReplEnvironmentDesktopReplInfraHooksCurrentUserFragmentDoc}`;e.s(["ReplEnvironmentDesktopTopLevelHooksCurrentUserFragmentDoc",0,o,"ReplEnvironmentDesktopTopLevelHooksReplFragmentDoc",0,s])},913864,e=>{"use strict";var t=e.i(351623),r=e.i(383889),i=e.i(764992),n=e.i(809541),s=e.i(575872),o=e.i(951894),a=e.i(147381),l=e.i(879106),u=e.i(689736);let p=t.gql`
+    fragment ReplEnvironmentDesktopCurrentUser on CurrentUser {
+  id
+  ...WorkspaceAdminRoles
+  ...CrosisContextCurrentUser
+  ...ReplEnvironmentDesktopTopLevelHooksCurrentUser
+  workspacePreferences
+  ...WorkspaceDoGitProviderImportCurrentUser
+}
+    ${r.WorkspaceAdminRolesFragmentDoc}
+${i.CrosisContextCurrentUserFragmentDoc}
+${n.ReplEnvironmentDesktopTopLevelHooksCurrentUserFragmentDoc}
+${s.WorkspaceDoGitProviderImportCurrentUserFragmentDoc}`,c=t.gql`
+    fragment WorkspaceConnectAuthorization on ReplAuthorizations {
+  connectToWorkspace {
+    isAuthorized
+    code
+  }
+}
+    `,d=t.gql`
+    fragment ReplEnvironmentDesktopRepl on Repl {
+  id
+  layoutState
+  initialEditorMode
+  description
+  config {
+    isAgentStack
+    isWebDesignMockup
+    zealot
+    agentHarness
+  }
+  ...CrosisContextRepl
+  authorizations {
+    ...WorkspaceConnectAuthorization
+  }
+  ...WorkspaceDoGitProviderImportRepl
+  ...ReplEnvironmentHeaderRepl
+  ...FigmaImportFlowRepl
+  ...LovableZipImportFlowRepl
+  ...ReplEnvironmentDesktopTopLevelHooksRepl
+  ...HandleReplRedirectionRepl
+}
+    ${i.CrosisContextReplFragmentDoc}
+${c}
+${s.WorkspaceDoGitProviderImportReplFragmentDoc}
+${o.ReplEnvironmentHeaderReplFragmentDoc}
+${a.FigmaImportFlowReplFragmentDoc}
+${l.LovableZipImportFlowReplFragmentDoc}
+${n.ReplEnvironmentDesktopTopLevelHooksReplFragmentDoc}
+${u.HandleReplRedirectionReplFragmentDoc}`;e.s(["ReplEnvironmentDesktopCurrentUserFragmentDoc",0,p,"ReplEnvironmentDesktopReplFragmentDoc",0,d,"WorkspaceConnectAuthorizationFragmentDoc",0,c])},147381,e=>{"use strict";var t=e.i(351623),r=e.i(344480);e.i(975473);var i=e.i(299020);let n={},s=t.gql`
+    fragment FigmaImportFlowRepl on Repl {
+  id
+  config {
+    figmaUrl
+    figmaImportStatus
+  }
+}
+    `,o=t.gql`
+    query FigmaImportFlow($replId: String!) {
+  getRepl(id: $replId) {
+    ... on Repl {
+      id
+      ...FigmaImportFlowRepl
+    }
+  }
+}
+    ${s}`,a=t.gql`
+    mutation UpdateReplForFigmaImport($input: UpdateReplInput!) {
+  updateRepl(input: $input) {
+    repl {
+      id
+      isRenamed
+      title
+      ...FigmaImportFlowRepl
+    }
+  }
+}
+    ${s}`,l=t.gql`
+    mutation GetFigmaIntermediateToken($input: GetFigmaIntermediateTokenInput!) {
+  getFigmaIntermediateToken(input: $input) {
+    ... on FigmaImportIntermediateToken {
+      token
+    }
+    ... on NoOAuthFoundError {
+      message
+    }
+    ... on InvalidFigmaUrlError {
+      message
+    }
+    ... on FigmaRateLimitError {
+      message
+    }
+  }
+}
+    `;e.s(["FigmaImportFlowReplFragmentDoc",0,s,"useFigmaImportFlowQuery",0,function(e){let t={...n,...e};return r.useQuery(o,t)},"useGetFigmaIntermediateTokenMutation",0,function(e){let t={...n,...e};return i.useMutation(l,t)},"useUpdateReplForFigmaImportMutation",0,function(e){let t={...n,...e};return i.useMutation(a,t)}])},317349,e=>{"use strict";var t=e.i(351623),r=e.i(299020);let i={},n=t.gql`
+    fragment DeleteReplDialogRepl on Repl {
+  id
+  title
+}
+    `,s=t.gql`
+    mutation DeleteReplDialogReplDelete($id: String!) {
+  deleteRepl(id: $id) {
+    id
+  }
+}
+    `;e.s(["DeleteReplDialogReplFragmentDoc",0,n,"useDeleteReplDialogReplDeleteMutation",0,function(e){let t={...i,...e};return r.useMutation(s,t)}])},748538,e=>{"use strict";var t=e.i(351623),r=e.i(299020);let i={},n=t.gql`
+    fragment EditReplFormRepl on Repl {
+  id
+  title
+  description
+  imageUrl
+  iconUrl
+  templateInfo {
+    iconUrl
+    imageUrl
+  }
+  authorizations {
+    editMetadata {
+      isAuthorized
+      code
+      message
+    }
+  }
+}
+    `,s=t.gql`
+    mutation EditReplFormEdit($input: UpdateReplInput!) {
+  updateRepl(input: $input) {
+    repl {
+      id
+      ...EditReplFormRepl
+    }
+  }
+}
+    ${n}`;e.s(["EditReplFormReplFragmentDoc",0,n,"useEditReplFormEditMutation",0,function(e){let t={...i,...e};return r.useMutation(s,t)}])},80593,e=>{"use strict";var t=e.i(351623),r=e.i(299020);let i={},n=t.gql`
+    fragment LeaveMultiplayerReplDialogRepl on Repl {
+  id
+  title
+}
+    `,s=t.gql`
+    mutation LeaveMultiplayerReplDialogRemove($id: String!) {
+  removeSharedRepl(replId: $id) {
+    id
+  }
+}
+    `;e.s(["LeaveMultiplayerReplDialogReplFragmentDoc",0,n,"useLeaveMultiplayerReplDialogRemoveMutation",0,function(e){let t={...i,...e};return r.useMutation(s,t)}])},119417,e=>{"use strict";var t=e.i(276385);e.i(694906);var r=e.i(515672),i=e.i(572599),n=e.i(581935),s=e.i(493166),o=e.i(237103),a=e.i(953825),l=e.i(302919),u=e.i(741917),p=e.i(647914),c=e.i(587779),d=e.i(547550),g=e.i(54893),m=e.i(997191),f=e.i(27916),y=e.i(574577),T=e.i(914937),R=e.i(36876),h=e.i(387975),v=e.i(866104),O=e.i(868810),S=e.i(514500),I=e.i(389516),F=e.i(322456),_=e.i(701843),E=e.i(210406),D=e.i(99535),P=e.i(668461),b=e.i(321431),k=e.i(469305),U=e.i(631779),A=e.i(919272),C=e.i(27679),x=e.i(196396),w=e.i(835910),G=e.i(607650),$=e.i(226236),M=e.i(109327),L=e.i(410042),j=e.i(476864),q=e.i(727639),H=e.i(288458),z=e.i(626602),V=e.i(255329),B=e.i(41632),W=e.i(393223),Q=e.i(250835),N=e.i(250194),Y=e.i(301236),Z=e.i(119962),X=e.i(671536),K=e.i(45038),J=e.i(143270),ee=e.i(758640),et=e.i(934450),er=e.i(593750),ei=e.i(404396),en=e.i(945819),es=e.i(803458),eo=e.i(251077),ea=e.i(166189),el=e.i(979566),eu=e.i(37511),ep=e.i(479425),ec=e.i(173388),ed=e.i(954616),eg=e.i(240287),em=e.i(142369),ef=e.i(543829),ey=e.i(569884),eT=e.i(812345),eR=e.i(197751),eh=e.i(403331),ev=e.i(173212),eO=e.i(830448),eS=e.i(701066),eI=e.i(860060),eF=e.i(371088),e_=e.i(409570),eE=e.i(819906),eD=e.i(95136),eP=e.i(195206),eb=e.i(205104),ek=e.i(677075),eU=e.i(89148);let eA=RegExp(".+\\.test\\.[^.]+");e.s(["default",0,function({path:e,fill:eC,size:ex,fillDefaultFileIcon:ew,fallback:eG}){let e$={size:ex||20,fill:eC};switch((0,eb.getFileName)(e)){case"Dockerfile":case".dockerfile":return(0,t.jsx)(v.default,{...e$});case"package.json":case"package-lock.json":return(0,t.jsx)(V.default,{...e$});case"pnpm-lock.yaml":case"pnpm-workspace.yaml":return(0,t.jsx)(Y.default,{...e$});case"yarn.lock":return(0,t.jsx)(eS.default,{...e$});case"bun.lockb":case"bun.lock":return(0,t.jsx)(u.default,{...e$});case"webpack.config.js":return(0,t.jsx)(eh.default,{...e$});case".rhistory":case".rprofile":return(0,t.jsx)(K.default,{...e$});case".replit":case".replitignore":return(0,t.jsx)(eD.default,{...e$});case"makefile":case"Makefile":return(0,t.jsx)(G.default,{...e$});case".bowerrc":case".jshintrc":case".jshitrc":case".eslintrc":case".babelrc":return(0,t.jsx)(U.default,{...e$});case"Gemfile":case"Gemfile.lock":case".gemspec":case"Rakefile":return(0,t.jsx)(er.default,{...e$});case"poetry.lock":case"pyproject.toml":case"requirements.txt":case"uv.lock":return(0,t.jsx)(X.default,{...e$});case"go.mod":case"go.sum":return(0,t.jsx)(_.default,{...e$});case"pom.xml":return(0,t.jsx)(b.default,{...e$})}if(r.packagerFiles.includes(e))return(0,t.jsx)(e_.default,{...e$,fill:"currentColor"});let eM=e?(0,eb.getExt)(e):null;switch(eM){case"py":case"rpy":case"pyw":case"cpy":case"gyp":case"gypi":return(0,t.jsx)(X.default,{...e$});case"rb":case"rbx":case"rjs":case"erb":return(0,t.jsx)(er.default,{...e$});case"js":case"jsm":case"mjs":case"cjs":case"esm":case"es6":return(0,t.jsx)(k.default,{...e$,fill:eA.test(e)?eU.tokens.orangeDefault:void 0});case"ts":return(0,t.jsx)(ey.default,{...e$,fill:eA.test(e)?eU.tokens.orangeDefault:void 0});case"jsx":return(0,t.jsx)(ee.default,{...e$,fill:eA.test(e)?eU.tokens.orangeDefault:"#967D00"});case"tsx":return(0,t.jsx)(ee.default,{...e$,fill:eA.test(e)?eU.tokens.orangeDefault:"#0093B0"});case"graphql":case"gql":return(0,t.jsx)(E.default,{...e$});case"jav":case"java":return(0,t.jsx)(b.default,{...e$});case"go":return(0,t.jsx)(_.default,{...e$});case"html":case"htm":case"shtml":case"xhtml":case"mdoc":case"jsp":case"asp":case"aspx":case"jshtm":return(0,t.jsx)(P.default,{...e$});case"sh":case"fish":case"zsh":case"bash":return(0,t.jsx)(eP.default,{});case"asm":return(0,t.jsx)(o.default,{...e$});case"bal":return(0,t.jsx)(a.default,{...e$});case"bas":return(0,t.jsx)(l.default,{...e$});case"css":return(0,t.jsx)(y.default,{...e$});case"clj":return(0,t.jsx)(c.default,{...e$});case"coffee":return(0,t.jsx)(d.default,{...e$});case"cpp":case"cxx":case"hpp":case"hxx":case"cc":case"hh":case"H":return(0,t.jsx)(g.default,{...e$});case"c":case"h":return(0,t.jsx)(p.default,{...e$});case"cr":return(0,t.jsx)(m.default,{...e$});case"cs":case"csx":case"cake":case"csproj":return(0,t.jsx)(f.default,{...e$});case"csv":return(0,t.jsx)(T.default,{...e$});case"d":return(0,t.jsx)(R.default,{...e$});case"dart":return(0,t.jsx)(h.default,{...e$});case"ex":case"exs":return(0,t.jsx)(O.default,{...e$});case"elm":return(0,t.jsx)(S.default,{...e$});case"fs":case"fsx":case"fsproj":return(0,t.jsx)(F.default,{...e$});case"fth":case"forth":return(0,t.jsx)(I.default,{...e$});case"hs":case"lhs":return(0,t.jsx)(D.default,{...e$});case"json":return(0,t.jsx)(U.default,{...e$});case"jl":return(0,t.jsx)(A.default,{...e$});case"kt":case"kts":return(0,t.jsx)(C.default,{...e$});case"lua":return(0,t.jsx)(w.default,{...e$});case"lisp":return(0,t.jsx)(x.default,{...e$});case"md":case"mdx":case"markdown":case"mkd":return(0,t.jsx)($.default,{...e$});case"ml":case"mli":return(0,t.jsx)(B.default,{...e$});case"nim":return(0,t.jsx)(H.default,{...e$});case"nix":return(0,t.jsx)(z.default,{...e$});case"pde":return(0,t.jsx)(Z.default,{...e$});case"pdf":return(0,t.jsx)(W.default,{...e$});case"php":case"php4":case"php5":case"phtml":case"ctp":return(0,t.jsx)(N.default,{...e$});case"pmod":case"cgi":case"pl":case"pm":case"t":return(0,t.jsx)(Q.default,{...e$});case"r":case"R":case"rt":return(0,t.jsx)(K.default,{...e$});case"raku":case"rakumod":case"rakutest":case"pmod6":case"pod6":case"pl6":case"pm6":case"t6":case"p6":return(0,t.jsx)(J.default,{...e$});case"re":case"rei":return(0,t.jsx)(et.default,{...e$});case"rs":case"rlib":return(0,t.jsx)(ei.default,{...e$});case"scss":return(0,t.jsx)(en.default,{...e$});case"scm":return(0,t.jsx)(eo.default,{...e$});case"sbt":case"scala":return(0,t.jsx)(es.default,{...e$});case"sol":return(0,t.jsx)(ea.default,{...e$});case"sql":return(0,t.jsx)(el.default,{...e$});case"sqlite":return(0,t.jsx)(eu.default,{...e$});case"svelte":return(0,t.jsx)(ep.default,{...e$});case"svg":return(0,t.jsx)(ec.default,{...e$});case"swift":return(0,t.jsx)(ed.default,{...e$});case"tcl":return(0,t.jsx)(eg.default,{...e$});case"toml":return(0,t.jsx)(em.default,{...e$});case"txt":return(0,t.jsx)(ef.default,{...e$});case"vue":return(0,t.jsx)(eT.default,{...e$});case"wasm":return(0,t.jsx)(eR.default,{...e$});case"xml":return(0,t.jsx)(ev.default,{...e$});case"yml":case"yaml":return(0,t.jsx)(eO.default,{...e$});case"zip":return(0,t.jsx)(eI.default,{...e$});case"pptx":case"ppt":return(0,t.jsx)(j.default,{...e$});case"xlsx":case"xls":return(0,t.jsx)(M.default,{...e$});case"docx":case"doc":return(0,t.jsx)(q.default,{...e$});case"odt":case"ods":case"odp":return(0,t.jsx)(L.default,{...e$})}let eL=eM?ek.default.get(eM):null;if(eL){let[e]=eL.split("/");switch(e){case"image":return(0,t.jsx)(s.default,{...e$});case"audio":return(0,t.jsx)(eF.default,{...e$});case"video":return(0,t.jsx)(eE.default,{...e$})}}return eG??(ew?(0,t.jsx)(n.default,{size:ex}):(0,t.jsx)(i.default,{size:ex,color:eU.tokens.foregroundDimmer}))}])},764992,e=>{"use strict";var t=e.i(351623);let r=t.gql`
+    fragment CrosisContextCurrentUser on CurrentUser {
+  id
+  username
+}
+    `,i=t.gql`
+    fragment CrosisContextRepl on Repl {
+  id
+  language
+  authorizations {
+    editFileContents {
+      isAuthorized
+    }
+  }
+}
+    `;e.s(["CrosisContextCurrentUserFragmentDoc",0,r,"CrosisContextReplFragmentDoc",0,i])},313287,e=>{"use strict";var t=e.i(276385),r=e.i(807988),i=e.i(293982),n=e.i(572599),s=e.i(493166),o=e.i(668461),a=e.i(277257),l=e.i(937360),u=e.i(483620),p=e.i(650032),c=e.i(427794),d=e.i(89148),g=e.i(119417);let m={[r.FileOutputType.FILE_OUTPUT_TYPE_WORD_DOCUMENT]:{Icon:n.default,color:d.tokens.accentPrimaryDefault,label:"Document",labelId:"workspace.agentAssetsFileTypeDocument"},[r.FileOutputType.FILE_OUTPUT_TYPE_TABLE]:{Icon:u.default,color:d.tokens.accentPositiveDefault,label:"Spreadsheet",labelId:"workspace.agentAssetsFileTypeSpreadsheet"},[r.FileOutputType.FILE_OUTPUT_TYPE_TEXT]:{Icon:p.default,color:d.tokens.foregroundDefault,label:"Text",labelId:"workspace.agentAssetsFileTypeText"},[r.FileOutputType.FILE_OUTPUT_TYPE_SLIDES]:{Icon:i.default,color:d.tokens.orangeDefault,label:"Slides",labelId:"workspace.agentAssetsFileTypeSlides"},[r.FileOutputType.FILE_OUTPUT_TYPE_IMAGE]:{Icon:s.default,color:d.tokens.foregroundDefault,label:"Image",labelId:"workspace.agentAssetsFileTypeImage"},[r.FileOutputType.FILE_OUTPUT_TYPE_VIDEO]:{Icon:l.default,color:d.tokens.accentNegativeDefault,label:"Video",labelId:"workspace.agentAssetsFileTypeVideo"},[r.FileOutputType.FILE_OUTPUT_TYPE_AUDIO]:{Icon:a.default,color:d.tokens.foregroundDefault,label:"Audio",labelId:"workspace.agentAssetsFileTypeAudio"},[r.FileOutputType.FILE_OUTPUT_TYPE_HTML]:{Icon:o.default,color:d.tokens.foregroundDefault,label:"HTML",labelId:"workspace.agentAssetsFileTypeHtml"},[r.FileOutputType.FILE_OUTPUT_TYPE_PDF]:{Icon:n.default,color:d.tokens.accentNegativeDefault,label:"PDF",labelId:"workspace.agentAssetsFileTypePdf"},[r.FileOutputType.FILE_OUTPUT_TYPE_UNSPECIFIED]:{Icon:n.default,color:d.tokens.foregroundDefault,label:"File",labelId:"workspace.agentAssetsFileTypeFile"}};function f(e){return m[e]||m[r.FileOutputType.FILE_OUTPUT_TYPE_UNSPECIFIED]}function y(e,t,i){return e===r.FileOutputType.FILE_OUTPUT_TYPE_HTML||(e===r.FileOutputType.FILE_OUTPUT_TYPE_TEXT||e===r.FileOutputType.FILE_OUTPUT_TYPE_UNSPECIFIED)&&(i?.split(";",1)[0]?.trim().toLowerCase()==="text/html"||/\.html?$/i.test(t??""))}function T(e,{filePath:t,contentType:r}={}){let i=f(e);return y(e,t,r)?{...i,Icon:o.default,label:"HTML",labelId:"workspace.agentAssetsFileTypeHtml"}:i}function R(e){let t=e.split(";",1)[0]?.trim().toLowerCase()??"";return"text/html"===t?r.FileOutputType.FILE_OUTPUT_TYPE_HTML:t.startsWith("image/")?r.FileOutputType.FILE_OUTPUT_TYPE_IMAGE:t.startsWith("video/")?r.FileOutputType.FILE_OUTPUT_TYPE_VIDEO:t.startsWith("audio/")?r.FileOutputType.FILE_OUTPUT_TYPE_AUDIO:"application/pdf"===t?r.FileOutputType.FILE_OUTPUT_TYPE_PDF:/spreadsheet|ms-excel|csv/.test(t)?r.FileOutputType.FILE_OUTPUT_TYPE_TABLE:/wordprocessing|msword/.test(t)?r.FileOutputType.FILE_OUTPUT_TYPE_WORD_DOCUMENT:/presentation|ms-powerpoint/.test(t)?r.FileOutputType.FILE_OUTPUT_TYPE_SLIDES:t.startsWith("text/")||"application/markdown"===t?r.FileOutputType.FILE_OUTPUT_TYPE_TEXT:r.FileOutputType.FILE_OUTPUT_TYPE_UNSPECIFIED}function h(e){if(e)try{let t=e.startsWith("file://")?e.slice(7):e;return decodeURIComponent(t)}catch{return e.startsWith("file://")?e.slice(7):e}}function v(e,t="Unknown file"){return e.split("/").pop()||t}async function O(t){let r=await e.A(245431),i=r.read(t,{type:"array",sheets:0,sheetRows:100}),n=i.Sheets[i.SheetNames[0]],s=n?.["!ref"];if(void 0===s)return[];let o=r.utils.decode_range(s);return o.e.r=Math.min(o.e.r,o.s.r+100-1),o.e.c=Math.min(o.e.c,o.s.c+200-1),r.utils.sheet_to_json(n,{header:1,defval:"",range:o}).slice(0,100).map(e=>e.slice(0,200).map(e=>null!=e?String(e):""))}async function S(t){let r=(await e.A(519741)).default;return new Promise(e=>{r.parse(t.slice(0,2097152),{preview:100,complete:t=>{e(t.data.slice(0,100).map(e=>e.slice(0,200)))}})})}e.s(["FileOutputIcon",0,function({type:e,path:r,contentType:i,size:n}){let s=T(e,{filePath:r,contentType:i});return y(e,void 0,i)?(0,t.jsx)(s.Icon,{size:n}):r?(0,t.jsx)(g.default,{path:r,size:n,fallback:(0,t.jsx)(s.Icon,{color:s.color,size:n})}):(0,t.jsx)(s.Icon,{color:s.color,size:n})},"MAX_HTML_PREVIEW_SIZE",0,5242880,"MAX_MEDIA_PREVIEW_SIZE",0,0xa00000,"MAX_TABLE_PREVIEW_SIZE",0,2097152,"MAX_TEXT_PREVIEW_SIZE",0,102400,"contentTypeFromFileOutputType",0,function(e){switch(e){case r.FileOutputType.FILE_OUTPUT_TYPE_TABLE:return"text/csv";case r.FileOutputType.FILE_OUTPUT_TYPE_TEXT:return"text/plain";case r.FileOutputType.FILE_OUTPUT_TYPE_PDF:return"application/pdf";case r.FileOutputType.FILE_OUTPUT_TYPE_HTML:return"text/html";default:return"application/octet-stream"}},"fileTypeFromContentType",0,R,"formatTextPreview",0,function(e,t=2){let r=e.trim().replace(/\s+/g," "),i=100*t;return r.slice(0,i)+(r.length>i?"...":"")},"getFileOutputConfig",0,f,"getFileOutputConfigForFile",0,T,"getFilename",0,function(e,t="Unknown file"){let r=h(e);return r?v(r,t):t},"getPathFilename",0,v,"isHtmlFile",0,y,"isSupportedPreviewMime",0,function(e){return e.startsWith("video/")||e.startsWith("image/")&&!(0,c.isSvgMimeType)(e)||e.startsWith("audio/")},"normalizeFileOutputType",0,function(e,t){switch(e){case r.FileOutputType.FILE_OUTPUT_TYPE_WORD_DOCUMENT:case r.FileOutputType.FILE_OUTPUT_TYPE_TABLE:case r.FileOutputType.FILE_OUTPUT_TYPE_TEXT:case r.FileOutputType.FILE_OUTPUT_TYPE_SLIDES:case r.FileOutputType.FILE_OUTPUT_TYPE_IMAGE:case r.FileOutputType.FILE_OUTPUT_TYPE_VIDEO:case r.FileOutputType.FILE_OUTPUT_TYPE_AUDIO:case r.FileOutputType.FILE_OUTPUT_TYPE_PDF:case r.FileOutputType.FILE_OUTPUT_TYPE_HTML:return e;default:return R(t)}},"parseCsvToTable",0,S,"parseExcelToTable",0,O,"supportsMediaPreview",0,function(e){return e===r.FileOutputType.FILE_OUTPUT_TYPE_IMAGE||e===r.FileOutputType.FILE_OUTPUT_TYPE_VIDEO||e===r.FileOutputType.FILE_OUTPUT_TYPE_AUDIO},"supportsTextPreview",0,function(e){return e===r.FileOutputType.FILE_OUTPUT_TYPE_TEXT||e===r.FileOutputType.FILE_OUTPUT_TYPE_TABLE},"uriToPath",0,h])},689736,e=>{"use strict";var t=e.i(351623),r=e.i(319801),i=e.i(344480);e.i(975473);let n={},s=t.gql`
+    fragment HandleReplRedirectionReplRedirect on ReplRedirect {
+  replUrl
+}
+    `,o=t.gql`
+    fragment HandleReplRedirectionSubscriptionExpired on ReplSubscriptionExpired {
+  isOwner
+  replId
+}
+    `,a=t.gql`
+    fragment HandleReplRedirectionRepl on Repl {
+  id
+  language
+  ...ReplLinkRepl
+  authorizations {
+    connectToWorkspace {
+      isAuthorized
+    }
+  }
+  org {
+    id
+  }
+}
+    ${r.ReplLinkReplFragmentDoc}`,l=t.gql`
+    query HandleReplRedirection($replId: String!) {
+  getRepl(id: $replId) {
+    ... on Repl {
+      ...HandleReplRedirectionRepl
+      heliumMigrationStatus {
+        isUsingHelium
+        shouldMigrateToHelium
+      }
+    }
+    ... on ReplRedirect {
+      ...HandleReplRedirectionReplRedirect
+    }
+    ... on ReplSubscriptionExpired {
+      ...HandleReplRedirectionSubscriptionExpired
+    }
+  }
+}
+    ${a}
+${s}
+${o}`;e.s(["HandleReplRedirectionReplFragmentDoc",0,a,"HandleReplRedirectionReplRedirectFragmentDoc",0,s,"HandleReplRedirectionSubscriptionExpiredFragmentDoc",0,o,"useHandleReplRedirectionQuery",0,function(e){let t={...n,...e};return i.useQuery(l,t)}])},29530,e=>{"use strict";var t=e.i(351623);let r=t.gql`
+    fragment PageTitleRepl on Repl {
+  id
+  title
+}
+    `;e.s(["PageTitleReplFragmentDoc",0,r])},922819,e=>{"use strict";var t=e.i(351623);let r=t.gql`
+    fragment ReplEnvironmentDesktopAgentSessionHooksRepl on Repl {
+  id
+  config {
+    isInPlanningPhase
+  }
+  origin {
+    id
+  }
+}
+    `;e.s(["ReplEnvironmentDesktopAgentSessionHooksReplFragmentDoc",0,r])},575872,e=>{"use strict";var t=e.i(351623),r=e.i(344480);e.i(975473);var i=e.i(299020);let n={},s=t.gql`
+    fragment WorkspaceDoGitProviderImportCurrentUser on CurrentUser {
+  id
+  username
+}
+    `,o=t.gql`
+    fragment WorkspaceDoGitProviderImportRepl on Repl {
+  id
+  org {
+    id
+  }
+  config {
+    gitRemoteUrl
+    doClone
+    isAgentRepl
+    enablePrWorkflow
+  }
+}
+    `,a=t.gql`
+    query WorkspaceDoGitProviderImportFlow($replId: String!) {
+  getRepl(id: $replId) {
+    ...WorkspaceDoGitProviderImportRepl
+  }
+  currentUser {
+    ...WorkspaceDoGitProviderImportCurrentUser
+  }
+}
+    ${o}
+${s}`,l=t.gql`
+    query WorkspaceDoGitProviderImportConnectorBaseUrl($input: GitProviderContextInput) {
+  currentUser {
+    id
+    gitHubInfoV2(input: $input) {
+      webBaseUrl
+      apiBaseUrl
+    }
+  }
+}
+    `,u=t.gql`
+    mutation WorkspaceDoGitProviderImportFlowFinishClone($input: UpdateReplInput!) {
+  updateRepl(input: $input) {
+    repl {
+      id
+      config {
+        doClone
+      }
+    }
+  }
+}
+    `,p=t.gql`
+    query GitHubImportGetTopLanguages($input: GitHubRepoInfoInput!) {
+  githubRepoInfo(input: $input) {
+    ... on GitHubRepoInfoOutput {
+      topLanguages
+      repositorySource
+    }
+    ... on TooManyRequestsError {
+      message
+    }
+    ... on UnauthorizedError {
+      message
+    }
+    ... on ServiceUnavailable {
+      message
+    }
+    ... on UserError {
+      message
+    }
+    ... on NotFoundError {
+      message
+    }
+  }
+}
+    `,c=t.gql`
+    query BitbucketImportGetTopLanguages($input: BitbucketRepoInfoInput!) {
+  bitbucketRepoInfo(input: $input) {
+    ... on BitbucketRepoInfoOutput {
+      topLanguages
+      repositorySource
+    }
+    ... on UnauthorizedError {
+      message
+    }
+    ... on ServiceUnavailable {
+      message
+    }
+    ... on UserError {
+      message
+    }
+    ... on NotFoundError {
+      message
+    }
+  }
+}
+    `;e.s(["WorkspaceDoGitProviderImportCurrentUserFragmentDoc",0,s,"WorkspaceDoGitProviderImportReplFragmentDoc",0,o,"useBitbucketImportGetTopLanguagesQuery",0,function(e){let t={...n,...e};return r.useQuery(c,t)},"useGitHubImportGetTopLanguagesQuery",0,function(e){let t={...n,...e};return r.useQuery(p,t)},"useWorkspaceDoGitProviderImportConnectorBaseUrlQuery",0,function(e){let t={...n,...e};return r.useQuery(l,t)},"useWorkspaceDoGitProviderImportFlowFinishCloneMutation",0,function(e){let t={...n,...e};return i.useMutation(u,t)},"useWorkspaceDoGitProviderImportFlowQuery",0,function(e){let t={...n,...e};return r.useQuery(a,t)}])},879106,e=>{"use strict";var t=e.i(351623),r=e.i(344480);e.i(975473);var i=e.i(299020),n=e.i(846545);let s={},o=t.gql`
+    fragment LovableZipImportFlowRepl on Repl {
+  id
+  config {
+    zipImportSource
+    zipImportStatus
+  }
+}
+    `,a=t.gql`
+    query LovableZipImportFlow($replId: String!) {
+  getRepl(id: $replId) {
+    ... on Repl {
+      id
+      ...LovableZipImportFlowRepl
+    }
+  }
+}
+    ${o}`,l=t.gql`
+    mutation UpdateReplForLovableZipImport($input: UpdateReplInput!) {
+  updateRepl(input: $input) {
+    repl {
+      id
+      ...LovableZipImportFlowRepl
+    }
+  }
+}
+    ${o}`,u=t.gql`
+    subscription LovableImportZipProgress($replId: String!) {
+  importZipProgress(replId: $replId)
+}
+    `;e.s(["LovableZipImportFlowReplFragmentDoc",0,o,"useLovableImportZipProgressSubscription",0,function(e){let t={...s,...e};return n.useSubscription(u,t)},"useLovableZipImportFlowQuery",0,function(e){let t={...s,...e};return r.useQuery(a,t)},"useUpdateReplForLovableZipImportMutation",0,function(e){let t={...s,...e};return i.useMutation(l,t)}])},383889,e=>{"use strict";var t=e.i(351623),r=e.i(344480);e.i(975473);let i={},n=t.gql`
+    fragment WorkspaceAdminRoles on CurrentUser {
+  isAdmin: hasRole(role: ADMIN)
+  isStaff: hasRole(role: REPLIT_STAFF)
+}
+    `,s=t.gql`
+    query WorkspaceShowAdmin {
+  currentUser {
+    id
+    ...WorkspaceAdminRoles
+  }
+}
+    ${n}`;e.s(["WorkspaceAdminRolesFragmentDoc",0,n,"useWorkspaceShowAdminQuery",0,function(e){let t={...i,...e};return r.useQuery(s,t)}])},458511,e=>{"use strict";var t=e.i(351623);let r=t.gql`
+    fragment WorkspaceToolPanesRepl on Repl {
+  authorizations {
+    editPermissions {
+      isAuthorized
+    }
+    viewDeploymentConfig {
+      isAuthorized
+    }
+  }
+  config {
+    initialStackBlueprint
+  }
+}
+    `;e.s(["WorkspaceToolPanesReplFragmentDoc",0,r])},959485,e=>{"use strict";e.i(242933);var t=e.i(790164),r=e.i(729245),i=e.i(854246);function n(e){return e?{client:e.client,sessionId:e.sessionId}:null}function s(e,t){return e.endpoint===t.endpoint}function o(){return"u">typeof document&&"visible"===document.visibilityState}class a{runtime=null;feeds=new Map;statuses=new Map;snapshots=new Map;snapshotTargets=new Map;backends=new Map;connections=new Map;activeClientReplId=null;documentVisible=new t.ObservableState(o());detachVisibility=null;detachActiveTaskSource=null;activeReplId=null;isActiveReplReady=!1;connect(e){this.disconnectRuntime(),this.runtime=e;let t=()=>this.documentVisible.set(o());for(let e of(document.addEventListener("visibilitychange",t),this.documentVisible.set(o()),this.detachVisibility=()=>document.removeEventListener("visibilitychange",t),this.activeReplId=r.activeTaskSource.current?.replId??null,this.isActiveReplReady=r.activeTaskSource.current?.isReady??!1,this.publishActiveConnection(r.activeTaskSource.current?.replId??null,n(r.activeTaskSource.current)),this.detachActiveTaskSource=r.activeTaskSource.subscribe(e=>{this.publishActiveConnection(e?.replId??null,n(e)),this.setActiveTaskSource(e?.replId??null,e?.isReady??!1)}),this.feeds.values()))this.start(e);return()=>{this.runtime===e&&this.disconnectRuntime()}}acquire(e){let{replId:r}=e,i=this.feeds.get(r);if(i)s(i.target,e)||(this.disconnect(i),i.target=e,this.backendState(r).set("cell"),this.clearSnapshot(r),this.start(i));else{let n=this.snapshotTargets.get(r);n&&s(n,e)||this.clearSnapshot(r);let o=new t.ObservableState(this.documentVisible.current);i={target:e,refCount:0,active:o,detachActivity:this.documentVisible.subscribe(e=>o.set(e)),disconnect:null},this.feeds.set(r,i),this.backendState(r).set("cell"),this.start(i)}i.refCount+=1;let n=!1;return()=>{if(n)return;n=!0;let e=this.feeds.get(r);e===i&&(e.refCount-=1,0===e.refCount&&this.stop(r,e))}}statusFor(e){return this.statusState(e)}hasSnapshotFor(e){return this.snapshotState(e)}backendFor(e){return this.backendState(e)}connectionFor(e){return this.connectionState(e)}publishActiveConnection(e,t){let r=this.activeClientReplId;null!==r&&r!==e&&this.connectionState(r).set(null),this.activeClientReplId=e,null!==e&&this.connectionState(e).set(t)}connectionState(e){let r=this.connections.get(e);if(r)return r;let i=new t.ObservableState(null);return this.connections.set(e,i),i}backendState(e){let r=this.backends.get(e);if(r)return r;let i=new t.ObservableState(null);return this.backends.set(e,i),i}statusState(e){let r=this.statuses.get(e);if(r)return r;let i=new t.ObservableState(null);return this.statuses.set(e,i),i}setStatus(e,t){this.statusState(e).set(t)}snapshotState(e){let r=this.snapshots.get(e);if(r)return r;let i=new t.ObservableState(!1);return this.snapshots.set(e,i),i}markSnapshot(e,t){this.snapshotTargets.set(e,t),this.snapshotState(e).set(!0)}clearSnapshot(e){this.snapshotTargets.delete(e),this.snapshotState(e).set(!1)}start(e){let{target:t}=e,{replId:r}=t,n=this.runtime;if(!n)return void this.setStatus(r,"connecting");if(this.activeReplId===r)return void this.setStatus(r,this.isActiveReplReady?"live":"connecting");this.setStatus(r,"connecting");let s=new AbortController,o=()=>{},a=!1,l=!1,u=0,p=()=>{u+=1,o(),o=()=>{},l=!1,this.activeClientReplId!==r&&this.connectionState(r).set(null)},c=()=>{this.feeds.get(r)===e&&(a=!0,p(),this.setStatus(r,"error"))},d=()=>{let a=n.services.taskman.getSnapshot(m);if(l||!a||!a.transport.sessions.has(a.serverId))return;l=!0;let p=++u,d=()=>this.feeds.get(r)===e&&u===p,g=()=>{d()&&(this.markSnapshot(r,t),this.setStatus(r,"live"))};o=i.teamworkSyncController.startSession({client:a.client,replId:r,externalAbortSignal:s.signal,onSchemaValidationError:()=>{d()&&(c(),a.error())},excludePlans:this.runtime?.lazyPlans??!1,onSnapshot:g}),this.connectionState(r).set({client:a.client,sessionId:a.transport.sessions.get(a.serverId)?.id??null})},g=t=>{this.feeds.get(r)!==e||this.activeReplId===r||a||("closed"===t?(p(),this.setStatus(r,"connecting")):d())},m={...t,userId:n.userId,isClientActiveObservable:e.active,callbacks:{onEndpointResolved:()=>{},onRetryBudgetExhausted:c,onTerminalError:()=>{c(),this.clearSnapshot(r),this.backendState(r).set(null)},onSessionStatusChange:g}},f=n.services.taskman.subscribe(m,d);d(),e.disconnect=()=>{s.abort(),f(),p()}}stop(e,t){this.feeds.delete(e),this.disconnect(t),t.detachActivity(),t.active.set(!1),this.setStatus(e,null)}disconnect(e){e.disconnect?.(),e.disconnect=null}setActiveTaskSource(e,t){let r=this.activeReplId;if(r===e&&this.isActiveReplReady===t)return;this.activeReplId=e,this.isActiveReplReady=t;let i=e?this.feeds.get(e):void 0;if(e&&i&&(this.disconnect(i),t&&this.markSnapshot(e,i.target),this.setStatus(e,t?"live":"connecting")),r&&r!==e){let e=this.feeds.get(r);e&&this.start(e)}}disconnectRuntime(){for(let[e,t]of this.feeds)this.disconnect(t),this.setStatus(e,"connecting");this.detachVisibility?.(),this.detachVisibility=null,this.detachActiveTaskSource?.(),this.detachActiveTaskSource=null,this.publishActiveConnection(null,null),this.activeReplId=null,this.isActiveReplReady=!1,this.runtime=null}}let l=new a;e.s(["taskFeedManager",0,l])},908833,e=>{"use strict";e.i(81282);var t=e.i(750185);let r=t.Type.Object({description:t.Type.Optional(t.Type.String({description:"A short model- and user-facing summary of what this artifact is and what it is for."})),domains:t.Type.Optional(t.Type.Array(t.Type.String())),id:t.Type.Optional(t.Type.String({description:"A stable identifier for the artifact that persists across folder renames. When absent, the folder name is used as the artifact identity."})),integratedSkills:t.Type.Optional(t.Type.Array(t.Type.Object({name:t.Type.Optional(t.Type.String()),version:t.Type.Optional(t.Type.String())}))),kind:t.Type.Optional(t.Type.Union([t.Type.Literal("web"),t.Type.Literal("slides"),t.Type.Literal("video"),t.Type.Literal("mobile"),t.Type.Literal("automation"),t.Type.Literal("game"),t.Type.Literal("data-app"),t.Type.Literal("cli"),t.Type.Literal("vnc"),t.Type.Literal("api"),t.Type.Literal("design"),t.Type.Literal("custom"),t.Type.Literal("design-system")])),pageMetadata:t.Type.Optional(t.Type.Array(t.Type.Object({path:t.Type.String(),screenshotTimestamp:t.Type.Optional(t.Type.String()),screenshotUri:t.Type.Optional(t.Type.String())}))),previewDomain:t.Type.Optional(t.Type.String()),previewPath:t.Type.Optional(t.Type.String()),previewPort:t.Type.Optional(t.Type.Integer({description:"The port that the workspace preview connects to. Only valid when router is port."})),router:t.Type.Optional(t.Type.Union([t.Type.Literal("port"),t.Type.Literal("path"),t.Type.Literal("domain"),t.Type.Literal("expo-domain")],{description:"The preview routing strategy. port (legacy), path, domain, or expo-domain."})),services:t.Type.Optional(t.Type.Array(t.Type.Object({development:t.Type.Object({run:t.Type.Union([t.Type.Object({args:t.Type.Array(t.Type.String()),env:t.Type.Optional(t.Type.Record(t.Type.String(),t.Type.String()))},{additionalProperties:!1}),t.Type.String(),t.Type.Array(t.Type.String())],{description:"The command to run the service during development."})},{description:"Configuration for running the service during development."}),ensurePreviewReachable:t.Type.Optional(t.Type.String({description:"Path to ensure is reachable before showing the preview."})),env:t.Type.Optional(t.Type.Record(t.Type.String(),t.Type.String(),{description:"Service-wide environment variables. Individual commands can also have their own envs."})),localPort:t.Type.Integer({description:"The port the service listens on."}),name:t.Type.String({description:"The service name, which becomes the workflow name for development."}),paths:t.Type.Optional(t.Type.Array(t.Type.String(),{description:"Path prefixes that will be routed to this service."})),production:t.Type.Optional(t.Type.Object({build:t.Type.Optional(t.Type.Union([t.Type.Object({args:t.Type.Array(t.Type.String()),env:t.Type.Optional(t.Type.Record(t.Type.String(),t.Type.String()))},{additionalProperties:!1}),t.Type.String(),t.Type.Array(t.Type.String())],{description:"Command to build the project for production."})),health:t.Type.Optional(t.Type.Object({liveness:t.Type.Optional(t.Type.Object({headers:t.Type.Optional(t.Type.Record(t.Type.String(),t.Type.String(),{description:"An optional map of HTTP headers that should be added to the readiness check."})),path:t.Type.Optional(t.Type.String({description:"The path for the check. For example, `/ready`. Defaults to `/`."}))})),startup:t.Type.Optional(t.Type.Object({headers:t.Type.Optional(t.Type.Record(t.Type.String(),t.Type.String(),{description:"An optional map of HTTP headers that should be added to the readiness check."})),path:t.Type.Optional(t.Type.String({description:"The path for the check. For example, `/ready`. Defaults to `/`."}))}))},{description:"Configuration for production healthchecks."})),publicDir:t.Type.Optional(t.Type.String({description:"Root directory for static file serving. Only valid when serve is 'static'."})),responseHeaders:t.Type.Optional(t.Type.Array(t.Type.Object({name:t.Type.Optional(t.Type.String({description:"The name of the header to add."})),path:t.Type.Optional(t.Type.String({description:"The pattern to apply the header to."})),value:t.Type.Optional(t.Type.String({description:"The value of the header to add."}))}),{description:"Headers to apply to responses for static serving. Only valid when serve is 'static'."})),rewrites:t.Type.Optional(t.Type.Array(t.Type.Object({from:t.Type.Optional(t.Type.String({description:"The pattern to rewrite."})),to:t.Type.Optional(t.Type.String({description:"The new pattern."}))}),{description:"URL rewrite rules for static serving (e.g. SPA fallback). Only valid when serve is 'static'."})),run:t.Type.Optional(t.Type.Union([t.Type.Object({args:t.Type.Array(t.Type.String()),env:t.Type.Optional(t.Type.Record(t.Type.String(),t.Type.String()))},{additionalProperties:!1}),t.Type.String(),t.Type.Array(t.Type.String())],{description:"Command to run the service in production."})),serve:t.Type.Optional(t.Type.Union([t.Type.Literal("static"),t.Type.Literal("proxy")],{default:"proxy",description:"How the service is served in production. 'proxy' (default) proxies to a running process. 'static' serves files directly from publicDir."}))},{description:"Configuration for building and running the service in production."}))}))),title:t.Type.Optional(t.Type.String()),version:t.Type.Optional(t.Type.String())},{$id:"Artifact"});e.s(["ArtifactSchema",0,r])},293982,e=>{"use strict";var t=e.i(276385),r=e.i(983420);e.s(["default",0,function(e){return(0,t.jsxs)(r.default,{...e,children:[(0,t.jsx)("path",{fillRule:"evenodd",d:"M20 2.25A2.75 2.75 0 0 1 22.75 5v14A2.75 2.75 0 0 1 20 21.75h-8A2.75 2.75 0 0 1 9.25 19V5A2.75 2.75 0 0 1 12 2.25zm-8 1.5c-.69 0-1.25.56-1.25 1.25v14c0 .69.56 1.25 1.25 1.25h8c.69 0 1.25-.56 1.25-1.25V5c0-.69-.56-1.25-1.25-1.25z",clipRule:"evenodd"}),(0,t.jsx)("path",{d:"M6 4.25a.75.75 0 0 1 .75.75v14a.75.75 0 0 1-1.5 0V5A.75.75 0 0 1 6 4.25M2 6.25a.75.75 0 0 1 .75.75v10a.75.75 0 0 1-1.5 0V7A.75.75 0 0 1 2 6.25"})]})}])},36654,e=>{"use strict";var t=e.i(276385),r=e.i(983420);e.s(["default",0,function(e){return(0,t.jsx)(r.default,{...e,children:(0,t.jsx)("path",{fillRule:"evenodd",d:"M12 2.25a.75.75 0 0 1 .75.75v10.19l3.72-3.72a.75.75 0 1 1 1.06 1.06l-5 5a.75.75 0 0 1-1.06 0l-5-5a.75.75 0 1 1 1.06-1.06l3.72 3.72V3a.75.75 0 0 1 .75-.75m-9 12a.75.75 0 0 1 .75.75v4A1.25 1.25 0 0 0 5 20.25h14A1.25 1.25 0 0 0 20.25 19v-4a.75.75 0 0 1 1.5 0v4A2.75 2.75 0 0 1 19 21.75H5A2.75 2.75 0 0 1 2.25 19v-4a.75.75 0 0 1 .75-.75",clipRule:"evenodd"})})}])},532764,e=>{"use strict";var t=e.i(276385),r=e.i(983420);e.s(["default",0,function(e){return(0,t.jsx)(r.default,{...e,children:(0,t.jsx)("path",{d:"M12.532 7.726c0 .082 0 .123.002.164a1.24 1.24 0 0 0 .392.815c.218.22.515.34.823.34h3.343c.668 0 1.002 0 1.257.131.224.116.407.3.521.527.13.258.13.596.13 1.271v2.04c0 .675 0 1.013-.13 1.27a1.2 1.2 0 0 1-.521.528c-.255.131-.59.131-1.257.131H13.74c-.305 0-.6.119-.815.337-.05.05-.074.074-.101.106a1.24 1.24 0 0 0-.29.709c-.003.041-.003.082-.003.163v2.813c0 .675 0 1.013-.13 1.27a1.2 1.2 0 0 1-.522.528c-.255.131-.589.131-1.257.131H7.908c-.668 0-1.002 0-1.257-.131a1.2 1.2 0 0 1-.521-.527C6 20.084 6 19.746 6 19.07v-2.18c0-.675 0-1.012.13-1.27a1.2 1.2 0 0 1 .521-.527c.255-.132.59-.132 1.257-.132h3.393a1.2 1.2 0 0 0 .81-.339l.017-.017c.058-.059.087-.088.118-.124.16-.19.263-.441.282-.69.004-.046.004-.093.004-.187V10.38c0-.093 0-.14-.004-.187-.02-.248-.123-.5-.282-.69-.03-.035-.06-.065-.118-.124a1.16 1.16 0 0 0-.824-.34H7.908c-.668 0-1.002 0-1.257-.132a1.2 1.2 0 0 1-.521-.527C6 8.121 6 7.784 6 7.11v-2.18c0-.675 0-1.013.13-1.27a1.2 1.2 0 0 1 .521-.528C6.906 3 7.241 3 7.908 3h2.715c.668 0 1.002 0 1.257.131.225.116.407.3.522.527.13.258.13.596.13 1.271z"})})}])},277257,e=>{"use strict";var t=e.i(276385),r=e.i(983420);e.s(["default",0,function(e){return(0,t.jsxs)(r.default,{...e,children:[(0,t.jsx)("path",{d:"M19 9.25a.75.75 0 0 1 .75.75v2a7.75 7.75 0 0 1-7 7.713V22a.75.75 0 0 1-1.5 0v-2.287a7.75 7.75 0 0 1-6.99-7.328L4.25 12v-2a.75.75 0 0 1 1.5 0v2l.008.31A6.25 6.25 0 0 0 12 18.25l.31-.008a6.25 6.25 0 0 0 5.932-5.932l.008-.31v-2a.75.75 0 0 1 .75-.75"}),(0,t.jsx)("path",{fillRule:"evenodd",d:"M12 1.25A3.75 3.75 0 0 1 15.75 5v7a3.75 3.75 0 1 1-7.5 0V5A3.75 3.75 0 0 1 12 1.25m0 1.5A2.25 2.25 0 0 0 9.75 5v7a2.25 2.25 0 0 0 4.5 0V5A2.25 2.25 0 0 0 12 2.75",clipRule:"evenodd"})]})}])},937360,e=>{"use strict";var t=e.i(276385),r=e.i(983420);e.s(["default",0,function(e){return(0,t.jsxs)(r.default,{...e,children:[(0,t.jsx)("path",{fillRule:"evenodd",d:"M10.65 11.264c.18.023.356.083.515.175l4.066 2.352a1.4 1.4 0 0 1 .511 1.907 1.4 1.4 0 0 1-.51.511l-4.065 2.352a1.396 1.396 0 0 1-2.094-1.21v-4.703c0-.244.064-.485.186-.697l.101-.152c.111-.145.25-.268.41-.36l.164-.08c.168-.07.35-.107.533-.107zm-.077 5.907L14.326 15l-3.753-2.172z",clipRule:"evenodd"}),(0,t.jsx)("path",{fillRule:"evenodd",d:"M19 2.25A2.75 2.75 0 0 1 21.75 5v14A2.75 2.75 0 0 1 19 21.75H5A2.75 2.75 0 0 1 2.25 19V5A2.75 2.75 0 0 1 5 2.25zM3.75 19c0 .69.56 1.25 1.25 1.25h14c.69 0 1.25-.56 1.25-1.25V9.75H3.75zM5 3.75c-.69 0-1.25.56-1.25 1.25v3.25h16.5V5c0-.69-.56-1.25-1.25-1.25z",clipRule:"evenodd"})]})}])},95136,e=>{"use strict";var t=e.i(276385),r=e.i(983420),i=e.i(532764);e.s(["default",0,function(e){return(0,t.jsx)(r.default,{...e,children:(0,t.jsx)(i.default,{size:24,color:"currentColor"})})}])},483620,e=>{"use strict";var t=e.i(276385),r=e.i(983420);e.s(["default",0,function(e){return(0,t.jsx)(r.default,{...e,children:(0,t.jsx)("path",{fillRule:"evenodd",d:"M21.75 6A3.75 3.75 0 0 0 18 2.25H6A3.75 3.75 0 0 0 2.25 6v12A3.75 3.75 0 0 0 6 21.75h12A3.75 3.75 0 0 0 21.75 18zM18 3.75A2.25 2.25 0 0 1 20.25 6v2.25H9.75v-4.5zm-9.75 0v4.5h-4.5V6A2.25 2.25 0 0 1 6 3.75zm-4.5 6h4.5v4.5h-4.5zm0 6h4.5v4.5H6A2.25 2.25 0 0 1 3.75 18zm6 4.5v-4.5h10.5V18A2.25 2.25 0 0 1 18 20.25zm10.5-6H9.75v-4.5h10.5z",clipRule:"evenodd"})})}])},650032,e=>{"use strict";var t=e.i(276385),r=e.i(983420);e.s(["default",0,function(e){return(0,t.jsx)(r.default,{...e,children:(0,t.jsx)("path",{d:"M19 3.25A1.75 1.75 0 0 1 20.75 5v2a.75.75 0 0 1-1.5 0V5a.25.25 0 0 0-.25-.25h-6.25v14.5H15a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1 0-1.5h2.25V4.75H5a.25.25 0 0 0-.25.25v2a.75.75 0 0 1-1.5 0V5A1.75 1.75 0 0 1 5 3.25z"})})}])},871203,e=>{"use strict";var t,r=((t={}).Initializing="initialize",t.Connecting="connect",t.GettingInitialConfig="get init config",t.ImportingMigrationTemplate="import migration template",t.MergeDotReplit="merge dot replit",t.ExecingPostMigration="exec post migration",t.UpdatingLanguage="set language",t.Finished="finished",t.Failed="error",t);e.s(["Progress",()=>r,"shouldMigrateReplToNix",0,function(e){return"nix"!==e.language}])}]);
+
+//# debugId=b987bcf4-9154-c0a8-3ad5-06bea8346237
+//# sourceMappingURL=2ufd-q8zeawrt.js.map

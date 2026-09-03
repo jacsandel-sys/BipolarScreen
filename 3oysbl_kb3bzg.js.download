@@ -1,0 +1,370 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="ea4efae4-2292-ab34-6521-8c430c5f4dfc")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,299075,e=>{"use strict";var n=e.i(928575),o=e.i(780673),t=e.i(716768),r=e.i(624071),i=e.i(988305),a=e.i(510319),s=e.i(248e3),c=e.i(58641);e.s(["useGridList",0,function(e,l,u){let{isVirtualized:d,keyboardDelegate:g,layoutDelegate:p,onAction:C,disallowTypeAhead:f,linkBehavior:m="action",keyboardNavigationBehavior:y="arrow"}=e;e["aria-label"]||e["aria-labelledby"]||console.warn("An aria-label or aria-labelledby prop is required for accessibility.");let{listProps:h}=(0,c.useSelectableList)({selectionManager:l.selectionManager,collection:l.collection,disabledKeys:l.disabledKeys,ref:u,keyboardDelegate:g,layoutDelegate:p,isVirtualized:d,selectOnFocus:"replace"===l.selectionManager.selectionBehavior,shouldFocusWrap:e.shouldFocusWrap,linkBehavior:m,disallowTypeAhead:f,autoFocus:e.autoFocus}),S=(0,o.useId)(e.id);n.listMap.set(l,{id:S,onAction:C,linkBehavior:m,keyboardNavigationBehavior:y});let v=(0,i.useHighlightSelectionDescription)({selectionManager:l.selectionManager,hasItemActions:!!C}),b=(0,s.useHasTabbableChild)(u,{isDisabled:0!==l.collection.size}),U=(0,t.filterDOMProps)(e,{labelable:!0}),M=(0,r.mergeProps)(U,{role:"grid",id:S,"aria-multiselectable":"multiple"===l.selectionManager.selectionMode?"true":void 0},0===l.collection.size?{tabIndex:b?-1:0}:h,v);return d&&(M["aria-rowcount"]=l.collection.size,M["aria-colcount"]=1),(0,a.useGridSelectionAnnouncement)({},l),{gridProps:M}}])},820650,e=>{"use strict";var n=e.i(928575),o=e.i(780673),t=e.i(352019),r=e.i(561345),i=e.i(975426),a=e.i(395440),s=e.i(624071),c=e.i(663827),l=e.i(921211),u=e.i(328876),d=e.i(389959),g=e.i(572632),p=e.i(164809),C=e.i(338713);let f={ltr:"ArrowRight",rtl:"ArrowLeft"},m={ltr:"ArrowLeft",rtl:"ArrowRight"};function y(e){let n=null,o=null;do(o=e.lastChild())&&(n=o);while(o)return n}e.s(["useGridListItem",0,function(e,h,S){var v,b,U,M,O,w,x,I;let{node:D,isVirtualized:E,shouldSelectOnPressUp:k}=e,{direction:P}=(0,C.useLocale)(),{onAction:_,linkBehavior:F,keyboardNavigationBehavior:A}=n.listMap.get(h),N=(0,o.useSlotId)(),T=(0,d.useRef)(null),j={},q=e.hasChildItems,R=h.selectionManager.isLink(D.key);if(null!=D&&"expandedKeys"in h){let e=null==(U=(M=h.collection).getChildren)?void 0:U.call(M,D.key);q=q||[...null!=e?e:[]].length>1,null==_&&!R&&"none"===h.selectionManager.selectionMode&&q&&(_=()=>h.toggleKey(D.key));let n=q?h.expandedKeys.has(D.key):void 0,o=1;if(D.level>0&&(null==D?void 0:D.parentKey)!=null){let e=h.collection.getItem(D.parentKey);if(e){let n=null==(x=(I=h.collection).getChildren)?void 0:x.call(I,e.key);o=(0,u.getLastItem)(n).index+1}}else o=(null!=(w=null==(O=[...h.collection].filter(e=>0===e.level).at(-1))?void 0:O.index)?w:0)+1;j={"aria-expanded":n,"aria-level":D.level+1,"aria-posinset":(null==D?void 0:D.index)+1,"aria-setsize":o}}let{itemProps:$,...K}=(0,p.useSelectableItem)({selectionManager:h.selectionManager,key:D.key,ref:S,isVirtualized:E,shouldSelectOnPressUp:k,onAction:_||(null==(v=D.props)?void 0:v.onAction)?(0,t.chain)(null==(b=D.props)?void 0:b.onAction,_?()=>_(D.key):void 0):void 0,focus:()=>{var e;null===S.current||(null==T.current||D.key===T.current)&&(null==(e=S.current)?void 0:e.contains(document.activeElement))||(0,c.focusSafely)(S.current)},linkBehavior:F}),G=(0,a.useSyntheticLinkProps)(D.props),V=K.hasAction?G:{},z=(0,s.mergeProps)($,V,{role:"row",onKeyDownCapture:e=>{if(!e.currentTarget.contains(e.target)||!S.current||!document.activeElement)return;let n=(0,l.getFocusableTreeWalker)(S.current);if(n.currentNode=document.activeElement,"expandedKeys"in h&&document.activeElement===S.current){if(e.key===f[P]&&h.selectionManager.focusedKey===D.key&&q&&!h.expandedKeys.has(D.key)){h.toggleKey(D.key),e.stopPropagation();return}else if(e.key===m[P]&&h.selectionManager.focusedKey===D.key&&q&&h.expandedKeys.has(D.key)){h.toggleKey(D.key),e.stopPropagation();return}}switch(e.key){case"ArrowLeft":if("arrow"===A){let o="rtl"===P?n.nextNode():n.previousNode();if(o)e.preventDefault(),e.stopPropagation(),(0,c.focusSafely)(o),(0,r.scrollIntoViewport)(o,{containingElement:(0,i.getScrollParent)(S.current)});else if(e.preventDefault(),e.stopPropagation(),"rtl"===P)(0,c.focusSafely)(S.current),(0,r.scrollIntoViewport)(S.current,{containingElement:(0,i.getScrollParent)(S.current)});else{n.currentNode=S.current;let e=y(n);e&&((0,c.focusSafely)(e),(0,r.scrollIntoViewport)(e,{containingElement:(0,i.getScrollParent)(S.current)}))}}break;case"ArrowRight":if("arrow"===A){let o="rtl"===P?n.previousNode():n.nextNode();if(o)e.preventDefault(),e.stopPropagation(),(0,c.focusSafely)(o),(0,r.scrollIntoViewport)(o,{containingElement:(0,i.getScrollParent)(S.current)});else if(e.preventDefault(),e.stopPropagation(),"ltr"===P)(0,c.focusSafely)(S.current),(0,r.scrollIntoViewport)(S.current,{containingElement:(0,i.getScrollParent)(S.current)});else{n.currentNode=S.current;let e=y(n);e&&((0,c.focusSafely)(e),(0,r.scrollIntoViewport)(e,{containingElement:(0,i.getScrollParent)(S.current)}))}}break;case"ArrowUp":case"ArrowDown":if(!e.altKey&&S.current.contains(e.target)){var o;e.stopPropagation(),e.preventDefault(),null==(o=S.current.parentElement)||o.dispatchEvent(new KeyboardEvent(e.nativeEvent.type,e.nativeEvent))}break;case"Tab":if("tab"===A){let n=(0,l.getFocusableTreeWalker)(S.current,{tabbable:!0});n.currentNode=document.activeElement,(e.shiftKey?n.previousNode():n.nextNode())&&e.stopPropagation()}}},onFocus:e=>{if(T.current=D.key,e.target!==S.current){(0,g.isFocusVisible)()||h.selectionManager.setFocusedKey(D.key);return}},"aria-label":D.textValue||void 0,"aria-selected":h.selectionManager.canSelectItem(D.key)?h.selectionManager.isSelected(D.key):void 0,"aria-disabled":h.selectionManager.isDisabled(D.key)||void 0,"aria-labelledby":N&&D.textValue?`${(0,n.getRowId)(h,D.key)} ${N}`:void 0,id:(0,n.getRowId)(h,D.key)});return E&&(z["aria-rowindex"]=D.index+1),{rowProps:{...(0,s.mergeProps)(z,j)},gridCellProps:{role:"gridcell","aria-colindex":1},descriptionProps:{id:N},...K}}])},928575,e=>{"use strict";let n=new WeakMap;e.s(["getRowId",0,function(e,o){var t,r;let{id:i}=null!=(t=n.get(e))?t:{};if(!i)throw Error("Unknown list");return`${i}-${"string"==typeof(r=o)?r.replace(/\s*/g,""):""+r}`},"listMap",0,n])},412753,e=>{"use strict";var n=e.i(335451);e.s(["removeConnectionFromUserConnectorsPageCache",0,function(e,{connectionId:o}){try{let t=e.readQuery({query:n.UserConnectorsPageDocument});if(t?.currentUser?.__typename!=="CurrentUser")return;let{currentUser:r}=t;if("CurrentUserConnectorContext"!==r.connectorContext.__typename)return;let{connectorContext:i}=r,a=(i.connections??[]).filter(e=>e.connectionId!==o);e.writeQuery({query:n.UserConnectorsPageDocument,data:{...t,currentUser:{...r,connectorContext:{...i,connections:a}}}})}catch{}}])},335451,e=>{"use strict";var n=e.i(351623),o=e.i(366541);e.i(344480),e.i(975473);var t=e.i(299020);let r={},i=n.gql`
+    query UserConnectorsPage {
+  currentUser {
+    id
+    __typename
+    isSubscribed
+    connectorContext {
+      __typename
+      ...ConnectorContext
+      ... on Error {
+        message
+      }
+    }
+  }
+}
+    ${o.ConnectorContextFragmentDoc}`,a=n.gql`
+    mutation CreateConnection($input: CreateConnectionInput!) {
+  createConnection(input: $input) {
+    ... on CreateConnection {
+      connectionId
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    `,s=n.gql`
+    mutation DeleteConnection($input: DeleteConnectionInput!) {
+  deleteConnection(input: $input) {
+    ... on DeleteConnection {
+      success
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    `;e.s(["UserConnectorsPageDocument",0,i,"useCreateConnectionMutation",0,function(e){let n={...r,...e};return t.useMutation(a,n)},"useDeleteConnectionMutation",0,function(e){let n={...r,...e};return t.useMutation(s,n)}])},524477,e=>{"use strict";var n=e.i(389959),o=e.i(412753),t=e.i(335451);e.i(214847);var r=e.i(864300);let i=({refetch:e,onConnectionCreated:i,orgId:a})=>{let s=(0,r.useIntl)().formatMessage({id:"connectors.mcpGenericError",defaultMessage:"Something went wrong. Please try again."}),[c]=(0,t.useCreateConnectionMutation)(),[l]=(0,t.useDeleteConnectionMutation)();return{handleDelete:(0,n.useCallback)(async(n,t=a)=>{let{data:r}=await l({variables:{input:{connectionId:n,orgId:t}},optimisticResponse:{__typename:"RootMutationType",deleteConnection:{__typename:"DeleteConnection",success:!0}},update(e){(0,o.removeConnectionFromUserConnectorsPageCache)(e,{connectionId:n})}}),i=r?.deleteConnection;return(await Promise.resolve(e()).catch(()=>{}),i&&"DeleteConnection"!==i.__typename)?{ok:!1,error:"message"in i?i.message:s}:{ok:!0}},[l,e,s,a]),handleEvent:(0,n.useCallback)(async(n,o)=>{"connect.connection-connected"===n.name&&(await c({variables:{input:{connectionId:n.data.connection_id,orgId:a,...o&&{flowId:o}}}}),await e(),i?.())},[c,e,i,a])}};e.s(["usePersonalConnectorMutations",0,e=>i({...e,orgId:null}),"useUserConnectorMutations",0,i])},167904,e=>{"use strict";var n=e.i(351623),o=e.i(130902),t=e.i(979e3),r=e.i(366541),i=e.i(344480);e.i(975473);var a=e.i(299020);let s={},c=n.gql`
+    fragment SharedConnection on OrgConfiguredConnectorSharedConnection {
+  connection {
+    connectionId
+    connectorName
+  }
+  groupScopes {
+    ...OrgGroupsOrgGroup
+  }
+}
+    ${o.OrgGroupsOrgGroupFragmentDoc}`,l=n.gql`
+    fragment ConfiguredConnectorItem on OrgConfiguredConnector {
+  id
+  connectorName
+  displayName
+  connectionCount
+  config
+  connector {
+    ...OrgConnectorItem
+  }
+  sharedConnection {
+    ...SharedConnection
+  }
+  repls {
+    ...ConnectorContextReplInfo
+  }
+  warehouseCostClasses @include(if: $includeWarehouseCost) {
+    replId
+    costClass
+  }
+}
+    ${t.OrgConnectorItemFragmentDoc}
+${c}
+${r.ConnectorContextReplInfoFragmentDoc}`,u=n.gql`
+    fragment UserConfiguredConnectorItem on UserConfiguredConnector {
+  id
+  connectorName
+  displayName
+  connectionCount
+  isSharedDefault
+  apiKeyConnectionId
+  config
+  connector {
+    ...OrgConnectorItem
+  }
+}
+    ${t.OrgConnectorItemFragmentDoc}`,d=n.gql`
+    query ConfiguredConnectors($orgSlug: String!, $includeWarehouseCost: Boolean = false) {
+  currentUser {
+    id
+    org(orgSlug: $orgSlug) {
+      ... on Org {
+        id
+        dealContext {
+          dealType
+        }
+        authorizations {
+          editConnectorConfig(isCustomConfig: true) {
+            isAuthorized
+          }
+        }
+        configuredConnectors {
+          ... on OrgConfiguredConnectorConnection {
+            items {
+              ...ConfiguredConnectorItem
+            }
+            pageInfo {
+              hasNextPage
+              hasPreviousPage
+            }
+          }
+        }
+      }
+      ... on NotFoundError {
+        message
+      }
+    }
+  }
+}
+    ${l}`,g=n.gql`
+    mutation DeleteSharedOrgConnectionAndConfig($input: DeleteSharedOrgConnectionAndConfigInput!) {
+  deleteSharedOrgConnectionAndConfig(input: $input) {
+    ... on DeleteSharedOrgConnectionAndConfigResult {
+      org {
+        id
+        configuredConnectors {
+          ... on OrgConfiguredConnectorConnection {
+            items {
+              id
+            }
+          }
+        }
+      }
+      deletedConnectionIds
+    }
+    ... on NotFoundError {
+      message
+    }
+    ... on UnauthorizedError {
+      message
+    }
+  }
+}
+    `,p=n.gql`
+    query UserConfiguredConnectorRepls($connectorConfigId: String!) {
+  getUserConfiguredConnectors(connectorConfigId: $connectorConfigId) {
+    id
+    repls {
+      ...ConnectorContextReplInfo
+    }
+  }
+}
+    ${r.ConnectorContextReplInfoFragmentDoc}`,C=n.gql`
+    mutation DeleteUserConnectorConfig($input: DeleteUserConnectorConfigInput!) {
+  deleteUserConnectorConfig(input: $input) {
+    ... on DeleteUserConnectorConfigResult {
+      success
+    }
+    ... on NotFoundError {
+      message
+    }
+    ... on UnauthorizedError {
+      message
+    }
+  }
+}
+    `;e.s(["ConfiguredConnectorItemFragmentDoc",0,l,"ConfiguredConnectorsDocument",0,d,"UserConfiguredConnectorItemFragmentDoc",0,u,"useDeleteSharedOrgConnectionAndConfigMutation",0,function(e){let n={...s,...e};return a.useMutation(g,n)},"useDeleteUserConnectorConfigMutation",0,function(e){let n={...s,...e};return a.useMutation(C,n)},"useUserConfiguredConnectorReplsQuery",0,function(e){let n={...s,...e};return i.useQuery(p,n)}])},579061,e=>{"use strict";var n=e.i(167904),o=e.i(933302);e.s(["useConfiguredConnectorsRefetch",0,function(e){let t=(0,o.useFeatureGate)("gate_connectors_warehouse_cost_class",!1);return{query:n.ConfiguredConnectorsDocument,variables:{orgSlug:e,includeWarehouseCost:t}}}])},979e3,e=>{"use strict";var n=e.i(351623);let o=n.gql`
+    fragment OrgConnectorItem on OrgConnector {
+  type
+  name
+  displayName
+  description
+  verticals
+  logoUrl
+  authType
+  stage
+  accessType
+  platforms
+  credentials
+  requiredScopes
+  defaultScopes
+  allowedScopes
+  scopes {
+    scope
+    displayName
+    description
+  }
+  setupGuide {
+    docsUrl
+    steps
+    fields {
+      field
+      label
+      help
+      sourceUrl
+      generateUrl
+    }
+  }
+  schemas {
+    connectorConfig
+    connectionSettings
+  }
+}
+    `,t=n.gql`
+    fragment PersonalConnectorItem on UserConnector {
+  type
+  name
+  displayName
+  logoUrl
+  authType
+  stage
+  accessType
+  platforms
+  verticals
+  credentials
+  requiredScopes
+  defaultScopes
+  allowedScopes
+  scopes {
+    scope
+    displayName
+    description
+  }
+  setupGuide {
+    docsUrl
+    steps
+    fields {
+      field
+      label
+      help
+      sourceUrl
+      generateUrl
+    }
+  }
+  schemas {
+    connectorConfig
+    connectionSettings
+  }
+}
+    `,r=n.gql`
+    query OrgConnectorSetup($orgSlug: String!) {
+  currentUser {
+    id
+    __typename
+    org(orgSlug: $orgSlug) {
+      __typename
+      ... on Org {
+        id
+        authorizations {
+          createConnectorConfig {
+            isAuthorized
+          }
+          editConnectorConfig(isCustomConfig: true) {
+            isAuthorized
+          }
+        }
+        connectors {
+          ... on OrgConnectorConnection {
+            items {
+              ...OrgConnectorItem
+            }
+          }
+        }
+      }
+      ... on NotFoundError {
+        message
+      }
+    }
+  }
+}
+    ${o}`;e.s(["OrgConnectorItemFragmentDoc",0,o,"OrgConnectorSetupDocument",0,r,"PersonalConnectorItemFragmentDoc",0,t])},456432,e=>{"use strict";var n=e.i(351623),o=e.i(979e3),t=e.i(299020);e.i(344480),e.i(975473);let r={},i=n.gql`
+    mutation UpdateConnectorConfig($input: UpdateConnectorConfigInput!) {
+  updateConnectorConfig(input: $input) {
+    ... on Org {
+      ... on Org {
+        id
+        configuredConnectors {
+          ... on OrgConfiguredConnectorConnection {
+            items {
+              id
+            }
+          }
+        }
+      }
+    }
+    ... on UserError {
+      message
+    }
+    ... on NotFoundError {
+      message
+    }
+    ... on UnauthorizedError {
+      message
+    }
+  }
+}
+    `,a=n.gql`
+    mutation OrgConnectorSetupFormCreateApiKeyConnection($input: CreateApiKeyConnectionInput!) {
+  createApiKeyConnection(input: $input) {
+    ... on CreateApiKeyConnectionResult {
+      connectionId
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    `,s=n.gql`
+    mutation createUpdateSharedOrgConnection($input: CreateUpdateSharedOrgConnectionInput!) {
+  createUpdateSharedOrgConnection(input: $input) {
+    ... on CreateUpdateSharedOrgConnectionResult {
+      connectionId
+      org {
+        id
+        connectors {
+          ... on OrgConnectorConnection {
+            items {
+              ...OrgConnectorItem
+            }
+          }
+        }
+        configuredConnectors {
+          ... on OrgConfiguredConnectorConnection {
+            items {
+              id
+            }
+          }
+        }
+        connectorContext {
+          __typename
+          ... on OrgConnectorContext {
+            connectorConfigs {
+              id
+              webhookEvents {
+                name
+                model
+                description
+              }
+            }
+          }
+          ... on Error {
+            message
+          }
+        }
+      }
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    ${o.OrgConnectorItemFragmentDoc}`,c=n.gql`
+    mutation CreateUserConnectorConfig($input: CreateUserConnectorConfigInput!) {
+  createUserConnectorConfig(input: $input) {
+    ... on CreateUserConnectorConfigResult {
+      connectorConfigId
+    }
+    ... on ServiceUnavailable {
+      message
+    }
+    ... on UserError {
+      message
+    }
+    ... on UnauthorizedError {
+      message
+    }
+  }
+}
+    `;e.s(["useCreateUpdateSharedOrgConnectionMutation",0,function(e){let n={...r,...e};return t.useMutation(s,n)},"useCreateUserConnectorConfigMutation",0,function(e){let n={...r,...e};return t.useMutation(c,n)},"useOrgConnectorSetupFormCreateApiKeyConnectionMutation",0,function(e){let n={...r,...e};return t.useMutation(a,n)},"useUpdateConnectorConfigMutation",0,function(e){let n={...r,...e};return t.useMutation(i,n)}])},534033,e=>{e.v({form:"OrgConnectorSetupForm-module__8B8tSW__form"})},696254,e=>{"use strict";var n=e.i(276385),o=e.i(635050),t=e.i(389959),r=e.i(29822),i=e.i(979e3),a=e.i(456432),s=e.i(142643),c=e.i(674826),l=e.i(829706),u=e.i(320216);e.i(214847);var d=e.i(20397),g=e.i(864300),p=e.i(742667),C=e.i(392238),f=e.i(665271),m=e.i(926010),y=e.i(624025),h=e.i(415541),S=e.i(709485),v=e.i(579061),b=e.i(919073),U=e.i(643484),M=e.i(903790),O=e.i(190545),w=e.i(8047),x=e.i(61732),I=e.i(180617),D=e.i(534033);let E={};e.s(["OrgConnectorSetupForm",0,function({connector:e,flowId:k,onComplete:P,connectionSettings:_,canUseCustomConfig:F=!1,orgId:A,orgSlug:N}){let T=(0,g.useIntl)(),j=(0,v.useConfiguredConnectorsRefetch)(N),{name:q,logoUrl:R}=e??{},$=e?.displayName||q,{showConfirm:K,showError:G}=(0,u.default)(),V=!!A,z="api_key"===e.type||"API_KEY"===e.authType,[B,L]=(0,t.useState)(z||!e.credentials?"custom":"default"),Q=(0,t.useMemo)(()=>({allowedScopes:e?.allowedScopes||[],defaultScopes:e?.defaultScopes||[]}),[e]),[W,H]=(0,t.useState)(Q.defaultScopes),[J,{loading:Y,error:X}]=(0,a.useUpdateConnectorConfigMutation)({refetchQueries:[{query:r.OrgConnectorsPageDocument,variables:{orgSlug:N}}],onCompleted:e=>{"Org"===e.updateConnectorConfig.__typename?(K(T.formatMessage({id:"orgs.connectorSetupConfiguredForWorkspaceConfirm",defaultMessage:"Connector has been successfully configured for your workspace"})),P()):("UserError"===e.updateConnectorConfig.__typename||"UnauthorizedError"===e.updateConnectorConfig.__typename)&&G(e.updateConnectorConfig.message)},onError:()=>{G(T.formatMessage({id:"orgs.connectorSetupEnableConnectorError",defaultMessage:"Failed to enable connector. Please try again."}))}}),[Z,{loading:ee}]=(0,a.useCreateUpdateSharedOrgConnectionMutation)({refetchQueries:[{query:r.OrgConnectorsPageDocument,variables:{orgSlug:N}},j,{query:i.OrgConnectorSetupDocument,variables:{orgSlug:N}}],onCompleted:e=>{"CreateUpdateSharedOrgConnectionResult"===e.createUpdateSharedOrgConnection.__typename?(K(T.formatMessage({id:"orgs.connectorSetupUpdatedConfirm",defaultMessage:"Connector has been successfully updated"})),P()):G(e.createUpdateSharedOrgConnection.message)},onError:()=>{G(T.formatMessage({id:"orgs.connectorSetupCreateConnectionError",defaultMessage:"Failed to create connection. Please try again."}))}}),[en,{loading:eo}]=(0,a.useOrgConnectorSetupFormCreateApiKeyConnectionMutation)({refetchQueries:["UserConnectorsPage","PersonalConnectorSetup","UserConfiguredConnectors"],onCompleted:e=>{"CreateApiKeyConnectionResult"===e.createApiKeyConnection.__typename?(K(T.formatMessage({id:"orgs.connectorSetupConnectionCreatedConfirm",defaultMessage:"Connection created successfully"})),P()):G(e.createApiKeyConnection.message)},onError:()=>{G(T.formatMessage({id:"orgs.connectorSetupCreateConnectionError",defaultMessage:"Failed to create connection. Please try again."}))}}),[et,{loading:er}]=(0,a.useCreateUserConnectorConfigMutation)({refetchQueries:["UserConnectorsPage","PersonalConnectorSetup","UserConfiguredConnectors"],onCompleted:e=>{"CreateUserConnectorConfigResult"===e.createUserConnectorConfig.__typename?(K(T.formatMessage({id:"orgs.connectorSetupConfiguredConfirm",defaultMessage:"Connector configured successfully"})),P()):("UserError"===e.createUserConnectorConfig.__typename||"UnauthorizedError"===e.createUserConnectorConfig.__typename||"ServiceUnavailable"===e.createUserConnectorConfig.__typename)&&G(e.createUserConnectorConfig.message)},onError:()=>{G(T.formatMessage({id:"orgs.connectorSetupConfigureConnectorError",defaultMessage:"Failed to configure connector. Please try again."}))}}),ei=e?.schemas?.connectorConfig,ea=(0,y.hasTopLevelPasswordField)(ei),es=async e=>{if(e.preventDefault(),!q)return;let n={oauth:{scopes:W}};V?(await J({variables:{input:{connectorName:q,orgId:A,config:n}},refetchQueries:[j,{query:r.OrgConnectorsPageDocument,variables:{orgSlug:N}},{query:i.OrgConnectorSetupDocument,variables:{orgSlug:N}}]}),(0,h.track)(S.events.ORG_CREATE_CONNECTOR,{connectorName:q,orgSlug:N})):await et({variables:{input:{connectorName:(0,s.connectorNameToGql)(q),config:n}}})},ec=async n=>{if(q){if("OAUTH2"===e.authType)return void await et({variables:{input:{connectorName:(0,s.connectorNameToGql)(q),config:n}}});await en({variables:{input:{connectorName:(0,s.connectorNameToGql)(q),config:n,...k&&{flowId:k}}}})}},el=async e=>{if(q){if(!V)return void await ec(e);await J({variables:{input:{connectorName:q,orgId:A,config:e}},refetchQueries:[j,{query:r.OrgConnectorsPageDocument,variables:{orgSlug:N}},{query:i.OrgConnectorSetupDocument,variables:{orgSlug:N}}]}),(0,h.track)(S.events.ORG_CREATE_CONNECTOR,{connectorName:q,orgSlug:N})}},eu=async e=>{if(q){if(!V)return void await ec(e);await Z({variables:{input:{connectorName:(0,s.connectorNameToGql)(q),orgId:A,config:e,...k&&{flowId:k}}}}),(0,h.track)(S.events.ORG_CREATE_CONNECTOR,{connectorName:q,orgSlug:N})}},ed=Y||ee||eo||er,eg=T.formatMessage({id:"orgs.connectorSetupSubmitButton",defaultMessage:"Configure"});return(0,n.jsxs)(x.View,{gap:24,children:[(0,n.jsxs)(x.View,{gap:16,align:"start",children:[R?(0,n.jsx)(b.ShadesSurface,{p:4,align:"center",justify:"center",br:8,children:(0,n.jsx)(o.default,{src:R,alt:T.formatMessage({id:"orgs.connectorCardLogoAlt",defaultMessage:"{title} logo"},{title:$}),width:32,height:32,style:{objectFit:"contain"}})}):null,(0,n.jsxs)(x.View,{gap:8,align:"start",children:[(0,n.jsx)(w.Text,{variant:"headerDefault",children:(0,n.jsx)(d.FormattedMessage,{id:"orgs.connectorSetupEnableTitle",defaultMessage:"Enable {title}",values:{title:$}})}),(0,n.jsx)(w.Text,{color:"dimmer",children:V?(0,n.jsx)(d.FormattedMessage,{id:"orgs.connectorSetupOrgEnableDescription",defaultMessage:"Once configured, your entire workspace can use this {title} connector to build Apps without needing their own API keys.",values:{title:$}}):(0,n.jsx)(d.FormattedMessage,{id:"orgs.connectorSetupPersonalEnableDescription",defaultMessage:"Once configured, you can use this {title} connector to build Apps.",values:{title:$}})})]})]}),(0,n.jsx)(O.Form,{onSubmit:"default"===B?es:void 0,className:D.default.form,children:(0,n.jsxs)(x.View,{gap:8,children:[X?(0,n.jsx)(c.default,{children:X.message}):null,_&&z?(0,n.jsxs)(x.View,{gap:16,children:[(0,n.jsx)(p.ConnectorSetupGuidePanel,{setupGuide:e.setupGuide}),(0,n.jsx)(f.JSONSchemaForm,{jsonSchema:_,formContext:e,hideSubmitButton:!1,hideSensitiveFields:!1,onSubmit:eu,disabled:ed,submitButtonText:eg,formData:E,disableScopes:!1,loading:!1})]}):(0,n.jsxs)(n.Fragment,{children:[e.credentials?(0,n.jsx)(C.default,{value:B,onChange:e=>{let n=e.target.value;("default"===n||"custom"===n)&&L(n)},isDisabled:!F,isUpdate:!1}):null,"custom"===B&&ei?(0,n.jsxs)(x.View,{gap:16,children:[(0,n.jsx)(p.ConnectorSetupGuidePanel,{setupGuide:e.setupGuide}),e.authType?.includes("OAUTH")&&!(0,l.isServiceAccountConnector)((0,s.connectorNameToGql)(q??""))?(0,n.jsx)(I.default,{components:{p:e=>(0,n.jsx)(w.Text,{color:"dimmer",children:e.children})},clsx:D.default.markdown,children:T.formatMessage({id:"orgs.connectorSetupOauthCallbackInstructions",defaultMessage:"In order to properly configure this connector, you need to set `https://replit.com/connectors/oauth/callback` as the Redirect URL in your app."})}):null,(0,n.jsx)(f.JSONSchemaForm,{jsonSchema:ei,formData:E,formContext:e,hideSubmitButton:!1,hideSensitiveFields:!ea,onSubmit:el,disabled:ed,submitButtonText:eg,disableScopes:!1})]}):null]}),"default"===B&&(0,n.jsxs)(x.View,{gap:12,pt:12,children:[(0,n.jsx)(M.DividerH,{className:D.default.divider}),(0,n.jsxs)(x.View,{gap:4,children:[(0,n.jsx)(w.Text,{variant:"text",children:(0,n.jsx)(d.FormattedMessage,{id:"orgs.connectorSetupScopesLabel",defaultMessage:"Connector Scopes"})}),(0,n.jsx)(w.Text,{variant:"small",color:"dimmer",children:(0,n.jsx)(d.FormattedMessage,{id:"orgs.connectorSetupScopesDescription",defaultMessage:"Connector scopes are permission mechanisms that define what specific resources and actions a connector is authorized to access on your account."})})]}),(0,n.jsx)(m.ScopesToggleList,{availableScopes:Q.allowedScopes,scopeMetadata:e.scopes??[],selectedScopes:W,onChange:H,lockedScopes:Q.defaultScopes,isDisabled:!F}),(0,n.jsx)(x.View,{pt:16,row:!0,justify:"end",children:(0,n.jsx)(U.Button,{type:"submit",colorway:"primary",disabled:ed,loading:Y||er,text:eg})})]})]})})]})}])}]);
+
+//# debugId=ea4efae4-2292-ab34-6521-8c430c5f4dfc
+//# sourceMappingURL=0zmvv30yym3b9.js.map

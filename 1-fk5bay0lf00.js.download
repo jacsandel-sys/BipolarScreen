@@ -1,0 +1,301 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="ab56494d-404d-6064-a68c-b7fd63b2b1cf")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,64810,e=>{"use strict";var t=e.i(276385);let s=(0,e.i(389959).createContext)(1/0);e.s(["SettingsContentWidthProvider",0,function({width:e,children:a}){return(0,t.jsx)(s.Provider,{value:e,children:a})}])},419407,e=>{"use strict";var t=e.i(389959);let s=(0,t.createContext)("legacy");e.s(["SettingsLayoutContext",0,s,"useSettingsLayout",0,function(){return(0,t.useContext)(s)}])},1393,e=>{e.v({backdrop:"SettingsModalSideSheet-module__BevDQa__backdrop",root:"SettingsModalSideSheet-module__BevDQa__root","settings-side-sheet-backdrop-enter":"SettingsModalSideSheet-module__BevDQa__settings-side-sheet-backdrop-enter","settings-side-sheet-backdrop-exit":"SettingsModalSideSheet-module__BevDQa__settings-side-sheet-backdrop-exit","settings-side-sheet-enter":"SettingsModalSideSheet-module__BevDQa__settings-side-sheet-enter","settings-side-sheet-enter-bottom":"SettingsModalSideSheet-module__BevDQa__settings-side-sheet-enter-bottom","settings-side-sheet-exit":"SettingsModalSideSheet-module__BevDQa__settings-side-sheet-exit","settings-side-sheet-exit-bottom":"SettingsModalSideSheet-module__BevDQa__settings-side-sheet-exit-bottom",sheet:"SettingsModalSideSheet-module__BevDQa__sheet",viewportHost:"SettingsModalSideSheet-module__BevDQa__viewportHost"})},56742,e=>{"use strict";var t=e.i(276385),s=e.i(389959),a=e.i(921211),i=e.i(739261),r=e.i(935506);e.i(214847);var n=e.i(864300),o=e.i(919073),l=e.i(1393);let d=(0,s.createContext)(null);e.s(["SettingsModalSideSheetHost",0,function({viewportBound:e=!1}={}){let u=(0,n.useIntl)(),g=(0,s.useContext)(d),c=g?.content??null,m=g?.hide,h=g?.completeHide,p=g?.isOpen??!1,b=(0,r.usePrefersReducedMotion)(),f=(0,s.useRef)(null);(0,s.useEffect)(()=>{!p&&c&&b&&h?.()},[h,c,p,b]);let v=u.formatMessage({id:"settings.sideSheetBackdropClose",defaultMessage:"Close settings side sheet"}),{dialogProps:S}=(0,i.useDialog)({"aria-label":c?.ariaLabel??v},f);if(!c||!m)return null;let x=(0,t.jsxs)("div",{clsx:l.default.root,"data-state":p?"open":"closing",children:[(0,t.jsx)("button",{type:"button",clsx:l.default.backdrop,"aria-label":v,disabled:!p,onClick:m}),(0,t.jsx)(a.FocusScope,{contain:!0,restoreFocus:!0,autoFocus:!0,children:(0,t.jsx)(o.ShadesSurface,{...S,"aria-modal":"true",colorShade:"themePopup",border:{side:"left",strength:"subtle"},p:0,clsx:l.default.sheet,innerRef:f,tabIndex:-1,onAnimationEnd:e=>{e.target!==e.currentTarget||p||b||h?.()},onKeyDown:e=>{"Escape"!==e.key||e.defaultPrevented||(e.preventDefault(),e.stopPropagation(),m())},children:c.content})})]});return e?(0,t.jsx)("div",{clsx:l.default.viewportHost,children:x}):x},"SettingsModalSideSheetProvider",0,function({children:e}){let[a,i]=(0,s.useState)(null),r=(0,s.useCallback)(()=>{i(e=>e?{...e,isOpen:!1}:null)},[]),n=(0,s.useCallback)(()=>i(null),[]),o=(0,s.useCallback)(e=>{i({...e,isOpen:!0})},[]),l=(0,s.useMemo)(()=>({isOpen:a?.isOpen??!1,show:o,hide:r,completeHide:n,content:a}),[n,r,a,o]);return(0,t.jsx)(d.Provider,{value:l,children:e})},"useOptionalSettingsModalSideSheet",0,function(){let e=(0,s.useContext)(d);return e?{show:e.show,hide:e.hide}:null},"useSettingsModalSideSheet",0,function(){let e=(0,s.useContext)(d);if(!e)throw Error("useSettingsModalSideSheet must be used within SettingsModalSideSheetProvider");return{isOpen:e.isOpen,show:e.show,hide:e.hide}}])},300340,e=>{e.v({permissionDeniedContent:"SettingsTabContent-module__MGOYlG__permissionDeniedContent",permissionDeniedDescription:"SettingsTabContent-module__MGOYlG__permissionDeniedDescription",permissionDeniedRoot:"SettingsTabContent-module__MGOYlG__permissionDeniedRoot"})},595375,e=>{"use strict";var t=e.i(276385),s=e.i(196786),a=e.i(389959),i=e.i(830675),r=e.i(995691),n=e.i(403649),o=e.i(569910),l=e.i(619297);e.i(214847);var d=e.i(864300),u=e.i(786224),g=e.i(643484),c=e.i(8047),m=e.i(61732),h=e.i(412947),p=e.i(775702),b=e.i(300340);let f=new WeakSet,v=e=>{f.has(e)||(f.add(e),i.withScope(t=>{t.setTag("settings-tab-chunk-error",!0),i.captureException(e)}))},S=()=>{let e=(0,d.useIntl)();return(0,t.jsx)(m.View,{clsx:b.default.permissionDeniedRoot,p:32,children:(0,t.jsxs)(m.View,{clsx:b.default.permissionDeniedContent,gap:16,children:[(0,t.jsx)(n.default,{size:48}),(0,t.jsx)(c.Header,{level:2,variant:"headerDefault",children:e.formatMessage({id:"settings.chunkLoadError",defaultMessage:"Something went wrong"})}),(0,t.jsx)(c.Text,{clsx:b.default.permissionDeniedDescription,color:"dimmer",children:e.formatMessage({id:"settings.chunkLoadErrorDescription",defaultMessage:"This section failed to load, likely due to an update. Reload the page to get the latest version."})}),(0,t.jsx)(g.Button,{text:e.formatMessage({id:"settings.reloadPage",defaultMessage:"Reload page"}),onClick:()=>window.location.reload()})]})})},x=()=>{let e=(0,d.useIntl)();return(0,t.jsx)(m.View,{clsx:b.default.permissionDeniedRoot,p:32,children:(0,t.jsxs)(m.View,{clsx:b.default.permissionDeniedContent,gap:16,children:[(0,t.jsx)(n.default,{size:48}),(0,t.jsx)(c.Header,{level:2,variant:"headerDefault",children:e.formatMessage({id:"settings.integrationsError",defaultMessage:"Something went wrong"})}),(0,t.jsx)(c.Text,{clsx:b.default.permissionDeniedDescription,color:"dimmer",children:e.formatMessage({id:"settings.integrationsErrorDescription",defaultMessage:"The integrations section failed to load. Reload the page to try again."})}),(0,t.jsx)(g.Button,{text:e.formatMessage({id:"settings.reloadPage",defaultMessage:"Reload page"}),onClick:()=>window.location.reload()})]})})},C=e=>e.error?(v(e.error),(0,t.jsx)(S,{})):(0,t.jsx)(p.default,{}),A=(0,a.createContext)(null),y=e=>{let s=(0,a.useContext)(A);e.error&&v(e.error);let i=e.error?(0,t.jsx)(S,{}):(0,t.jsx)(p.default,{});return s?(0,t.jsx)(u.SettingsTabLayout,{...s.tabConfig,hideHeader:s.hideHeader,isHeaderSticky:s.isHeaderSticky,children:i}):i},_=(0,s.default)(()=>e.A(710640).then(e=>({default:e.ConnectorsSettings2})),{loadableGenerated:{modules:[669417]},loading:C}),w=(0,s.default)(()=>e.A(93755),{loadableGenerated:{modules:[600640]},loading:C}),U=(0,s.default)(()=>e.A(932195),{loadableGenerated:{modules:[463818]},loading:C}),z=(0,s.default)(()=>e.A(392515),{loadableGenerated:{modules:[860454]},loading:C}),T=(0,s.default)(()=>e.A(511347),{loadableGenerated:{modules:[334026]},loading:C}),O=(0,s.default)(()=>e.A(513788).then(e=>({default:e.UsageTabContent})),{loadableGenerated:{modules:[374381]},loading:y}),j=(0,s.default)(()=>e.A(548975),{loadableGenerated:{modules:[743542]},loading:C}),I=(0,s.default)(()=>e.A(167595),{loadableGenerated:{modules:[400755]},loading:C}),P=(0,s.default)(()=>e.A(652022),{loadableGenerated:{modules:[764632]},loading:C}),D=(0,s.default)(()=>e.A(610467),{loadableGenerated:{modules:[864764]},loading:C}),M=(0,s.default)(()=>e.A(559243),{loadableGenerated:{modules:[383479]},loading:C}),k=(0,s.default)(()=>e.A(590287),{loadableGenerated:{modules:[543474]},loading:C}),E=(0,s.default)(()=>e.A(766648),{loadableGenerated:{modules:[841007]},loading:C}),H=(0,s.default)(()=>e.A(929521),{loadableGenerated:{modules:[172806]},loading:C}),B=(0,s.default)(()=>e.A(24884),{loadableGenerated:{modules:[146952]},loading:C}),$=(0,s.default)(()=>e.A(182553).then(e=>({default:e.TemplatesTabContent})),{loadableGenerated:{modules:[693041]},loading:y}),F=(0,s.default)(()=>e.A(470257).then(e=>({default:e.TemplatesSettingsContent})),{loadableGenerated:{modules:[755063]},loading:y}),L=(0,s.default)(()=>e.A(95019),{loadableGenerated:{modules:[555792]},loading:C}),Q=(0,s.default)(()=>e.A(959679),{loadableGenerated:{modules:[846898]},loading:C}),R=e=>{switch(e.tab){case"workspaceOverview":return(0,t.jsx)(P,{orgId:e.orgId,orgSlug:e.orgSlug});case"invitedUsers":return e.orgSlug?(0,t.jsx)(I,{orgSlug:e.orgSlug}):(0,t.jsx)(M,{});case"workspaceUsage":return(0,t.jsx)(D,{orgId:e.orgId,setSelectedTab:e.setSelectedTab});case"integrations":return(0,t.jsx)(h.default,{sentryTag:"settings-integrations-crashed",fallback:()=>(0,t.jsx)(x,{}),children:(0,t.jsx)(_,{context:e.orgSlug?"org":"personal",orgId:e.orgId,orgSlug:e.orgSlug,handleClose:e.handleClose})});case"knowledge":return(0,t.jsx)(B,{orgContext:e.orgContext});case"security":return(0,t.jsx)(L,{orgId:e.orgId});case"billing":return e.customerContext.isBillingV2Enabled?(0,t.jsx)(z,{customerContext:e.customerContext}):(0,t.jsx)(U,{customerContext:e.customerContext});case"seats":return(0,t.jsx)(j,{customerContext:e.customerContext,setSelectedTab:e.setSelectedTab});case"customerUsage":return(0,t.jsx)(T,{customerContext:e.customerContext,setSelectedTab:e.setSelectedTab});case"advanced":return(0,t.jsx)(w,{customerContext:e.customerContext});case"authenticationAndIdentity":return(0,t.jsx)(w,{customerContext:e.customerContext,section:"authenticationAndIdentity"});case"developer":return(0,t.jsx)(Q,{customerId:e.customerId});case"profile":return(0,t.jsx)(E,{});case"promotionsReferrals":return(0,t.jsx)(H,{});case"personalization":return(0,t.jsx)(l.PreferencesProvider,{children:(0,t.jsx)(k,{})});default:return(0,o.default)(e)}};e.s(["SettingsTabContent",0,e=>{let s=(0,d.useIntl)();return e.disabled?(0,t.jsx)(u.SettingsTabLayout,{...e.tabConfig,hideHeader:e.hideHeader,children:(0,t.jsx)(m.View,{clsx:b.default.permissionDeniedRoot,p:32,children:(0,t.jsxs)(m.View,{clsx:b.default.permissionDeniedContent,gap:16,children:[(0,t.jsx)(r.default,{size:48}),(0,t.jsx)(c.Header,{level:2,variant:"headerDefault",children:s.formatMessage({id:"settings.permissionRequired",defaultMessage:"Permission required"})}),(0,t.jsx)(c.Text,{clsx:b.default.permissionDeniedDescription,color:"dimmer",children:e.disabledMessage||s.formatMessage({id:"settings.permissionDenied",defaultMessage:"You do not have permission to view this page."})})]})})}):"usage"===e.tab?"loading"===e.usageContext.status?(0,t.jsx)(u.SettingsTabLayout,{...e.tabConfig,hideHeader:e.hideHeader,isHeaderSticky:!0,children:(0,t.jsx)(p.default,{})}):(0,t.jsx)(A.Provider,{value:{tabConfig:e.tabConfig,hideHeader:e.hideHeader,isHeaderSticky:!0},children:(0,t.jsx)(O,{tabConfig:e.tabConfig,hideHeader:e.hideHeader,customerId:e.usageContext.customerId,contextOrgId:e.usageContext.contextOrgId,contextOrgName:e.usageContext.contextOrgName})}):"templates"===e.tab?(0,t.jsx)(A.Provider,{value:{tabConfig:e.tabConfig,hideHeader:e.hideHeader},children:(0,t.jsx)(F,{tabConfig:e.tabConfig,orgContext:e.orgContext,hideHeader:e.hideHeader,handleClose:e.handleClose})}):"slidesTemplates"===e.tab||"designSystems"===e.tab?(0,t.jsx)(A.Provider,{value:{tabConfig:e.tabConfig,hideHeader:e.hideHeader},children:(0,t.jsx)($,{tabConfig:e.tabConfig,hideHeader:e.hideHeader,artifactKind:"designSystems"===e.tab?"design-system":"slides",orgContext:e.orgContext,handleClose:e.handleClose},e.tab)}):(0,t.jsx)(u.SettingsTabLayout,{...e.tabConfig,hideHeader:e.hideHeader,children:(0,t.jsx)(R,{...e})})}])},744456,e=>{e.v({settingsTabLayout:"SettingsTabLayout-module__0dYyPa__settingsTabLayout",stickyTabHeader:"SettingsTabLayout-module__0dYyPa__stickyTabHeader",tabHeader:"SettingsTabLayout-module__0dYyPa__tabHeader"})},786224,e=>{"use strict";var t=e.i(276385);e.i(214847);var s=e.i(864300),a=e.i(459289),i=e.i(8047),r=e.i(61732),n=e.i(744456);e.s(["SettingsTabLayout",0,({label:e,labelId:o,subtitle:l,hideHeader:d,headerActions:u,isHeaderSticky:g,children:c})=>{let m=(0,s.useIntl)(),h=o?m.formatMessage({id:o,defaultMessage:e}):e,p=g?{clsx:n.default.stickyTabHeader,"data-testid":"settings-tab-sticky-header"}:void 0,b=null;if(d)b=u||g?(0,t.jsx)(r.View,{row:!0,justify:"end",...p,children:u}):null;else if(l)b=(0,t.jsxs)(r.View,{gap:4,clsx:n.default.tabHeader,...p,children:[(0,t.jsxs)(r.View,{row:!0,align:"center",justify:"space-between",gap:16,wrap:!0,children:[(0,t.jsx)(i.Header,{level:3,variant:"headerDefault",children:h}),u]}),(0,t.jsx)(i.Text,{variant:"text",color:"dimmer",children:l})]});else{let e=(0,t.jsx)(a.ToolPaneHeader,{title:h,headingLevel:3,action:u});b=p?(0,t.jsx)(r.View,{...p,children:e}):e}return(0,t.jsxs)(r.View,{grow:!0,pt:24*!g,clsx:n.default.settingsTabLayout,children:[b,(0,t.jsx)(r.View,{py:16,children:c})]})}])},248146,e=>{e.v({content:"UniversalSettingsContentArea-module__bZEcFa__content",contentCompact:"UniversalSettingsContentArea-module__bZEcFa__contentCompact",contentPage:"UniversalSettingsContentArea-module__bZEcFa__contentPage",contentWidthObserver:"UniversalSettingsContentArea-module__bZEcFa__contentWidthObserver"})},626425,e=>{"use strict";var t=e.i(276385),s=e.i(389959),a=e.i(934982),i=e.i(64810),r=e.i(419407),n=e.i(595375),o=e.i(919073),l=e.i(61732),d=e.i(775702),u=e.i(248146);e.s(["UniversalSettingsContentArea",0,function({loading:e,tabContentProps:g,surface:c}){let m="legacyDialog"===c.type?"legacy":"compact",h="page"===c.type?{"--settings-tab-max-width":`${c.maxWidth}px`}:void 0,[p,b]=(0,s.useState)(null),f=(0,a.default)(({width:e})=>{b(e)}),v=(0,s.useCallback)(e=>{f(e),e&&void 0===window.ResizeObserver&&b(Math.round(e.getBoundingClientRect().width))},[f]),S="page"===c.type?p:1/0,x=e||"page"===c.type&&null===p,C=null;return x?C=(0,t.jsx)(d.default,{}):g&&(C=(0,t.jsx)(n.SettingsTabContent,{...g})),(0,t.jsx)(r.SettingsLayoutContext.Provider,{value:m,children:(0,t.jsx)(i.SettingsContentWidthProvider,{width:S??0,children:(0,t.jsx)(o.ShadesSurface,{clsx:[u.default.content,{[u.default.contentCompact]:"compact"===m,[u.default.contentPage]:"page"===c.type}],style:h,"data-settings-layout":"compact"===m?m:void 0,elevate:"page"!==c.type&&"1x",children:(0,t.jsx)(l.View,{innerRef:"page"===c.type?v:void 0,clsx:u.default.contentWidthObserver,grow:x,align:x?"center":void 0,justify:x?"center":void 0,children:C})})})})}])},430263,e=>{"use strict";var t=e.i(351623),s=e.i(344480);e.i(975473);let a={},i=t.gql`
+    fragment UsagePageViewPageAccessResult on UsagePageAuthorizations {
+  usageBreakdownEnabled
+  viewPage {
+    isAuthorized
+    message
+  }
+  viewAccountUsage {
+    isAuthorized
+  }
+  viewExtraUsage {
+    isAuthorized
+  }
+  viewLimits @include(if: $includeLimits) {
+    isAuthorized
+  }
+  editLimits @include(if: $includeLimits) {
+    isAuthorized
+  }
+}
+    `,r=t.gql`
+    query UsagePageViewAccessForOrg($orgId: String!, $filterOrgId: String, $includeLimits: Boolean!, $includeEarliestUsageDay: Boolean!, $includeFullUsagePageEnabled: Boolean!) {
+  getOrg(orgId: $orgId) {
+    __typename
+    ... on Org {
+      id
+      customer {
+        ... on Customer {
+          id
+          earliestUsageDay @include(if: $includeEarliestUsageDay)
+          fullUsagePageEnabled @include(if: $includeFullUsagePageEnabled)
+          authorizations {
+            isTopUpCustomer
+            editPaymentMethod {
+              isAuthorized
+              message
+            }
+          }
+          pageAuthorizations: usagePageAuthorizations(
+            contextOrgId: $orgId
+            filterOrgId: $filterOrgId
+          ) {
+            ...UsagePageViewPageAccessResult
+          }
+        }
+      }
+    }
+  }
+}
+    ${i}`,n=t.gql`
+    query UsagePageViewAccessCustomerWide($filterOrgId: String, $includeLimits: Boolean!, $includeEarliestUsageDay: Boolean!, $includeFullUsagePageEnabled: Boolean!) {
+  currentUser {
+    __typename
+    ... on CurrentUser {
+      id
+      customer {
+        ... on Customer {
+          id
+          earliestUsageDay @include(if: $includeEarliestUsageDay)
+          fullUsagePageEnabled @include(if: $includeFullUsagePageEnabled)
+          authorizations {
+            isTopUpCustomer
+            editPaymentMethod {
+              isAuthorized
+              message
+            }
+          }
+          pageAuthorizations: usagePageAuthorizations(filterOrgId: $filterOrgId) {
+            ...UsagePageViewPageAccessResult
+          }
+        }
+      }
+    }
+  }
+}
+    ${i}`;e.s(["useUsagePageViewAccessCustomerWideQuery",0,function(e){let t={...a,...e};return s.useQuery(n,t)},"useUsagePageViewAccessForOrgQuery",0,function(e){let t={...a,...e};return s.useQuery(r,t)}])},612546,e=>{"use strict";var t=e.i(430263);e.s(["useUsagePageViewAccess",0,function({contextOrgId:e,selectedWorkspaceOrgId:s,includeLimits:a=!1,includeEarliestUsageDay:i=!1,includeFullUsagePageEnabled:r=!1}){let n=null!=e,o=(0,t.useUsagePageViewAccessForOrgQuery)({variables:{orgId:e??"",filterOrgId:s,includeLimits:a,includeEarliestUsageDay:i,includeFullUsagePageEnabled:r},skip:!n,ssr:!1,fetchPolicy:"cache-and-network"}),l=(0,t.useUsagePageViewAccessCustomerWideQuery)({variables:{filterOrgId:s,includeLimits:a,includeEarliestUsageDay:i,includeFullUsagePageEnabled:r},skip:n,ssr:!1,fetchPolicy:"cache-and-network"}),d=o.data?.getOrg?.__typename==="Org"?o.data.getOrg:null,u=d?.customer.__typename==="Customer"?d.customer:null,g=l.data?.currentUser?.__typename==="CurrentUser"?l.data.currentUser:null,c=g?.customer?.__typename==="Customer"?g.customer:null,m=u??c,h=m?.pageAuthorizations,p=h?.usageBreakdownEnabled??!1,b=m?.fullUsagePageEnabled??!1,f=h?.viewPage.isAuthorized??!1,v=h?.viewPage.message,S=h?.viewAccountUsage.isAuthorized??!1,x=h?.viewExtraUsage.isAuthorized??!1,C=m?.authorizations.isTopUpCustomer??!1,A=m?.authorizations.editPaymentMethod,y=A&&!1===A.isAuthorized?A.message:void 0;return{usageBreakdownEnabled:p,fullUsagePageEnabled:b,viewPageAuthorized:f,viewPageMessage:v,viewAccountUsageAuthorized:S,viewExtraUsageAuthorized:x,isTopUpCustomer:C,editTopUpDisabledReason:y,viewLimitsAuthorized:h?.viewLimits?.isAuthorized??!1,editLimitsAuthorized:h?.editLimits?.isAuthorized??!1,earliestUsageDay:m?.earliestUsageDay,customerId:m?.id,loading:n?o.loading:l.loading,error:n?null!=o.error:null!=l.error}}])},67770,e=>{"use strict";var t=e.i(351623);let s=t.gql`
+    fragment UniversalSettingsTabsOrgDealContext on OrgDealContext {
+  dealType
+}
+    `,a=t.gql`
+    fragment UniversalSettingsTabsCustomerAuthorizations on Customer {
+  id
+  authorizations {
+    viewSubscription {
+      isAuthorized
+      message
+    }
+    viewSeats {
+      isAuthorized
+      message
+    }
+    viewUsage {
+      isAuthorized
+      message
+    }
+    editUsageLimit {
+      isAuthorized
+      message
+    }
+    editSettings {
+      isAuthorized
+      message
+    }
+    configurePiiFilter {
+      isAuthorized
+      message
+    }
+    enableScim {
+      isAuthorized
+      message
+    }
+    enableSaml {
+      isAuthorized
+      message
+    }
+    enableAuditLogs {
+      isAuthorized
+      message
+    }
+    viewAuditLogs {
+      isAuthorized
+      message
+    }
+    enablePromotions {
+      isAuthorized
+      message
+    }
+    editSecurityContacts {
+      isAuthorized
+      message
+    }
+    isTopUpCustomer
+  }
+}
+    `,i=t.gql`
+    fragment UniversalSettingsTabsOrgAuthorizations on OrgAuthorizations {
+  viewUsage {
+    isAuthorized
+    message
+  }
+  viewOrgMetadata {
+    isAuthorized
+    message
+  }
+  createRepl(private: true) {
+    isAuthorized
+    message
+  }
+  viewOrgGroups {
+    isAuthorized
+  }
+  viewOrgCustomInstructions {
+    isAuthorized
+    message
+  }
+  viewPersonalMemory {
+    isAuthorized
+    message
+  }
+  viewOrgCustomSkills {
+    isAuthorized
+    message
+  }
+  editOrgCustomSkills {
+    isAuthorized
+    message
+  }
+  viewArtifactTemplates {
+    isAuthorized
+    message
+  }
+  createArtifactTemplates {
+    isAuthorized
+    message
+  }
+  manageArtifactTemplates {
+    isAuthorized
+    message
+  }
+  consumeArtifactTemplates {
+    isAuthorized
+    message
+  }
+  viewOrgSecurity {
+    isAuthorized
+    message
+  }
+  viewOwnBudgets {
+    isAuthorized
+    message
+  }
+}
+    `;e.s(["UniversalSettingsTabsCustomerAuthorizationsFragmentDoc",0,a,"UniversalSettingsTabsOrgAuthorizationsFragmentDoc",0,i,"UniversalSettingsTabsOrgDealContextFragmentDoc",0,s])},9757,e=>{"use strict";e.s(["resolveUsageTabContext",0,function({customerId:e,orgSlug:t,org:s,orgLoading:a}){return null==t?{status:"ready",customerId:e,contextOrgId:null,contextOrgName:null}:s?.slug===t?{status:"ready",customerId:e,contextOrgId:s.id,contextOrgName:s.name}:a?{status:"loading"}:{status:"ready",customerId:e,contextOrgId:null,contextOrgName:null}}])},846773,e=>{"use strict";var t=e.i(351623),s=e.i(67770),a=e.i(344480);e.i(975473);let i={},r=t.gql`
+    fragment UniversalSettingsOrgSections on Org {
+  dealContext {
+    ...UniversalSettingsTabsOrgDealContext
+  }
+}
+    ${s.UniversalSettingsTabsOrgDealContextFragmentDoc}`,n=t.gql`
+    query UniversalSettingsModalCurrentUser {
+  currentUser {
+    __typename
+    ... on CurrentUser {
+      id
+      username
+      image
+      isArtifactTemplatesFlagEnabled: isGateEnabled(
+        gate: "gate_design_system_creation"
+      )
+      personalOrgAuthorizations {
+        ...UniversalSettingsTabsOrgAuthorizations
+      }
+      customer {
+        id
+        usagePageAuthorizations {
+          usageBreakdownEnabled
+          viewPage {
+            isAuthorized
+            message
+          }
+        }
+        ...UniversalSettingsTabsCustomerAuthorizations
+      }
+    }
+  }
+}
+    ${s.UniversalSettingsTabsOrgAuthorizationsFragmentDoc}
+${s.UniversalSettingsTabsCustomerAuthorizationsFragmentDoc}`,o=t.gql`
+    query UniversalSettingsModalOrg($orgSlug: String!) {
+  getOrg(orgSlug: $orgSlug) {
+    __typename
+    ... on Org {
+      id
+      slug
+      image
+      name
+      authorizations {
+        ...UniversalSettingsTabsOrgAuthorizations
+      }
+      customer {
+        ... on Customer {
+          id
+          ...UniversalSettingsTabsCustomerAuthorizations
+        }
+      }
+      ...UniversalSettingsOrgSections
+    }
+    ... on NotFoundError {
+      message
+    }
+  }
+}
+    ${s.UniversalSettingsTabsOrgAuthorizationsFragmentDoc}
+${s.UniversalSettingsTabsCustomerAuthorizationsFragmentDoc}
+${r}`,l=t.gql`
+    query UniversalSettingsDeveloperTabAccess($customerId: Int!) {
+  getCustomer(customerId: $customerId) {
+    __typename
+    ... on Customer {
+      id
+      authorizations {
+        manageApiKeys {
+          isAuthorized
+        }
+      }
+    }
+  }
+}
+    `,d=t.gql`
+    query UniversalSettingsSessionExpiryTabAccess($customerId: Int!) {
+  getCustomer(customerId: $customerId) {
+    __typename
+    ... on Customer {
+      id
+      authorizations {
+        editAuthSessionExpiry {
+          isAuthorized
+        }
+      }
+    }
+  }
+}
+    `,u=t.gql`
+    query UniversalSettingsApprovalRequestsTabAccess($customerId: Int!) {
+  getCustomer(customerId: $customerId) {
+    __typename
+    ... on Customer {
+      id
+      authorizations {
+        manageApprovalRequests {
+          isAuthorized
+        }
+      }
+    }
+  }
+}
+    `;e.s(["useUniversalSettingsApprovalRequestsTabAccessQuery",0,function(e){let t={...i,...e};return a.useQuery(u,t)},"useUniversalSettingsDeveloperTabAccessQuery",0,function(e){let t={...i,...e};return a.useQuery(l,t)},"useUniversalSettingsModalCurrentUserQuery",0,function(e){let t={...i,...e};return a.useQuery(n,t)},"useUniversalSettingsModalOrgQuery",0,function(e){let t={...i,...e};return a.useQuery(o,t)},"useUniversalSettingsSessionExpiryTabAccessQuery",0,function(e){let t={...i,...e};return a.useQuery(d,t)}])},565848,e=>{"use strict";var t=e.i(389959),s=e.i(846773),a=e.i(151027),i=e.i(410458),r=e.i(346777),n=e.i(612546),o=e.i(9757),l=e.i(933302);e.s(["useUniversalSettingsData",0,function(e,d){let{orgSlug:u}=(0,a.useCurrentUserStoredOrgContext)(),g=(0,l.useFeatureGate)("gate_public_template_marketplace",!1),c=u;e?.type==="org"?c=e.orgSlug:e?.type==="personal"&&(c=void 0);let{data:m,error:h,loading:p}=(0,s.useUniversalSettingsModalCurrentUserQuery)(),{data:b,error:f,loading:v,previousData:S}=(0,s.useUniversalSettingsModalOrgQuery)({variables:{orgSlug:c??""},skip:!c}),x=c?b??S:void 0,C=x?.getOrg?.__typename==="Org"?x.getOrg:null,A=m?.currentUser?.__typename==="CurrentUser"?m.currentUser:null,y=v||b?.getOrg?.__typename!=="Org"||b.getOrg.slug!==c?null:b.getOrg,_=d?.settingsSurface===void 0||"page"===d.settingsSurface.type||"legacyModal"===d.settingsSurface.type,w=d?.settingsSurface?.type==="page"||d?.settingsSurface?.type==="legacyModal"&&d.settingsSurface.gateEnabled,U=y?.customer?.__typename==="Customer"?y.customer.id:null,{data:z,error:T,loading:O}=(0,s.useUniversalSettingsDeveloperTabAccessQuery)({variables:{customerId:U??0},skip:null==U,ssr:!1,fetchPolicy:"network-only"}),j=null!=c&&(v||O),{usageBreakdownEnabled:I,viewPageAuthorized:P,viewPageMessage:D,loading:M}=(0,n.useUsagePageViewAccess)({contextOrgId:C?.id}),k=A?.customer?.__typename==="Customer"?A.customer:null,E=k?.usagePageAuthorizations,H=(0,t.useMemo)(()=>C?{usageBreakdownEnabled:I,viewPage:{isAuthorized:P,message:D}}:{usageBreakdownEnabled:E?.usageBreakdownEnabled??!1,viewPage:{isAuthorized:E?.viewPage.isAuthorized??!1,message:E?.viewPage.message??void 0}},[C,I,P,D,E]),B=H.usageBreakdownEnabled,{disableIntegrations:$,loading:F}=(0,i.default)(C?.id),L=$??!1,Q=z?.getCustomer.__typename==="Customer"?z.getCustomer:null,R=!O&&null==T&&Q?.id===U&&Q?.authorizations.manageApiKeys.isAuthorized===!0,G=C?C.customer:A?.customer,V=G?.__typename==="Customer"?G:null,q=V?.id??null,W=V?.authorizations.editSettings.isAuthorized===!1,{data:N,loading:Y}=(0,s.useUniversalSettingsSessionExpiryTabAccessQuery)({variables:{customerId:q??0},skip:!W,ssr:!1,fetchPolicy:"network-only"}),K=N?.getCustomer.__typename==="Customer"&&N.getCustomer.id===q?N.getCustomer:null,Z=K?.authorizations.editAuthSessionExpiry.isAuthorized===!0,J=null!=C&&W,{data:X,loading:ee}=(0,s.useUniversalSettingsApprovalRequestsTabAccessQuery)({variables:{customerId:q??0},skip:!J,ssr:!1,fetchPolicy:"network-only"}),et=X?.getCustomer.__typename==="Customer"&&X.getCustomer.id===q?X.getCustomer:null,es=et?.authorizations.manageApprovalRequests.isAuthorized===!0,ea=p||v&&null==S||M||F||Y||ee,ei=(0,t.useMemo)(()=>{if(C)return{type:"shared",orgId:C.id,orgSlug:C.slug,orgDealContext:C.dealContext??void 0,orgAuthorizations:C.authorizations};let e=A?.personalOrgAuthorizations;if(e&&"OrgAuthorizations"===e.__typename)return{type:"personal",orgAuthorizations:e}},[C,A]),er=(0,t.useMemo)(()=>{if(C){if(C.customer?.__typename!=="Customer")return;return{type:"shared",customerId:C.customer.id,isArtifactTemplatesFlagEnabled:A?.isArtifactTemplatesFlagEnabled??!1,isBillingV2Enabled:H.usageBreakdownEnabled,orgId:C.id,orgName:C.name,orgDealContext:C.dealContext??void 0,customerAuthorizations:C.customer.authorizations,canEditAuthSessionExpiry:Z,canManageApprovalRequests:es,usagePageAccess:H}}if(A){if(A.customer?.__typename!=="Customer")return;return{type:"personal",customerId:A.customer.id,isArtifactTemplatesFlagEnabled:A.isArtifactTemplatesFlagEnabled,isBillingV2Enabled:H.usageBreakdownEnabled,customerAuthorizations:A.customer.authorizations,canEditAuthSessionExpiry:Z,usagePageAccess:H}}},[C,A,H,Z,es]),en=(0,t.useMemo)(()=>{if(!ei)return[];let e=!_||!d?.includeDedicatedTabs&&w;return(0,r.getAvailableOrgTabs)(ei,{disableIntegrations:L,hideDedicatedTabs:e,isArtifactTemplatesFlagEnabled:er?.isArtifactTemplatesFlagEnabled,isTemplateMarketplaceEnabled:g,usageBreakdownEnabled:B})},[ei,L,_,w,d?.includeDedicatedTabs,er,g,B]),eo=(0,t.useMemo)(()=>er?(0,r.getAvailableCustomerTabs)(er,{canManageDeveloperApiKeys:R}):[],[er,R]),el=(0,t.useMemo)(()=>(0,r.getAvailableUserTabs)(er),[er]),ed=(0,t.useMemo)(()=>new Map([...en,...eo,...el].map(e=>[e.tabConfig.id,e])),[en,eo,el]),eu=(0,t.useCallback)((e,t,s)=>{let a=(0,r.resolveUsageTab)(e,B),i=ed.get(a);if(!i)return null;let n=ei?.type==="shared"?ei:void 0,l=e=>({...e,tabConfig:i.tabConfig,setSelectedTab:t,disabled:!i.isAuthorized,disabledMessage:i.isAuthorized?void 0:i.message,handleClose:s});switch(a){case"workspaceOverview":return l({tab:"workspaceOverview",orgId:n?.orgId,orgSlug:n?.orgSlug});case"invitedUsers":return l({tab:"invitedUsers",orgSlug:c});case"workspaceUsage":return l({tab:"workspaceUsage",orgId:C?.id??null});case"integrations":return l({tab:"integrations",orgId:n?.orgId,orgSlug:n?.orgSlug});case"knowledge":if(!ei)return null;return l({tab:"knowledge",orgContext:ei,customerId:er?.customerId});case"templates":case"slidesTemplates":case"designSystems":if(!ei)return null;return l({tab:a,orgContext:ei});case"security":return l({tab:"security",orgId:C?.id});case"usage":if(!er)return null;return l({tab:"usage",usageContext:(0,o.resolveUsageTabContext)({customerId:er.customerId,orgSlug:c,org:C,orgLoading:v})});case"billing":if(!er)return null;return l({tab:"billing",customerContext:er});case"seats":if(!er)return null;return l({tab:"seats",customerContext:er});case"customerUsage":if(!er)return null;return l({tab:"customerUsage",customerContext:er});case"authenticationAndIdentity":if(!er)return null;return l({tab:"authenticationAndIdentity",customerContext:er});case"advanced":return l({tab:"advanced",customerContext:er});case"developer":if(!er||"shared"!==er.type)return null;return l({tab:"developer",customerId:er.customerId});case"profile":return l({tab:"profile"});case"promotionsReferrals":return l({tab:"promotionsReferrals"});case"personalization":return l({tab:"personalization"});default:return null}},[ed,C,c,v,er,ei,B]);return{loading:ea,userLoading:p,orgLoading:v,orgSlug:c,org:C,currentUser:A,orgTabs:en,customerTabs:eo,userTabs:el,availableTabs:ed,buildTabContentProps:eu,usageBreakdownEnabled:B,usagePageAuthzLoading:M,developerTabAccessLoading:j,isUniversalSettingsPageEnabled:w,isGateContextReady:_,userError:h,orgError:f}}])}]);
+
+//# debugId=ab56494d-404d-6064-a68c-b7fd63b2b1cf
+//# sourceMappingURL=2qmqgl-o44kau.js.map

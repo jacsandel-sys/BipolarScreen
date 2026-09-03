@@ -1,0 +1,478 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="7264543d-612b-b944-8114-81cb84b81d46")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,610412,e=>{"use strict";e.s(["default",0,function(e,t){if(null==e)throw TypeError("assign requires that input parameter not be null or undefined");for(var i in t)Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i]);return e}])},724462,e=>{"use strict";var t=e.i(610412);e.s(["default",0,function(e){return(0,t.default)({},e)}])},29498,e=>{"use strict";var t=e.i(559713),i=e.i(214816),r=e.i(847240);e.s(["default",0,function(e,a){(0,r.default)(2,arguments);var o=(0,t.default)(a);return(0,i.default)(e,36e5*o)}])},172852,e=>{"use strict";var t=e.i(29498);e.s(["addHours",()=>t.default])},58635,e=>{"use strict";var t=e.i(337277),i=e.i(847240);e.s(["default",0,function(e,r){(0,i.default)(2,arguments);var a=(0,t.default)(e),o=(0,t.default)(r),n=a.getTime()-o.getTime();return n<0?-1:n>0?1:n}])},906026,e=>{"use strict";var t=e.i(813724);e.s(["differenceInDays",()=>t.default])},513484,(e,t,i)=>{!function(){"use strict";var e={922:function(e){e.exports=function(e,i,r,a){i=i||"&",r=r||"=";var o={};if("string"!=typeof e||0===e.length)return o;var n=/\+/g;e=e.split(i);var s=1e3;a&&"number"==typeof a.maxKeys&&(s=a.maxKeys);var l=e.length;s>0&&l>s&&(l=s);for(var u=0;u<l;++u){var d,c,p,m,g=e[u].replace(n,"%20"),f=g.indexOf(r);(f>=0?(d=g.substr(0,f),c=g.substr(f+1)):(d=g,c=""),p=decodeURIComponent(d),m=decodeURIComponent(c),Object.prototype.hasOwnProperty.call(o,p))?t(o[p])?o[p].push(m):o[p]=[o[p],m]:o[p]=m}return o};var t=Array.isArray||function(e){return"[object Array]"===Object.prototype.toString.call(e)}},790:function(e){var t=function(e){switch(typeof e){case"string":return e;case"boolean":return e?"true":"false";case"number":return isFinite(e)?e:"";default:return""}};e.exports=function(e,o,n,s){return(o=o||"&",n=n||"=",null===e&&(e=void 0),"object"==typeof e)?r(a(e),function(a){var s=encodeURIComponent(t(a))+n;return i(e[a])?r(e[a],function(e){return s+encodeURIComponent(t(e))}).join(o):s+encodeURIComponent(t(e[a]))}).join(o):s?encodeURIComponent(t(s))+n+encodeURIComponent(t(e)):""};var i=Array.isArray||function(e){return"[object Array]"===Object.prototype.toString.call(e)};function r(e,t){if(e.map)return e.map(t);for(var i=[],r=0;r<e.length;r++)i.push(t(e[r],r));return i}var a=Object.keys||function(e){var t=[];for(var i in e)Object.prototype.hasOwnProperty.call(e,i)&&t.push(i);return t}}},i={};function r(t){var a=i[t];if(void 0!==a)return a.exports;var o=i[t]={exports:{}},n=!0;try{e[t](o,o.exports,r),n=!1}finally{n&&delete i[t]}return o.exports}r.ab="/ROOT/node_modules/.pnpm/next@16.3.0_@babel+core@7.29.7_@opentelemetry+api@1.9.0_@types+node@22.18.6_babel-plugi_beaf1314979e495ed83ef8a5eac08a13/node_modules/next/dist/compiled/querystring-es3/";var a={};a.decode=a.parse=r(922),a.encode=a.stringify=r(790),t.exports=a}()},229952,(e,t,i)=>{var r={221:function(t){"use strict";t.exports=e.r(513484)}},a={};function o(e){var t=a[e];if(void 0!==t)return t.exports;var i=a[e]={exports:{}},n=!0;try{r[e](i,i.exports,o),n=!1}finally{n&&delete a[e]}return i.exports}o.ab="/ROOT/node_modules/.pnpm/next@16.3.0_@babel+core@7.29.7_@opentelemetry+api@1.9.0_@types+node@22.18.6_babel-plugi_beaf1314979e495ed83ef8a5eac08a13/node_modules/next/dist/compiled/native-url/";var n={};!function(){var e,t=(e=o(221))&&"object"==typeof e&&"default"in e?e.default:e,i=/https?|ftp|gopher|file/;function r(e){"string"==typeof e&&(e=A(e));var r,a,o,n,s,l,u,d,c,p=(a=(r=e).auth,o=r.hostname,n=r.protocol||"",s=r.pathname||"",l=r.hash||"",u=r.query||"",d=!1,a=a?encodeURIComponent(a).replace(/%3A/i,":")+"@":"",r.host?d=a+r.host:o&&(d=a+(~o.indexOf(":")?"["+o+"]":o),r.port&&(d+=":"+r.port)),u&&"object"==typeof u&&(u=t.encode(u)),c=r.search||u&&"?"+u||"",n&&":"!==n.substr(-1)&&(n+=":"),r.slashes||(!n||i.test(n))&&!1!==d?(d="//"+(d||""),s&&"/"!==s[0]&&(s="/"+s)):d||(d=""),l&&"#"!==l[0]&&(l="#"+l),c&&"?"!==c[0]&&(c="?"+c),{protocol:n,host:d,pathname:s=s.replace(/[?#]/g,encodeURIComponent),search:c=c.replace("#","%23"),hash:l});return""+p.protocol+p.host+p.pathname+p.search+p.hash}var a="http://",s=a+"w.w",l=/^([a-z0-9.+-]*:\/\/\/)([a-z0-9.+-]:\/*)?/i,u=/https?|ftp|gopher|file/;function d(e,t){var i="string"==typeof e?A(e):e;e="object"==typeof e?r(e):e;var o=A(t),n="";i.protocol&&!i.slashes&&(n=i.protocol,e=e.replace(i.protocol,""),n+="/"===t[0]||"/"===e[0]?"/":""),n&&o.protocol&&(n="",o.slashes||(n=o.protocol,t=t.replace(o.protocol,"")));var d=e.match(l);d&&!o.protocol&&(e=e.substr((n=d[1]+(d[2]||"")).length),/^\/\/[^/]/.test(t)&&(n=n.slice(0,-1)));var c=new URL(e,s+"/"),p=new URL(t,c).toString().replace(s,""),m=o.protocol||i.protocol;return m+=i.slashes||o.slashes?"//":"",!n&&m?p=p.replace(a,m):n&&(p=p.replace(a,"")),u.test(p)||~t.indexOf(".")||"/"===e.slice(-1)||"/"===t.slice(-1)||"/"!==p.slice(-1)||(p=p.slice(0,-1)),n&&(p=n+("/"===p[0]?p.substr(1):p)),p}function c(){}c.prototype.parse=A,c.prototype.format=r,c.prototype.resolve=d,c.prototype.resolveObject=d;var p=/^https?|ftp|gopher|file/,m=/^(.*?)([#?].*)/,g=/^([a-z0-9.+-]*:)(\/{0,3})(.*)/i,f=/^([a-z0-9.+-]*:)?\/\/\/*/i,h=/^([a-z0-9.+-]*:)(\/{0,2})\[(.*)\]$/i;function A(e,i,a){if(void 0===i&&(i=!1),void 0===a&&(a=!1),e&&"object"==typeof e&&e instanceof c)return e;var o=(e=e.trim()).match(m);e=o?o[1].replace(/\\/g,"/")+o[2]:e.replace(/\\/g,"/"),h.test(e)&&"/"!==e.slice(-1)&&(e+="/");var n=!/(^javascript)/.test(e)&&e.match(g),l=f.test(e),u="";n&&(p.test(n[1])||(u=n[1].toLowerCase(),e=""+n[2]+n[3]),n[2]||(l=!1,p.test(n[1])?(u=n[1],e=""+n[3]):e="//"+n[3]),3!==n[2].length&&1!==n[2].length||(u=n[1],e="/"+n[3]));var d,A=(o?o[1]:e).match(/^https?:\/\/[^/]+(:[0-9]+)(?=\/|$)/),y=A&&A[1],v=new c,_="",I="";try{d=new URL(e)}catch(t){_=t,u||a||!/^\/\//.test(e)||/^\/\/.+[@.]/.test(e)||(I="/",e=e.substr(1));try{d=new URL(e,s)}catch(e){return v.protocol=u,v.href=u,v}}v.slashes=l&&!I,v.host="w.w"===d.host?"":d.host,v.hostname="w.w"===d.hostname?"":d.hostname.replace(/(\[|\])/g,""),v.protocol=_?u||null:d.protocol,v.search=d.search.replace(/\\/g,"%5C"),v.hash=d.hash.replace(/\\/g,"%5C");var S=e.split("#");!v.search&&~S[0].indexOf("?")&&(v.search="?"),v.hash||""!==S[1]||(v.hash="#"),v.query=i?t.decode(d.search.substr(1)):v.search.substr(1),v.pathname=I+(n?d.pathname.replace(/['^|`]/g,function(e){return"%"+e.charCodeAt().toString(16).toUpperCase()}).replace(/((?:%[0-9A-F]{2})+)/g,function(e,t){try{return decodeURIComponent(t).split("").map(function(e){var t=e.charCodeAt();return t>256||/^[a-z0-9]$/i.test(e)?e:"%"+t.toString(16).toUpperCase()}).join("")}catch(e){return t}}):d.pathname),"about:"===v.protocol&&"blank"===v.pathname&&(v.protocol="",v.pathname=""),_&&"/"!==e[0]&&(v.pathname=v.pathname.substr(1)),u&&!p.test(u)&&"/"!==e.slice(-1)&&"/"===v.pathname&&(v.pathname=""),v.path=v.pathname+v.search,v.auth=[d.username,d.password].map(decodeURIComponent).filter(Boolean).join(":"),v.port=d.port,y&&!v.host.endsWith(y)&&(v.host+=y,v.port=y.slice(1)),v.href=I?""+v.pathname+v.search+v.hash:r(v);var k=/^(file)/.test(v.href)?["host","hostname"]:[];return Object.keys(v).forEach(function(e){~k.indexOf(e)||(v[e]=v[e]||null)}),v}n.parse=A,n.format=r,n.resolve=d,n.resolveObject=function(e,t){return A(d(e,t))},n.Url=c}(),t.exports=n},761320,e=>{"use strict";var t=e.i(807988);e.s(["StackBlueprint",()=>t.ReplitAiStackStackBlueprint])},683405,e=>{"use strict";var t=e.i(761320);e.i(214847);let i=(0,e.i(800686).defineMessages)({agentName:{id:"ai.agentName",defaultMessage:"Agent"},agentDescription:{id:"ai.agentDescription",defaultMessage:"Agent can make changes, review its work, and debug itself automatically."},queueName:{id:"ai.queueName",defaultMessage:"Queue"},automationsPaneName:{id:"ai.automationsPaneName",defaultMessage:"Automations"},agentNameFormal:{id:"ai.agentNameFormal",defaultMessage:"Replit Agent"},agentNameCasual:{id:"ai.agentNameCasual",defaultMessage:"the agent"},agentNameCasualCapitalized:{id:"ai.agentNameCasualCapitalized",defaultMessage:"The agent"},agent:{id:"ai.agent",defaultMessage:"agent"},slack:{id:"ai.slack",defaultMessage:"Slack"},slackAgent:{id:"ai.slackAgent",defaultMessage:"Slack agent"}}),r={[t.StackBlueprint.STACK_BLUEPRINT_FULLSTACK_JS]:{name:"Fullstack JS",displayName:"Modern web app",displayNameIntlId:"ai.stackFullstackJsDisplayName",description:"Made with React and Node.js",descriptionIntlId:"ai.stackFullstackJsDescription"},[t.StackBlueprint.STACK_BLUEPRINT_STREAMLIT]:{name:"Streamlit",displayName:"Interactive data app",displayNameIntlId:"ai.stackStreamlitDisplayName",description:"Made with Streamlit and Python",descriptionIntlId:"ai.stackStreamlitDescription"},[t.StackBlueprint.STACK_BLUEPRINT_GAMESTACK_JS]:{name:"Gamestack JS",displayName:"3D game",displayNameIntlId:"ai.stackGamestackJsDisplayName",description:"Three.js games and simulations",descriptionIntlId:"ai.stackGamestackJsDescription"},[t.StackBlueprint.STACK_BLUEPRINT_FLASK_VANILLA_JS]:{name:"Flask Vanilla JS",displayName:"Web app (Python)",displayNameIntlId:"ai.stackFlaskVanillaJsDisplayName",description:"Websites with Python backend",descriptionIntlId:"ai.stackFlaskVanillaJsDescription"},[t.StackBlueprint.STACK_BLUEPRINT_PYTHON_API]:{name:"Python API",displayName:"Backend service",displayNameIntlId:"ai.stackPythonApiDisplayName",description:"Python API for backend and data",descriptionIntlId:"ai.stackPythonApiDescription"},[t.StackBlueprint.STACK_BLUEPRINT_CUSTOM]:{name:"Custom",displayName:"Stack from existing App",displayNameIntlId:"ai.stackCustomDisplayName",description:"Bring your own template",descriptionIntlId:"ai.stackCustomDescription"},[t.StackBlueprint.STACK_BLUEPRINT_AGENT]:{name:"Agent stack",displayName:"Automation",displayNameIntlId:"ai.stackAgentDisplayName",description:"Build agents and automations on Replit",descriptionIntlId:"ai.stackAgentDescription"},[t.StackBlueprint.STACK_BLUEPRINT_EXPO]:{name:"Expo",displayName:"Mobile application",displayNameIntlId:"ai.stackExpoDisplayName",description:"Build mobile applications with Expo",descriptionIntlId:"ai.stackExpoDescription"},[t.StackBlueprint.STACK_BLUEPRINT_MOCKUP_JS]:{name:"Mockup JS",displayName:"Rapid prototype",displayNameIntlId:"ai.stackMockupJsDisplayName",description:"Visual prototype with no backend – ideal for designers and PMs",descriptionIntlId:"ai.stackMockupJsDescription"},[t.StackBlueprint.STACK_BLUEPRINT_VIDEO_JS]:{name:"Video JS",displayName:"Animation",displayNameIntlId:"ai.stackVideoJsDisplayName",description:"Create motion graphics and animated videos programmatically",descriptionIntlId:"ai.stackVideoJsDescription"},[t.StackBlueprint.STACK_BLUEPRINT_PNPM_WORKSPACE]:{name:"PNPM Workspace",displayName:"Monorepo",displayNameIntlId:"ai.stackPnpmWorkspaceDisplayName",description:"Multi-package monorepo with PNPM workspaces",descriptionIntlId:"ai.stackPnpmWorkspaceDescription"},[t.StackBlueprint.STACK_BLUEPRINT_MSFT_RAYFIN]:{name:"Microsoft Fabric App",displayName:"Microsoft Fabric app",displayNameIntlId:"ai.stackMsftRayfinDisplayName",description:"Fabric-brokered Entra SSO with MSSQL",descriptionIntlId:"ai.stackMsftRayfinDescription"},[t.StackBlueprint.STACK_BLUEPRINT_DATABRICKS_APP]:{name:"Databricks App",displayName:"Databricks app",displayNameIntlId:"ai.stackDatabricksAppDisplayName",description:"Read-only app powered by Databricks SQL",descriptionIntlId:"ai.stackDatabricksAppDescription"}};function a(e){if("Auto"!==e){if("Expert Mode"===e)return t.StackBlueprint.STACK_BLUEPRINT_BEST_EFFORT_FALLBACK;if("Stack from existing App"===e||"OrgStackTemplate"===e)return t.StackBlueprint.STACK_BLUEPRINT_CUSTOM;if("Animation"===e)return t.StackBlueprint.STACK_BLUEPRINT_VIDEO_JS;for(let i of Object.values(t.StackBlueprint).filter(e=>"number"==typeof e))if(r[i]&&r[i].displayName===e)return i}}let o="agent",n="Slack",s=`${n} ${o}`;e.s(["AGENT",0,o,"AGENT_NAME",0,"Agent","AUTOMATIONS_PANE_NAME",0,"Automations","SLACK",0,n,"SLACK_AGENT",0,s,"aiMessages",0,i,"getAgentName",0,({variant:e="casual",capitalizeFirstChar:t=!1}={})=>"formal"===e?"Replit Agent":`${t?"T":"t"}he agent`,"getStackOptionFromBlueprint",0,function(e){switch(e){case t.StackBlueprint.STACK_BLUEPRINT_NONE:return"Auto";case t.StackBlueprint.STACK_BLUEPRINT_CUSTOM:return"Stack from existing App";case t.StackBlueprint.STACK_BLUEPRINT_FULLSTACK_JS:return"Modern web app";case t.StackBlueprint.STACK_BLUEPRINT_STREAMLIT:return"Interactive data app";case t.StackBlueprint.STACK_BLUEPRINT_GAMESTACK_JS:return"3D game";case t.StackBlueprint.STACK_BLUEPRINT_AGENT:return"Automation";case t.StackBlueprint.STACK_BLUEPRINT_EXPO:return"Mobile application";case t.StackBlueprint.STACK_BLUEPRINT_BEST_EFFORT_FALLBACK:return"Expert Mode";case t.StackBlueprint.STACK_BLUEPRINT_VIDEO_JS:return"Animation";case t.StackBlueprint.STACK_BLUEPRINT_PYTHON_API:case t.StackBlueprint.STACK_BLUEPRINT_MOCKUP_JS:case t.StackBlueprint.STACK_BLUEPRINT_PNPM_WORKSPACE:default:return}},"resolveStackBlueprintFromUrl",0,function(e){if("OrgStackTemplate"===e||"Stack from existing App"===e)return;let t=a(e);if(void 0!==t)return t;try{let t=decodeURIComponent(e);return a(t)}catch{return}},"stackBlueprintDetails",0,r])},784398,e=>{"use strict";let t="/agentVerify2?prompt=storage2&autoSubmit=true";e.s(["LOGGED_OUT_EXPERIENCE_REDIRECT_URL",0,t,"authModalParam",0,"authModal","loggedOutExperienceRedirectUrl",0,function(e){return e?`${t}&utm_campaign=${encodeURIComponent(e)}`:t},"redirectingParam",0,"redirecting"])},832407,e=>{"use strict";var t=e.i(694387),i=e.i(505690),r=e.i(105503),a=e.i(712184),o=e.i(415541),n=e.i(709485);let s=e=>{if(!(0,r.getTrackersAllowedSync)()){let t=(0,r.onConsentOpen)(()=>{t(),s(e)});return}let t=i.default.get("gfa_ref")||void 0,n=i.default.get("gfa_campaign")||void 0,l=i.default.get("gfa_landed_on")||void 0,u=(0,a.getMarketingParamsForIdentify)(),d=Object.keys(u).length>0?{...u}:void 0,c=d?JSON.stringify(d):void 0;(0,o.identify)({id:e,firstAcquisitionSource:t,firstAcquisitionCampaign:n,firstAcquisitionLandedOn:l,marketingAttribution:c,marketingAttributionParams:d})};e.s(["attributeAcquisition",0,s,"providerIdToAuthMethod",0,function(e){switch(e){case t.GoogleProviderId:return"google";case t.GitHubProviderId:return"github";case t.XProviderId:return"x";case t.AppleProviderId:return"apple";case t.FacebookProviderId:return"facebook";case t.PasswordProviderId:return"email";default:return"sso"}},"trackLoginView",0,({from:e,location:t,authFormPlacement:i,extras:r={}})=>{(0,o.track)(n.events.LOGIN_REQUESTED,{from:e,location:t,authFormPlacement:i,...r})},"trackSignupView",0,({from:e,location:t,authFormPlacement:i,extras:r={}})=>{(0,o.track)(n.events.SIGNUP_REQUESTED,{from:e,location:t,authFormPlacement:i,...r})},"trackToggleAuth",0,({isLogin:e,authFormPlacement:t})=>{(0,o.track)(n.events.AUTH_FORM_MODE_TOGGLED,e?{from:"login",to:"signup",authFormPlacement:t}:{from:"signup",to:"login",authFormPlacement:t})}])},438567,e=>{"use strict";var t=e.i(351623),i=e.i(299020);let r={},a=t.gql`
+    mutation SaveUserAuth($input: SaveUserAuthInput!) {
+  saveUserAuth(input: $input) {
+    ... on CurrentUser {
+      id
+    }
+    ... on UnauthorizedError {
+      message
+    }
+    ... on UserError {
+      message
+    }
+    ... on TooManyRequestsError {
+      message
+    }
+    ... on ServiceUnavailable {
+      message
+    }
+  }
+}
+    `;e.s(["useSaveUserAuthMutation",0,function(e){let t={...r,...e};return i.useMutation(a,t)}])},625006,e=>{"use strict";var t=e.i(389959),i=e.i(830675),r=e.i(438567),a=e.i(443197);let o={type:"error",message:"Something unexpected happened, please try again."};e.s(["useSaveUserAuth",0,function(){let[e]=(0,r.useSaveUserAuthMutation)();return(0,t.useCallback)(async({userCredential:t,oauthProviderId:r,scopes:n})=>{let s,l=(0,a.getAccessTokenFromCredential)(r,t);if(!l||!l.accessToken)return i.captureException(Error(`Failed to extract token from ${r} credential`)),o;try{s=await e({variables:{input:{provider:r,token:l.accessToken,scopes:n}}})}catch(e){return i.captureException(Error(`Failed to save ${r} Auth state`)),o}return s.data?"CurrentUser"!==s.data.saveUserAuth.__typename?{type:"error",message:s.data.saveUserAuth.message}:{type:"success"}:(i.captureException(Error(`Unexpected error trying to save ${r} Auth state`)),o)},[e])}])},142330,e=>{"use strict";var t=e.i(276385),i=e.i(389959);let r=(0,i.createContext)(null);e.s(["ConversationFreeModeTierAuthorizationProvider",0,function({isFreeModeTierAuthorized:e,children:i}){return(0,t.jsx)(r.Provider,{value:e,children:i})},"useConversationFreeModeTierAuthorization",0,function(){return(0,i.useContext)(r)}])},101626,e=>{"use strict";var t=e.i(351623),i=e.i(344480);e.i(975473);let r={},a=t.gql`
+    fragment ConversationAgentAuthorizations on OrgAuthorizations {
+  __typename
+  paidAgent: useAiAgent(tier: paid) {
+    isAuthorized
+    code
+  }
+  highEffortAgentModel: useHighEffort {
+    isAuthorized
+  }
+  defaultAdvancedAgentModel: defaultAdvancedAgentModel {
+    isAuthorized
+  }
+  createReplWithLiteMode {
+    isAuthorized
+  }
+  perTierAutoMode: useAgentConfigPerTierAutoMode {
+    isAuthorized
+  }
+  intelligentAutoMode: useAgentConfigIntelligentAutoMode {
+    isAuthorized
+  }
+  freeModeTier: useAgentConfigFreeModeTier {
+    isAuthorized
+  }
+}
+    `,o=t.gql`
+    query ConversationAgentAuthorizations($orgId: String!, $hasOrg: Boolean!) {
+  currentUser @skip(if: $hasOrg) {
+    id
+    customer {
+      __typename
+      ... on Customer {
+        id
+        authorizations {
+          enablePromotions {
+            isAuthorized
+          }
+        }
+      }
+    }
+    personalOrgAuthorizations {
+      __typename
+      ...ConversationAgentAuthorizations
+    }
+  }
+  getOrg(orgId: $orgId) @include(if: $hasOrg) {
+    __typename
+    ... on Org {
+      id
+      customer {
+        __typename
+        ... on Customer {
+          id
+          authorizations {
+            enablePromotions {
+              isAuthorized
+            }
+          }
+        }
+      }
+      authorizations {
+        ...ConversationAgentAuthorizations
+      }
+    }
+  }
+}
+    ${a}`;e.s(["useConversationAgentAuthorizationsQuery",0,function(e){let t={...r,...e};return i.useQuery(o,t)}])},215515,e=>{"use strict";var t=e.i(389959),i=e.i(101626);e.s(["useConversationAgentAuthorizations",0,function(e,r=!1){let a,{data:o,loading:n,refetch:s}=(0,i.useConversationAgentAuthorizationsQuery)({variables:{orgId:e??"",hasOrg:void 0!==e},skip:r}),l=(0,t.useCallback)(()=>{s()},[s]),u=o?.getOrg,d=o?.currentUser?.personalOrgAuthorizations,c=u?.__typename==="Org"?u.customer:o?.currentUser?.customer;return u?.__typename==="Org"?a=u.authorizations:d?.__typename==="OrgAuthorizations"&&(a=d),{isLoading:r||n,isPaidUser:a?.paidAgent?.isAuthorized??!1,paidAgentAuthorizationCode:a?.paidAgent?.code,arePromotionsEnabled:c?.__typename==="Customer"&&c.authorizations.enablePromotions.isAuthorized,isFreeTierCreationEligible:a?.createReplWithLiteMode?.isAuthorized??!1,isFreeModeTierAuthorized:a?.freeModeTier?.isAuthorized??!1,isDefaultAdvancedAgentModelAuthorized:a?.defaultAdvancedAgentModel?.isAuthorized??!1,isEffortCapped:a?.highEffortAgentModel?.isAuthorized!==!0,isPerTierAutoModeAuthorized:a?.perTierAutoMode?.isAuthorized??!1,isIntelligentAutoModeAuthorized:a?.intelligentAutoMode?.isAuthorized??!1,refresh:l}}])},412947,e=>{"use strict";var t=e.i(276385),i=e.i(389959),r=e.i(830675),a=e.i(522871),o=e.i(390189);class n extends i.Component{constructor(e){super(e),this.state={hasError:!1,error:null}}static getDerivedStateFromError(e){return{hasError:!0,error:e}}componentDidCatch(e,t){r.withScope(i=>{i.setTag(this.props.sentryTag,!0),i.setExtra("errorInfo",t),i.setContext("react",{componentStack:t.componentStack}),r.captureException(e)})}render(){if(this.state.hasError){let e=this.props.fallback&&this.state.error?this.props.fallback(this.state.error):(0,t.jsx)(o.default,{});return(0,t.jsx)(a.ReplitIntlProvider,{children:e})}return this.props.children}}e.s(["default",0,n])},365757,e=>{"use strict";var t=e.i(276385),i=e.i(595996);e.s(["default",0,function({alt:e,iconUrl:r,size:a,className:o}){return(0,t.jsx)(i.default,{size:a,iconUrl:r,className:o,alt:e})}])},319801,e=>{"use strict";var t=e.i(351623);let i=t.gql`
+    fragment ReplLinkRepl on Repl {
+  id
+  url
+  nextPagePathname
+}
+    `;e.s(["ReplLinkReplFragmentDoc",0,i])},253044,e=>{e.v({message:"ServerError-module__3NQRmq__message",wrapper:"ServerError-module__3NQRmq__wrapper"})},390189,e=>{"use strict";var t=e.i(276385),i=e.i(15801),r=e.i(403649),a=e.i(632350);e.i(214847);var o=e.i(864300),n=e.i(753451),s=e.i(643484),l=e.i(8047),u=e.i(61732),d=e.i(253044);e.s(["default",0,function(){let e=(0,i.useRouter)(),c=(0,o.useIntl)(),p=(0,a.default)();return(0,t.jsx)(u.View,{clsx:d.default.wrapper,align:"center",justify:"center",children:(0,t.jsxs)(u.View,{align:"center",justify:"center",gap:16,children:[(0,t.jsx)(r.default,{size:32}),(0,t.jsx)(l.Text,{variant:"subheadDefault",clsx:d.default.message,children:(0,n.isInBonsaiWebview)(e)?c.formatMessage({id:"components.serverErrorBonsai",defaultMessage:" We encountered an error. Please tell us what happened by shaking your phone and submitting a bug report."}):c.formatMessage({id:"components.serverErrorDefault",defaultMessage:"We encountered an error. Please tell us what happened by submitting a ticket via the get help button above."})}),p?(0,t.jsx)(s.Button,{text:c.formatMessage({id:"components.serverErrorReturnHome",defaultMessage:"Return to home"}),colorway:"primary",onClick:()=>{window.location.href="/desktopApp/home2"}}):null]})})}])},668721,e=>{"use strict";var t=e.i(351623);let i=t.gql`
+    fragment DomainListCurrentBuild2 on HostingBuild {
+  id
+  provider
+  repl {
+    id
+    slug
+    domains {
+      ... on Domain {
+        id
+        hosting_deployment_id
+        domain
+        state
+      }
+    }
+    owner {
+      ... on Team {
+        id
+        username
+      }
+      ... on User {
+        id
+        username
+      }
+    }
+    hostingDeployment {
+      ... on HostingDeployment {
+        id
+        replitAppSubdomain
+      }
+    }
+    rayfin {
+      ... on ReplRayfin {
+        workspaceId
+        itemId
+        tenantId
+      }
+    }
+  }
+}
+    `;e.s(["DomainListCurrentBuild2FragmentDoc",0,i])},323604,e=>{"use strict";var t=e.i(351623);let i=t.gql`
+    fragment DeploymentLink on HostingDeployment {
+  id
+  replitAppSubdomain
+  deploymentBaseDomain
+  domains2 {
+    id
+    domain
+    state
+  }
+  currentBuild {
+    id
+    provider
+    repl {
+      id
+      rayfin {
+        ... on ReplRayfin {
+          workspaceId
+          itemId
+          tenantId
+        }
+      }
+    }
+  }
+}
+    `;e.s(["DeploymentLinkFragmentDoc",0,i])},676107,e=>{"use strict";var t=e.i(351623),i=e.i(668721),r=e.i(323604),a=e.i(319801);let o=t.gql`
+    fragment ReplDomain2 on Domain {
+  id
+  hosting_deployment_id
+  domain
+  state
+}
+    `,n=t.gql`
+    fragment CustomDomain on Domain {
+  ...ReplDomain2
+}
+    ${o}`,s=t.gql`
+    fragment TargetHostingDeployment on HostingDeployment {
+  id
+  replitAppSubdomain
+  timeCreated
+  securityScanEnabled
+  uptimeCheckEnabled
+  agentInboxEnabled
+  agentInboxConfig {
+    position
+    logoSrc
+    bgColor
+  }
+  analyticsEnabled
+  replitBadgeEnabled
+  scheduledDeletionTime
+  latestBuildStatus
+  geography
+}
+    `,l=t.gql`
+    fragment MachineConfiguration on HostingMachineConfiguration {
+  id
+  label
+  vcpu
+  memory
+  slug
+}
+    `,u=t.gql`
+    fragment HostingBuildArtifactFields on HostingBuildArtifact {
+  id
+  name
+  type
+  folderName
+  services {
+    id
+    name
+    paths
+    hasRunCommand
+  }
+}
+    `,d=t.gql`
+    fragment CurrentBuild2 on HostingBuild {
+  ...DomainListCurrentBuild2
+  id
+  description
+  status
+  hasDeployLogs
+  suspendedReason
+  timeCreated
+  hasImageTag
+  envVars {
+    name
+    value
+  }
+  repl {
+    id
+    slug
+    apexProxy
+    domains {
+      ... on Domain {
+        ...CustomDomain
+      }
+    }
+    org {
+      id
+    }
+    owner {
+      ... on Team {
+        id
+        username
+      }
+      ... on User {
+        id
+        username
+      }
+    }
+    hostingDeployment {
+      ... on HostingDeployment {
+        ...TargetHostingDeployment
+        ...DeploymentLink
+      }
+    }
+  }
+  provider
+  machineConfiguration {
+    ...MachineConfiguration
+  }
+  maxMachineInstances
+  machineJob {
+    timezone
+    crontab
+  }
+  user {
+    id
+    displayName
+    username
+    image
+    fullName
+  }
+  isPrivate
+  hasPrivatePassword
+  isStandby
+  artifacts {
+    ...HostingBuildArtifactFields
+  }
+}
+    ${i.DomainListCurrentBuild2FragmentDoc}
+${n}
+${s}
+${r.DeploymentLinkFragmentDoc}
+${l}
+${u}`,c=t.gql`
+    fragment DeploymentStatus on HostingDeployment {
+  id
+  currentBuild {
+    id
+    status
+    suspendedReason
+    timeCreated
+    user {
+      id
+      displayName
+    }
+    provider
+  }
+  inProgressBuild {
+    id
+  }
+  latestBuildStatus
+}
+    `,p=t.gql`
+    fragment DeploymentItem on HostingDeployment {
+  id
+  replitAppSubdomain
+  domains2 {
+    id
+    domain
+    state
+  }
+  repl {
+    id
+    title
+    iconUrl
+    config {
+      isAgentStack
+    }
+    ...ReplLinkRepl
+  }
+  ...DeploymentLink
+  ...DeploymentStatus
+}
+    ${a.ReplLinkReplFragmentDoc}
+${r.DeploymentLinkFragmentDoc}
+${c}`;e.s(["CurrentBuild2FragmentDoc",0,d,"DeploymentItemFragmentDoc",0,p,"HostingBuildArtifactFieldsFragmentDoc",0,u,"MachineConfigurationFragmentDoc",0,l,"TargetHostingDeploymentFragmentDoc",0,s])},289884,e=>{"use strict";var t=e.i(389959);e.s(["default",0,function(e,i,{includeKeyboardActivation:r=!1,keyboardInsideElement:a=null}={}){let o=(0,t.useRef)(null),n=(0,t.useRef)(a);n.current=a;let s=(0,t.useCallback)(t=>{o.current?.contains(t.target)||e(t)},i),l=(0,t.useCallback)(e=>{"Enter"!==e.key&&" "!==e.key||n.current?.contains(e.target)||s(e)},[s]);return(0,t.useEffect)(()=>(document.addEventListener("pointerdown",s,!0),r&&document.addEventListener("keydown",l,!0),()=>{document.removeEventListener("pointerdown",s,!0),r&&document.removeEventListener("keydown",l,!0)}),[r,s,l]),o}])},547523,e=>{"use strict";var t=e.i(389959),i=e.i(349892);let r={mobileMax:"max",mobileMin:"min",tabletMax:"max",tabletMin:"min"};function a(e){let[i,r]=(0,t.useState)(window.matchMedia(e).matches);function a(){r(window.matchMedia(e).matches)}return(0,t.useEffect)(()=>{let t=window.matchMedia(e);return a(),t.addListener?t.addListener(a):t.addEventListener("change",a),()=>{t.removeListener?t.removeListener(a):t.removeEventListener("change",a)}},[e]),i}e.s(["useBreakpoint",0,function(e){let t=r[e];return a(`(${t}-width: ${i.BREAKPOINTS[e]}px)`)},"useMediaQuery",0,a])},505690,e=>{"use strict";var t=e.i(722045),i=e.i(489859);let r=/%(?:0[0-9a-f]|1[0-9a-f]|7f)/gi;e.s(["default",0,class{static get(e){return i.default.get(e,"string")||t.default.get(e)}static set(e,a){let o=function(e){let t="";for(let i of e){let e=i.charCodeAt(0);e<=31||127===e||(t+=i)}return t.replace(r,"").slice(0,1024)}(a);i.default.set(e,o),t.default.set(e,o)}static remove(e){i.default.remove(e),t.default.remove(e)}}])},20639,e=>{"use strict";async function t(e){if(!window.navigator.clipboard)return void i(e);try{await window.navigator.clipboard.writeText(e)}catch{i(e)}}function i(e){let t=document.activeElement instanceof HTMLElement&&document.activeElement!==document.body?document.activeElement:null,i=document.createElement("textarea");i.value=e,i.style.top="0",i.style.left="0",i.style.position="fixed",(t?.parentElement??document.body).appendChild(i),i.focus(),i.select(),document.execCommand("copy"),i.remove(),t?.focus()}e.s(["default",0,t])},777198,e=>{"use strict";var t=e.i(389959),i=e.i(408116),r=e.i(935984);function a(e,i,a){let{data:o,loading:n}=(0,r.useTourServiceToursSeenQuery)({variables:{tours:e},skip:a?.skip}),[s,{loading:l}]=(0,r.useTourServiceDismissTourMutation)({variables:{name:e},optimisticResponse:{__typename:"RootMutationType",markTourAsSeen2:{__typename:"TourSeen",id:e,seen:!0}},onCompleted:i}),[u,{loading:d}]=(0,r.useTourServiceDismissTourMutation)({variables:{name:e},optimisticResponse:{__typename:"RootMutationType",markTourAsSeen2:{__typename:"TourSeen",id:e,seen:!1}}}),c=!!o?.currentUser?.toursSeen[0].seen;return(0,t.useMemo)(()=>({isLoading:n,isDone:c,setAsDone:()=>s({variables:{name:e}}),unsetAsDone:()=>u({variables:{name:e}}),isMutating:l||d}),[n,c,s,u,l,d,e])}e.s(["useDismissibleElement",0,function(e){let{isLoading:t,isDone:i,setAsDone:r,unsetAsDone:o}=a(e);return{isLoading:t,isDone:i,setAsDone:r,unsetAsDone:o}},"useLazyDismissibleElement",0,function(e){let a=(0,i.useApolloClient)();return(0,t.useMemo)(()=>({getIsDone:async()=>{let{data:t,error:i,errors:o}=await a.query({query:r.TourServiceToursSeenDocument,variables:{tours:e}}),n=t?.currentUser?.toursSeen[0];if(i||o?.length||!n)throw i??o?.[0]??Error("toursSeen query returned no data");return n.seen},setAsDone:()=>a.mutate({mutation:r.TourServiceDismissTourDocument,variables:{name:e},optimisticResponse:{__typename:"RootMutationType",markTourAsSeen2:{__typename:"TourSeen",id:e,seen:!0}}})}),[a,e])},"useMemoedDismissibleElement",0,a])},992122,e=>{e.v({coverContainer:"ReplIcon-module__P34J6a__coverContainer",imageBorder:"ReplIcon-module__P34J6a__imageBorder",imageWrapper:"ReplIcon-module__P34J6a__imageWrapper",loadingContainer:"ReplIcon-module__P34J6a__loadingContainer",loadingIconWrapper:"ReplIcon-module__P34J6a__loadingIconWrapper",loadingOverlay:"ReplIcon-module__P34J6a__loadingOverlay",surface:"ReplIcon-module__P34J6a__surface"})},595996,e=>{"use strict";var t=e.i(276385),i=e.i(389959),r=e.i(983420),a=e.i(919073),o=e.i(61732),n=e.i(727223),s=e.i(992122);let l={16:4,20:4,24:4,32:4,36:4,48:4,64:8,84:16};function u(e){let u=(0,i.useContext)(r.IconContext),{size:d=u.size??32,alt:c=u.alt??"",iconUrl:p}=e,m=d<32?4:8;function g(){return(0,t.jsx)(o.View,{clsx:s.default.imageBorder,style:{borderRadius:m}})}if(p.endsWith(".svg")){let e=l[d],i=d-2*e;return(0,t.jsxs)(a.ShadesSurface,{clsx:s.default.surface,p:e,br:m,style:{width:d,height:d},children:[(0,t.jsx)(o.View,{clsx:s.default.imageWrapper,style:{width:i,height:i},children:(0,t.jsx)(n.default,{alt:c,src:p,fill:!0,objectFit:"contain"})}),(0,t.jsx)(g,{})]})}return(0,t.jsxs)(a.ShadesSurface,{clsx:s.default.surface,br:m,style:{width:d,height:d},children:[(0,t.jsx)(n.default,{alt:c,src:p,width:d,height:d,objectFit:"cover"}),(0,t.jsx)(g,{})]})}e.s(["ReplIconWithPlaceholder",0,function({isLoading:e,alt:i,iconUrl:r,size:o=32}){let n=r&&void 0!==i?(0,t.jsx)(u,{alt:i,iconUrl:r,size:o}):null;if(!e&&n)return n;let l=o<32?4:8;return(0,t.jsx)(a.ShadesSurface,{clsx:s.default.surface,br:l,style:{width:o,height:o}})},"default",0,u])},579952,e=>{e.v({brandText:"BrandText-module__uDxj7W__brandText",captionMedium:"BrandText-module__uDxj7W__captionMedium",captionSmall:"BrandText-module__uDxj7W__captionSmall"})},772325,e=>{"use strict";var t=e.i(276385),i=e.i(389959),r=e.i(8047),a=e.i(579952);let o={captionSmall:a.default.captionSmall,captionMedium:a.default.captionMedium},n=(0,i.forwardRef)(function({variant:e,className:i,...n},s){let l="captionSmall"===e||"captionMedium"===e,u=[a.default.brandText,l?o[e]:null,i].filter(Boolean).join(" ");return(0,t.jsx)(r.Text,{ref:s,variant:l?"small":e,className:u,...n})});e.s(["BrandText",0,n])},580519,e=>{"use strict";var t=e.i(276385),i=e.i(389959),r=e.i(624071),a=e.i(183035),o=e.i(402099);e.i(214847);var n=e.i(864300),s=e.i(20639),l=e.i(89148),u=e.i(643484),d=e.i(488299),c=e.i(244945);let p=({value:e,onCopy:t,tooltipText:r,tooltipSuccessText:a,successTimeout:o=1e3})=>{let l=(0,n.useIntl)(),u=r??l.formatMessage({id:"rui.copyButtonCopyTooltip",defaultMessage:"Copy"}),d=a??l.formatMessage({id:"rui.copyButtonCopiedTooltip",defaultMessage:"Copied!"}),[c,p]=(0,i.useState)(!1),m=(0,i.useRef)(null),[g,f]=(0,i.useState)(void 0);return(0,i.useEffect)(()=>{let e=m.current;return()=>{e&&clearTimeout(e)}},[]),{isCopied:c,isTooltipOpen:g,onIsTooltipOpenChange:e=>{f(c?void 0:e)},tooltip:c?d:u,copy:(0,i.useCallback)(()=>{let i="function"==typeof e?e():e;i&&((0,s.default)(i),p(!0),f(!0),m.current&&clearTimeout(m.current),m.current=setTimeout(()=>{p(!1),f(!1)},o),t?.())},[t,o,e])}};e.s(["CopyButton",0,function({textToCopy:e,successTimeout:i,onCopy:n,tooltipDisable:s,tooltipText:d,tooltipPlacement:m="bottom-end",tooltipSuccessText:g,tooltipHideWhenOutOfBounds:f,showIcon:h=!1,successIcon:A=(0,t.jsx)(a.default,{color:l.tokens.accentPositiveStronger}),copyIcon:y=(0,t.jsx)(o.default,{}),onClick:v,..._}){let{isTooltipOpen:I,onIsTooltipOpenChange:S,tooltip:k,isCopied:T,copy:b}=p({value:e,successTimeout:i,onCopy:n,tooltipDisable:s,tooltipText:d,tooltipSuccessText:g});return(0,t.jsx)(c.Tooltip,{isOpen:I,onOpenChange:S,tooltip:k,placement:m,hideWhenOutOfBounds:f,isDisabled:s,children:(0,t.jsx)(u.Button,{disabled:!e,iconLeft:h&&T?A:y,...(0,r.mergeProps)(_),onClick:e=>{b(),v?.(e)}})})},"CopyIconButton",0,function({textToCopy:e,successTimeout:i,children:r=(0,t.jsx)(o.default,{}),successIcon:n=(0,t.jsx)(a.default,{color:l.tokens.accentPositiveStronger}),tooltipDisable:s,tooltipText:u,tooltipSuccessText:c,onCopy:m,tooltipPlacement:g="bottom",...f}){let{isTooltipOpen:h,onIsTooltipOpenChange:A,isCopied:y,tooltip:v,copy:_}=p({value:e,successTimeout:i,onCopy:m,tooltipDisable:s,tooltipText:u,tooltipSuccessText:c});return(0,t.jsx)(d.IconButton,{disabled:!e,...f,isTooltipOpen:h,onTooltipOpenChange:A,alt:v,onClick:_,tooltipPlacement:g,children:y?n:r})}])},486033,e=>{e.v({divider:"DividerV-module__SrEOlq__divider"})},498254,e=>{"use strict";var t=e.i(276385),i=e.i(486033);e.s(["DividerV",0,function({className:e}){return(0,t.jsx)("div",{clsx:[i.default.divider,e]})}])},835307,e=>{e.v({control:"StatusBannerButton-module__Lb30Hq__control",root:"StatusBannerButton-module__Lb30Hq__root",text:"StatusBannerButton-module__Lb30Hq__text"})},145315,e=>{"use strict";var t=e.i(276385),i=e.i(36454),r=e.i(389959),a=e.i(602686),o=e.i(983420),n=e.i(152651),s=e.i(210853);e.i(214847);var l=e.i(864300),u=e.i(379778),d=e.i(89148),c=e.i(919073),p=e.i(857066),m=e.i(488299),g=e.i(8047),f=e.i(61732),h=e.i(835307);let A=(0,d.cvarsFrom)("StatusBannerButton.module.css",["--bg","--bg-active","--color","--color-disabled","--border","--border-hover","--border-active"]),y=f.SpecializedView.button,v=(0,r.forwardRef)((e,r)=>{let v=(0,l.useIntl)(),_=(0,p.useRuiComponentAttributes)("StatusBannerButton"),I=(0,s.useClickIntentHandlers)(),{className:S,colorway:k,closable:T,iconLeft:b,iconRight:C,text:M,closeAction:R}=e,E=(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(o.IconProvider,{size:16,children:b}),(0,t.jsx)(f.View,{grow:!0,shrink:!0,children:(0,t.jsx)(g.Text,{clsx:h.default.text,variant:"small",children:M})}),(0,t.jsx)(o.IconProvider,{size:16,children:C})]}),z=(0,u.useView)({pl:8,pr:8*!T,py:4,clsx:h.default.control,className:S}),P=k?d.colormap[k]:null,x=P?{[A.bg]:P.dimmest,[A.bgActive]:P.dimmer,[A.color]:P.strongest,[A.colorDisabled]:P.default,[A.border]:P.dimmer,[A.borderHover]:P.strongest,[A.borderActive]:P.default}:{};return(0,t.jsxs)(f.View,{row:!0,gap:4,align:"center",clsx:h.default.root,style:x,children:["href"in e?(0,t.jsx)(i.default,{..._,"data-analytics-id":e.dataAnalyticsId,"data-analytics-destination":e.dataAnalyticsDestination,as:e.as,href:e.href,prefetch:e.prefetch,replace:e.replace,scroll:e.scroll,shallow:e.shallow,ref:r,rel:e.rel,role:"link",target:e.target,...n.INSTRUMENTED_MARKER_PROP,...I,...z,children:E}):(0,t.jsx)(y,{..._,"data-analytics-id":e.dataAnalyticsId,"data-analytics-destination":e.dataAnalyticsDestination,ref:r,onClick:t=>{I.onClick?.(t),e.onClick(t)},type:e.type,...n.INSTRUMENTED_MARKER_PROP,...z,children:E}),T?(0,t.jsx)(c.ShadesSurface,{pr:4,style:{backgroundColor:"transparent"},children:(0,t.jsx)(m.IconButton,{alt:v.formatMessage({id:"rui.statusBannerButtonClose",defaultMessage:"Close"}),tooltipBehavior:"hidden",colorway:k,onClick:R,children:(0,t.jsx)(a.default,{})})}):null]})});v.displayName="StatusBannerButton",e.s(["StatusBannerButton",0,v])},192915,e=>{"use strict";var t=e.i(276385),i=e.i(36454);let r=e=>({href:{pathname:"/profile",query:{username:"string"==typeof e?e:e.username}},as:"string"==typeof e?`/@${e}`:e.url});e.s(["UserLink",0,({user:e,children:a})=>(0,t.jsx)(i.default,{...r(e),prefetch:!1,children:a}),"userLinkProps",0,r])},443505,e=>{"use strict";var t=e.i(389959),i=e.i(753451),r=e.i(584878);e.s(["default",0,function({onChange:e}){let a=(0,i.useIsInBonsaiWebview)();(0,t.useEffect)(()=>{if(!a)return;let t=t=>(0,r.payingStatusChangedBridgeMessageHandler)(t,()=>{e()});return window.addEventListener("message",t),()=>{window.removeEventListener("message",t)}},[a,e])}])},890639,e=>{"use strict";var t=e.i(351623),i=e.i(344480);e.i(975473);let r={},a=t.gql`
+    fragment AgentWorkspaceAuthorizations on OrgAuthorizations {
+  paidAgent: useAiAgent(tier: paid, replId: $replId) {
+    __typename
+    isAuthorized
+    message
+    code
+  }
+  freeAgent: useAiAgent(tier: free) {
+    __typename
+    isAuthorized
+    message
+    code
+  }
+  turboAgentModel: useTurbo(replId: $replId) {
+    __typename
+    isAuthorized
+    message
+    code
+  }
+  quickEditAgentModel: useQuickEdit(replId: $replId) {
+    __typename
+    isAuthorized
+    message
+    code
+  }
+  highEffortAgentModel: useHighEffort {
+    __typename
+    isAuthorized
+    message
+    code
+  }
+  perTierAutoMode: useAgentConfigPerTierAutoMode {
+    __typename
+    isAuthorized
+    message
+    code
+  }
+  intelligentAutoMode: useAgentConfigIntelligentAutoMode {
+    __typename
+    isAuthorized
+    message
+    code
+  }
+  defaultAdvancedAgentModel: defaultAdvancedAgentModel(replId: $replId) {
+    __typename
+    isAuthorized
+    message
+    code
+  }
+  freeModeTier: useAgentConfigFreeModeTier {
+    __typename
+    isAuthorized
+    message
+    code
+  }
+}
+    `,o=t.gql`
+    query GetAgentRepl($replId: String!) {
+  getRepl(id: $replId) {
+    __typename
+    ... on Repl {
+      id
+      authorizations {
+        configureAgentModelSettings {
+          isAuthorized
+          message
+          code
+        }
+        useFreeLiteTaskAutoApproval {
+          isAuthorized
+          message
+          code
+        }
+      }
+      org {
+        id
+        slug
+        dealContext {
+          dealType
+        }
+      }
+      user {
+        id
+      }
+    }
+    ... on Error {
+      message
+    }
+  }
+}
+    `,n=t.gql`
+    query GetAgentReplAuthorizations($orgId: String, $ownerUserId: Int!, $replId: String!) {
+  currentUser {
+    id
+    personalOrgAuthorizations {
+      ... on OrgAuthorizations {
+        ...AgentWorkspaceAuthorizations
+      }
+      ... on Error {
+        message
+      }
+    }
+    org(orgId: $orgId) {
+      ... on Org {
+        id
+        authorizations {
+          ... on OrgAuthorizations {
+            ...AgentWorkspaceAuthorizations
+          }
+        }
+      }
+      ... on Error {
+        message
+      }
+    }
+  }
+  replOwner: user(id: $ownerUserId) {
+    id
+    paidAgentAuthorization(replId: $replId) {
+      ... on OrgAuthorization {
+        isAuthorized
+        message
+        code
+      }
+      ... on Error {
+        message
+      }
+    }
+    defaultAdvancedAgentModelAuthorization(replId: $replId) {
+      ... on OrgAuthorization {
+        isAuthorized
+        message
+        code
+      }
+      ... on Error {
+        message
+      }
+    }
+    turboAgentModelAuthorization(replId: $replId) {
+      ... on OrgAuthorization {
+        isAuthorized
+        message
+        code
+      }
+      ... on Error {
+        message
+      }
+    }
+  }
+}
+    ${a}`;e.s(["GetAgentReplAuthorizationsDocument",0,n,"GetAgentReplDocument",0,o,"useGetAgentReplAuthorizationsQuery",0,function(e){let t={...r,...e};return i.useQuery(n,t)},"useGetAgentReplQuery",0,function(e){let t={...r,...e};return i.useQuery(o,t)}])},29079,e=>{"use strict";var t=e.i(908796),i=e.i(890639),r=e.i(211719);let a={__typename:"OrgAuthorization",isAuthorized:!1,message:"Free agent is not available in personal repls for guests",code:t.OrgAuthorizationCode.InsufficientPermissions},o={__typename:"OrgAuthorization",isAuthorized:!0,message:"",code:t.OrgAuthorizationCode.Authorized},n={__typename:"OrgAuthorization",isAuthorized:!1,message:"Quick Edit authorization is not available for guests",code:t.OrgAuthorizationCode.InsufficientPermissions},s={__typename:"OrgAuthorization",isAuthorized:!1,message:"Auto model selection is not available for guests",code:t.OrgAuthorizationCode.InsufficientPermissions},l={__typename:"OrgAuthorization",isAuthorized:!1,message:"Auto mode is not available for guests",code:t.OrgAuthorizationCode.InsufficientPermissions};e.s(["useAgentAuthorization",0,function(e){let u=(0,r.default)(),d=e?.replId??u,{orgId:c,orgSlug:p,orgDealType:m,ownerUserId:g,configureAgentModelSettings:f,freeLiteTaskAutoApproval:h,refetch:A,loading:y,error:v}=function(e,t=!1){let a=(0,r.default)(),o=e??a,{data:n,loading:s,error:l,refetch:u}=(0,i.useGetAgentReplQuery)({variables:{replId:o??""},skip:t||null===o});return{orgId:n?.getRepl.__typename==="Repl"?n.getRepl.org?.id:void 0,orgSlug:n?.getRepl.__typename==="Repl"?n.getRepl.org?.slug:void 0,orgDealType:n?.getRepl.__typename==="Repl"?n.getRepl.org?.dealContext.dealType:void 0,ownerUserId:n?.getRepl.__typename==="Repl"?n.getRepl.user?.id:void 0,configureAgentModelSettings:n?.getRepl.__typename==="Repl"?n.getRepl.authorizations?.configureAgentModelSettings:void 0,freeLiteTaskAutoApproval:n?.getRepl.__typename==="Repl"?n.getRepl.authorizations?.useFreeLiteTaskAutoApproval:void 0,loading:s,error:l,refetch:u}}(e?.replId,e?.skip),{data:_,loading:I,error:S,refetch:k}=(0,i.useGetAgentReplAuthorizationsQuery)({variables:{orgId:c,ownerUserId:g??0,replId:d??""},skip:e?.skip||!g||null===d,pollInterval:e?.pollInterval&&c?e.pollInterval:void 0}),T=()=>{e?.skip||null===d||(A(),k())},b=_?.currentUser?.id,C=!!b&&!!g&&b===g;if(y||I)return{loading:!0,refetch:T,orgId:void 0,orgSlug:void 0,configureAgentModelSettings:f,freeLiteTaskAutoApproval:h};if(v||S)return{loading:!1,refetch:T,orgId:void 0,orgSlug:void 0,configureAgentModelSettings:f,freeLiteTaskAutoApproval:h};if(c)return{authorizations:_?.currentUser?.org.__typename==="Org"?_.currentUser.org.authorizations:void 0,loading:!1,refetch:T,isOwner:C,isOrgRepl:!0,isGuestInPersonalRepl:!1,orgId:c,orgSlug:p,orgDealType:m,configureAgentModelSettings:f,freeLiteTaskAutoApproval:h};if(!g)return{authorizations:void 0,loading:!1,refetch:T,isOwner:C,isOrgRepl:!1,orgSlug:void 0,configureAgentModelSettings:f,freeLiteTaskAutoApproval:h};if(C){let e=_?.currentUser?.personalOrgAuthorizations;return{authorizations:e?.__typename==="OrgAuthorizations"?e:void 0,loading:!1,refetch:T,isOwner:C,isOrgRepl:!1,isGuestInPersonalRepl:!1,orgSlug:void 0,configureAgentModelSettings:f,freeLiteTaskAutoApproval:h}}let M=_?.replOwner?.paidAgentAuthorization,R=_?.replOwner?.defaultAdvancedAgentModelAuthorization,E=_?.replOwner?.turboAgentModelAuthorization,z=_?.currentUser?.personalOrgAuthorizations,P=z?.__typename==="OrgAuthorizations"?z.quickEditAgentModel:void 0,x=z?.__typename==="OrgAuthorizations"?z.perTierAutoMode:void 0;return M?.__typename==="OrgAuthorization"?{authorizations:{__typename:"OrgAuthorizations",paidAgent:M,freeAgent:a,turboAgentModel:E?.__typename==="OrgAuthorization"?E:{__typename:"OrgAuthorization",isAuthorized:!1,message:"Turbo mode authorization is not available for guests",code:t.OrgAuthorizationCode.InsufficientPermissions},quickEditAgentModel:P??n,highEffortAgentModel:{__typename:"OrgAuthorization",isAuthorized:!0,message:"",code:t.OrgAuthorizationCode.Authorized},perTierAutoMode:x??s,intelligentAutoMode:l,defaultAdvancedAgentModel:R?.__typename==="OrgAuthorization"?R:{__typename:"OrgAuthorization",isAuthorized:!1,message:"Default advanced agent model check is not available for guests",code:t.OrgAuthorizationCode.InsufficientPermissions},freeModeTier:o},loading:!1,refetch:T,isOwner:C,isOrgRepl:!1,isGuestInPersonalRepl:!0,orgSlug:void 0,configureAgentModelSettings:f,freeLiteTaskAutoApproval:h}:{authorizations:void 0,loading:!1,refetch:T,isOwner:C,isOrgRepl:!1,isGuestInPersonalRepl:!0,orgSlug:void 0,configureAgentModelSettings:f,freeLiteTaskAutoApproval:h}}])},771626,e=>{"use strict";var t=e.i(389959);e.i(214847);var i=e.i(800686),r=e.i(864300),a=e.i(400899);let o=(0,i.defineMessages)({free:{id:"workspace.modelProfileDisplayNameFree",defaultMessage:"Free"},lite:{id:"workspace.modelProfileDisplayNameLite",defaultMessage:"Lite"},economy:{id:"workspace.modelProfileDisplayNameEconomy",defaultMessage:"Economy"},power:{id:"workspace.modelProfileDisplayNamePower",defaultMessage:"Power"},turbo:{id:"workspace.modelProfileDisplayNameTurbo",defaultMessage:"Turbo"},auto:{id:"workspace.modelProfileDisplayNameAuto",defaultMessage:"Auto"}}),n=(0,i.defineMessages)({economy:{id:"workspace.modelProfileDisplayNameEconomyAgentic",defaultMessage:"Power"},power:{id:"workspace.modelProfileDisplayNamePowerAgentic",defaultMessage:"Max"}});function s(e,t){return t&&("economy"===e||"power"===e)?n[e]:o[e]}e.s(["getModelProfileDisplayLabel",0,s,"useModelProfileDisplayName",0,function(e){let i=(0,r.useIntl)(),o=(0,a.useIsFreeModeNamingEnabled)({isFreeModeTierAuthorized:e});return(0,t.useCallback)(e=>i.formatMessage(s(e,o)),[i,o])}])},400899,e=>{"use strict";var t=e.i(142330),i=e.i(215515),r=e.i(211719),a=e.i(29079),o=e.i(933302);e.s(["useIsFreeModeNamingEnabled",0,function({isFreeModeTierAuthorized:e}={}){let n=(0,r.default)(),s=(0,o.useFeatureGate)("gate_model_intelligence_auto",!1),l=(0,t.useConversationFreeModeTierAuthorization)(),u=(0,a.useAgentAuthorization)(),d=(0,i.useConversationAgentAuthorizations)(void 0,null!==n||void 0!==e||null!==l);return!!s||(void 0!==e?e:null!==n?u.authorizations?.freeModeTier?.isAuthorized===!0:null!==l?l:d.isFreeModeTierAuthorized)}])},943427,e=>{"use strict";let t={web:!0,mobile:!0,slides:!0,video:!0,game:!0,"data-app":!0,automation:!0,"design-system":!0,cli:!1,vnc:!1,api:!1,design:!1,custom:!1,legacy:!1};function i(e){return void 0===e||(t[e]??!0)}e.s(["isArtifactKindPreviewable",0,i,"isArtifactPreviewable",0,function(e){return void 0!==e.isPreviewable?e.isPreviewable:i(e.kind)}])},402099,e=>{"use strict";var t=e.i(276385),i=e.i(983420);e.s(["default",0,function(e){return(0,t.jsxs)(i.default,{...e,children:[(0,t.jsx)("path",{fillRule:"evenodd",d:"M20 7.25A2.75 2.75 0 0 1 22.75 10v10A2.75 2.75 0 0 1 20 22.75H10A2.75 2.75 0 0 1 7.25 20V10A2.75 2.75 0 0 1 10 7.25zm-10 1.5c-.69 0-1.25.56-1.25 1.25v10c0 .69.56 1.25 1.25 1.25h10c.69 0 1.25-.56 1.25-1.25V10c0-.69-.56-1.25-1.25-1.25z",clipRule:"evenodd"}),(0,t.jsx)("path",{d:"M14 1.25A2.756 2.756 0 0 1 16.75 4a.75.75 0 0 1-1.5 0c0-.686-.564-1.25-1.25-1.25H4c-.686 0-1.25.564-1.25 1.25v10c0 .686.564 1.25 1.25 1.25a.75.75 0 0 1 0 1.5A2.756 2.756 0 0 1 1.25 14V4A2.756 2.756 0 0 1 4 1.25z"})]})}])},968323,e=>{"use strict";function t(e,t){return{ok:!1,error:e,errorExtras:t}}function i(e){return{ok:!0,value:e}}let r=async(e,r)=>{try{let t=await e();return i(t)}catch(e){return t(r?r(e):e)}};e.s(["Err",0,t,"Ok",0,i,"default",0,{Ok:i,Err:t,tryCatch:(e,r)=>{try{return i(e())}catch(e){return t(r?r(e):e)}},tryCatchAsync:r},"tryCatchAsync",0,r])}]);
+
+//# debugId=7264543d-612b-b944-8114-81cb84b81d46
+//# sourceMappingURL=2rcfjh-k6l1nr.js.map

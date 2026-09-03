@@ -1,0 +1,148 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="c3f6062b-3b4f-c9f1-ff2b-4c9cfcc3302c")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,26277,e=>{"use strict";e.s(["default",0,function(e){var t=Object.create(null);return function(r){return void 0===t[r]&&(t[r]=e(r)),t[r]}}])},14653,e=>{"use strict";var t=e.i(26277),r=/^((children|dangerouslySetInnerHTML|key|ref|autoFocus|defaultValue|defaultChecked|innerHTML|suppressContentEditableWarning|suppressHydrationWarning|valueLink|abbr|accept|acceptCharset|accessKey|action|allow|allowUserMedia|allowPaymentRequest|allowFullScreen|allowTransparency|alt|async|autoComplete|autoPlay|capture|cellPadding|cellSpacing|challenge|charSet|checked|cite|classID|className|cols|colSpan|content|contentEditable|contextMenu|controls|controlsList|coords|crossOrigin|data|dateTime|decoding|default|defer|dir|disabled|disablePictureInPicture|disableRemotePlayback|download|draggable|encType|enterKeyHint|fetchpriority|fetchPriority|form|formAction|formEncType|formMethod|formNoValidate|formTarget|frameBorder|headers|height|hidden|high|href|hrefLang|htmlFor|httpEquiv|id|inputMode|integrity|is|keyParams|keyType|kind|label|lang|list|loading|loop|low|marginHeight|marginWidth|max|maxLength|media|mediaGroup|method|min|minLength|multiple|muted|name|nonce|noValidate|open|optimum|pattern|placeholder|playsInline|popover|popoverTarget|popoverTargetAction|poster|preload|profile|radioGroup|readOnly|referrerPolicy|rel|required|reversed|role|rows|rowSpan|sandbox|scope|scoped|scrolling|seamless|selected|shape|size|sizes|slot|span|spellCheck|src|srcDoc|srcLang|srcSet|start|step|style|summary|tabIndex|target|title|translate|type|useMap|value|width|wmode|wrap|about|datatype|inlist|prefix|property|resource|typeof|vocab|autoCapitalize|autoCorrect|autoSave|color|incremental|fallback|inert|itemProp|itemScope|itemType|itemID|itemRef|on|option|results|security|unselectable|accentHeight|accumulate|additive|alignmentBaseline|allowReorder|alphabetic|amplitude|arabicForm|ascent|attributeName|attributeType|autoReverse|azimuth|baseFrequency|baselineShift|baseProfile|bbox|begin|bias|by|calcMode|capHeight|clip|clipPathUnits|clipPath|clipRule|colorInterpolation|colorInterpolationFilters|colorProfile|colorRendering|contentScriptType|contentStyleType|cursor|cx|cy|d|decelerate|descent|diffuseConstant|direction|display|divisor|dominantBaseline|dur|dx|dy|edgeMode|elevation|enableBackground|end|exponent|externalResourcesRequired|fill|fillOpacity|fillRule|filter|filterRes|filterUnits|floodColor|floodOpacity|focusable|fontFamily|fontSize|fontSizeAdjust|fontStretch|fontStyle|fontVariant|fontWeight|format|from|fr|fx|fy|g1|g2|glyphName|glyphOrientationHorizontal|glyphOrientationVertical|glyphRef|gradientTransform|gradientUnits|hanging|horizAdvX|horizOriginX|ideographic|imageRendering|in|in2|intercept|k|k1|k2|k3|k4|kernelMatrix|kernelUnitLength|kerning|keyPoints|keySplines|keyTimes|lengthAdjust|letterSpacing|lightingColor|limitingConeAngle|local|markerEnd|markerMid|markerStart|markerHeight|markerUnits|markerWidth|mask|maskContentUnits|maskUnits|mathematical|mode|numOctaves|offset|opacity|operator|order|orient|orientation|origin|overflow|overlinePosition|overlineThickness|panose1|paintOrder|pathLength|patternContentUnits|patternTransform|patternUnits|pointerEvents|points|pointsAtX|pointsAtY|pointsAtZ|preserveAlpha|preserveAspectRatio|primitiveUnits|r|radius|refX|refY|renderingIntent|repeatCount|repeatDur|requiredExtensions|requiredFeatures|restart|result|rotate|rx|ry|scale|seed|shapeRendering|slope|spacing|specularConstant|specularExponent|speed|spreadMethod|startOffset|stdDeviation|stemh|stemv|stitchTiles|stopColor|stopOpacity|strikethroughPosition|strikethroughThickness|string|stroke|strokeDasharray|strokeDashoffset|strokeLinecap|strokeLinejoin|strokeMiterlimit|strokeOpacity|strokeWidth|surfaceScale|systemLanguage|tableValues|targetX|targetY|textAnchor|textDecoration|textRendering|textLength|to|transform|u1|u2|underlinePosition|underlineThickness|unicode|unicodeBidi|unicodeRange|unitsPerEm|vAlphabetic|vHanging|vIdeographic|vMathematical|values|vectorEffect|version|vertAdvY|vertOriginX|vertOriginY|viewBox|viewTarget|visibility|widths|wordSpacing|writingMode|x|xHeight|x1|x2|xChannelSelector|xlinkActuate|xlinkArcrole|xlinkHref|xlinkRole|xlinkShow|xlinkTitle|xlinkType|xmlBase|xmlns|xmlnsXlink|xmlLang|xmlSpace|y|y1|y2|yChannelSelector|z|zoomAndPan|for|class|autofocus)|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$/,n=(0,t.default)(function(e){return r.test(e)||111===e.charCodeAt(0)&&110===e.charCodeAt(1)&&91>e.charCodeAt(2)});e.s(["default",0,n])},541782,e=>{"use strict";var t=e.i(389959);e.s(["getChildKey",0,e=>e.key||"","onlyElements",0,function(e){let r=[];return t.Children.forEach(e,e=>{(0,t.isValidElement)(e)&&r.push(e)}),r}])},154242,e=>{"use strict";var t=e.i(478902),r=e.i(389959),n=e.i(844900),i=e.i(569015),o=e.i(933141),s=e.i(782291),a=e.i(799482),l=e.i(541782);e.s(["AnimatePresence",0,({children:e,custom:u,initial:c=!0,onExitComplete:p,presenceAffectsLayout:d=!0,mode:m="sync",propagate:g=!1,anchorX:f="left",anchorY:h="top",root:y})=>{let[S,v]=(0,a.usePresence)(g),C=(0,r.useMemo)(()=>(0,l.onlyElements)(e),[e]),R=g&&!S?[]:C.map(l.getChildKey),x=(0,r.useRef)(!0),E=(0,r.useRef)(C),k=(0,i.useConstant)(()=>new Map),b=(0,r.useRef)(new Set),[U,w]=(0,r.useState)(C),[A,M]=(0,r.useState)(C);(0,o.useIsomorphicLayoutEffect)(()=>{x.current=!1,E.current=C;for(let e=0;e<A.length;e++){let t=(0,l.getChildKey)(A[e]);R.includes(t)?(k.delete(t),b.current.delete(t)):!0!==k.get(t)&&k.set(t,!1)}},[A,R.length,R.join("-")]);let P=[];if(C!==U){let e=[...C];for(let t=0;t<A.length;t++){let r=A[t],n=(0,l.getChildKey)(r);R.includes(n)||(e.splice(t,0,r),P.push(r))}return"wait"===m&&P.length&&(e=P),M((0,l.onlyElements)(e)),w(C),null}let{forceRender:T}=(0,r.useContext)(n.LayoutGroupContext);return(0,t.jsx)(t.Fragment,{children:A.map(e=>{let r=(0,l.getChildKey)(e),n=(!g||!!S)&&(C===A||R.includes(r));return(0,t.jsx)(s.PresenceChild,{isPresent:n,initial:(!x.current||!!c)&&void 0,custom:u,presenceAffectsLayout:d,mode:m,root:y,onExitComplete:n?void 0:()=>{if(b.current.has(r)||!k.has(r))return;b.current.add(r),k.set(r,!0);let e=!0;k.forEach(t=>{t||(e=!1)}),e&&(T?.(),M(E.current),g&&v?.(),p&&p())},anchorX:f,anchorY:h,children:e},r)})})}])},115826,e=>{"use strict";var t=e.i(478902),r=e.i(389959),n=e.i(177045),i=e.i(805202);function o(e){return"function"==typeof e}e.s(["LazyMotion",0,function({children:e,features:s,strict:a=!1}){let[,l]=(0,r.useState)(!o(s)),u=(0,r.useRef)(void 0);if(!o(s)){let{renderer:e,...t}=s;u.current=e,(0,i.loadFeatures)(t)}return(0,r.useEffect)(()=>{o(s)&&s().then(({renderer:e,...t})=>{(0,i.loadFeatures)(t),u.current=e,l(!0)})},[]),(0,t.jsx)(n.LazyContext.Provider,{value:{renderer:u.current,strict:a},children:e})}])},565641,e=>{"use strict";var t=e.i(284320);e.s(["createMinimalMotionComponent",0,function(e,r){return(0,t.createMotionComponent)(e,r)}])},808381,e=>{"use strict";var t=e.i(565641);let r=(0,t.createMinimalMotionComponent)("div"),n=(0,t.createMinimalMotionComponent)("span");e.s(["MotionDiv",0,r,"MotionSpan",0,n])},146840,e=>{"use strict";var t=e.i(808381);e.s(["div",()=>t.MotionDiv])},956288,e=>{"use strict";var t=e.i(163637),r=e.i(739691);let n={renderer:e.i(20947).createDomVisualElement,...t.animations,...r.gestureAnimations};e.s(["domAnimation",0,n])},860601,e=>{"use strict";var t=e.i(116635),r=e.i(979793);let n={...e.i(956288).domAnimation,...t.drag,...r.layout};e.s(["domMax",0,n])},630384,e=>{"use strict";var t=e.i(389959);function r(e,t){if("function"==typeof e)return e(t);null!=e&&(e.current=t)}e.s(["useComposedRefs",0,function(...e){return t.useCallback(function(...e){return t=>{let n=!1,i=e.map(e=>{let i=r(e,t);return n||"function"!=typeof i||(n=!0),i});if(n)return()=>{for(let t=0;t<i.length;t++){let n=i[t];"function"==typeof n?n():r(e[t],null)}}}}(...e),e)}])},709701,e=>{"use strict";var t=e.i(478902),r=e.i(141355),n=e.i(389959),i=e.i(983383),o=e.i(630384);class s extends n.Component{getSnapshotBeforeUpdate(e){let t=this.props.childRef.current;if((0,r.isHTMLElement)(t)&&e.isPresent&&!this.props.isPresent&&!1!==this.props.pop){let e=t.offsetParent,n=(0,r.isHTMLElement)(e)&&e.offsetWidth||0,i=(0,r.isHTMLElement)(e)&&e.offsetHeight||0,o=getComputedStyle(t),s=this.props.sizeRef.current;s.height=parseFloat(o.height),s.width=parseFloat(o.width),s.top=t.offsetTop,s.left=t.offsetLeft,s.right=n-s.width-s.left,s.bottom=i-s.height-s.top}return null}componentDidUpdate(){}render(){return this.props.children}}e.s(["PopChild",0,function({children:e,isPresent:r,anchorX:a,anchorY:l,root:u,pop:c}){let p=(0,n.useId)(),d=(0,n.useRef)(null),m=(0,n.useRef)({width:0,height:0,top:0,left:0,right:0,bottom:0}),{nonce:g}=(0,n.useContext)(i.MotionConfigContext),f=e.props?.ref??e?.ref,h=(0,o.useComposedRefs)(d,f);return(0,n.useInsertionEffect)(()=>{let{width:e,height:t,top:n,left:i,right:o,bottom:s}=m.current;if(r||!1===c||!d.current||!e||!t)return;let f="left"===a?`left: ${i}`:`right: ${o}`,h="bottom"===l?`bottom: ${s}`:`top: ${n}`;d.current.dataset.motionPopId=p;let y=document.createElement("style");g&&(y.nonce=g);let S=u??document.head;return S.appendChild(y),y.sheet&&y.sheet.insertRule(`
+          [data-motion-pop-id="${p}"] {
+            position: absolute !important;
+            width: ${e}px !important;
+            height: ${t}px !important;
+            ${f}px !important;
+            ${h}px !important;
+          }
+        `),()=>{d.current?.removeAttribute("data-motion-pop-id"),S.contains(y)&&S.removeChild(y)}},[r]),(0,t.jsx)(s,{isPresent:r,childRef:d,sizeRef:m,pop:c,children:!1===c?e:n.cloneElement(e,{ref:h})})}])},782291,e=>{"use strict";var t=e.i(478902),r=e.i(389959),n=e.i(474419),i=e.i(569015),o=e.i(709701);function s(){return new Map}e.s(["PresenceChild",0,({children:e,initial:a,isPresent:l,onExitComplete:u,custom:c,presenceAffectsLayout:p,mode:d,anchorX:m,anchorY:g,root:f})=>{let h=(0,i.useConstant)(s),y=(0,r.useId)(),S=!0,v=(0,r.useMemo)(()=>(S=!1,{id:y,initial:a,isPresent:l,custom:c,onExitComplete:e=>{for(let t of(h.set(e,!0),h.values()))if(!t)return;u&&u()},register:e=>(h.set(e,!1),()=>h.delete(e))}),[l,h,u]);return p&&S&&(v={...v}),(0,r.useMemo)(()=>{h.forEach((e,t)=>h.set(t,!1))},[l]),r.useEffect(()=>{l||h.size||!u||u()},[l]),e=(0,t.jsx)(o.PopChild,{pop:"popLayout"===d,isPresent:l,anchorX:m,anchorY:g,root:f,children:e}),(0,t.jsx)(n.PresenceContext.Provider,{value:v,children:e})}])},754710,e=>{"use strict";var t=e.i(401865),r=e.i(520415),n=e.i(655574);e.s(["animateSingleValue",0,function(e,i,o){let s=(0,n.isMotionValue)(e)?e:(0,r.motionValue)(e);return s.start((0,t.animateMotionValue)("",s,i,o)),s.animation}])},874833,e=>{"use strict";var t=e.i(562914);e.s(["isSVGElement",0,function(e){return(0,t.isObject)(e)&&"ownerSVGElement"in e}])},220719,e=>{"use strict";var t=e.i(874833);e.s(["isSVGSVGElement",0,function(e){return(0,t.isSVGElement)(e)&&"svg"===e.tagName}])},924080,e=>{"use strict";for(var t={8:"Backspace",9:"Tab",10:"Enter",12:"NumLock",13:"Enter",16:"Shift",17:"Control",18:"Alt",20:"CapsLock",27:"Escape",32:" ",33:"PageUp",34:"PageDown",35:"End",36:"Home",37:"ArrowLeft",38:"ArrowUp",39:"ArrowRight",40:"ArrowDown",44:"PrintScreen",45:"Insert",46:"Delete",59:";",61:"=",91:"Meta",92:"Meta",106:"*",107:"+",108:",",109:"-",110:".",111:"/",144:"NumLock",145:"ScrollLock",160:"Shift",161:"Shift",162:"Control",163:"Control",164:"Alt",165:"Alt",173:"-",186:";",187:"=",188:",",189:"-",190:".",191:"/",192:"`",219:"[",220:"\\",221:"]",222:"'"},r={48:")",49:"!",50:"@",51:"#",52:"$",53:"%",54:"^",55:"&",56:"*",57:"(",59:":",61:"+",173:"_",186:":",187:"+",188:"<",189:"_",190:">",191:"?",192:"~",219:"{",220:"|",221:"}",222:'"'},n="u">typeof navigator&&/Mac/.test(navigator.platform),i="u">typeof navigator&&/MSIE \d|Trident\/(?:[7-9]|\d{2,})\..*rv:(\d+)/.exec(navigator.userAgent),o=0;o<10;o++)t[48+o]=t[96+o]=String(o);for(var o=1;o<=24;o++)t[o+111]="F"+o;for(var o=65;o<=90;o++)t[o]=String.fromCharCode(o+32),r[o]=String.fromCharCode(o);for(var s in t)r.hasOwnProperty(s)||(r[s]=t[s]);e.s(["base",0,t,"keyName",0,function(e){var o=!(n&&e.metaKey&&e.shiftKey&&!e.ctrlKey&&!e.altKey||i&&e.shiftKey&&e.key&&1==e.key.length||"Unidentified"==e.key)&&e.key||(e.shiftKey?r:t)[e.keyCode]||e.key||"Unidentified";return"Esc"==o&&(o="Escape"),"Del"==o&&(o="Delete"),"Left"==o&&(o="ArrowLeft"),"Up"==o&&(o="ArrowUp"),"Right"==o&&(o="ArrowRight"),"Down"==o&&(o="ArrowDown"),o},"shift",0,r])},213267,e=>{"use strict";class t extends Error{constructor(){super("Debounced function cancelled"),this.name="DebounceCancelledError"}}function r(){let e,t;return{promise:new Promise((r,n)=>{e=r,t=n}),resolve:t=>e(t),reject:e=>t(e)}}e.s(["DebounceCancelledError",0,t,"default",0,function(e,n={wait:0}){let i=null,o=null,s=null,a=null,l=!1,u=!1;if(n.wait<0)throw Error("wait must be 0 or more");if(void 0!==n.maxWait){if(n.maxWait<0)throw Error("maxWait must be 0 or more");if(n.maxWait<n.wait)throw Error("maxWait must be higher than wait")}function c(){a=null,i=null,s=null,u=!1}function p(e,t){e.reject(t instanceof Error?t:Error(String(t)))}function d(){l=!1,n.serialize&&u&&!o&&m()}function m(){let t;if(!i||!a)throw Error("Expected debounced function call before invocation");let r=i,n=a;c(),l=!0;try{t=e(...n)}catch(e){d(),p(r,e);return}t.then(e=>{d(),r.resolve(e)},e=>{d(),p(r,e)})}return Object.assign((...e)=>{let t=!i&&!o&&!(n.serialize&&l);if(n.leading&&t){let t;return i=r(),a=e,t=i.promise,o=setTimeout(()=>{o=null},n.wait),o.unref?.(),m(),t}return o&&(clearTimeout(o),o=null),i||(i=r(),s=Date.now()),u=!1,a=e,o=setTimeout(()=>{if(o=null,n.serialize&&l){u=!0;return}m()},Math.max(0,function(){if(void 0===n.maxWait)return n.wait;if(null===s)throw Error("Expected scheduledAt to be set when getting wait");let e=Date.now()-s;return Math.min(n.maxWait-e,n.wait)}())),i.promise},{isScheduled:()=>!!(i&&(o||u)),cancel:function(){if(!i||!o&&!u)throw Error("Expected to call debounced function once before cancelling");let e=i;o&&(clearTimeout(o),o=null),c(),e.reject(new t)},flush:function(){if(!i||!o&&!u)throw Error("Expected to call debounced function once before flushing");let e=i.promise;return(o&&(clearTimeout(o),o=null),n.serialize&&l)?u=!0:m(),e}})}])},877970,e=>{"use strict";var t=e.i(351623),r=e.i(344480);e.i(975473);let n={},i=t.gql`
+    query TaskmanReplEndpoint($id: String!) {
+  getRepl(id: $id) {
+    ... on Repl {
+      id
+      taskmanEndpoint
+    }
+  }
+}
+    `;e.s(["useTaskmanReplEndpointQuery",0,function(e){let t={...n,...e};return r.useQuery(i,t)}])},131389,e=>{"use strict";var t=e.i(276385),r=e.i(389959),n=e.i(400218),i=e.i(19777),o=e.i(877970),s=e.i(340970),a=e.i(978556),l=e.i(661201);let u=(0,r.createContext)(null),c=null;e.s(["TaskmanProvider",0,function({userId:e,enabled:p=!0,replId:d,children:m}){let{taskman:g}=(0,s.useCellServices)(),f=(0,i.useSetAtom)(a.connectionKillActionsAtom),h=(0,i.useSetAtom)(a.connectionStateAtom),y=(0,i.useSetAtom)(a.setConnectionEndpointAtom),S=(0,l.default)(),v=(0,r.useRef)(Symbol("taskman-state-owner")),{data:C}=(0,o.useTaskmanReplEndpointQuery)({variables:{id:d??""},ssr:!1,skip:!p||null===d}),R=C?.getRepl?.__typename==="Repl"&&C.getRepl.id===d?C.getRepl.taskmanEndpoint:"",x=(0,r.useMemo)(()=>{if(!p||null===d)return null;let t="taskman-cell",r=v.current,i="ok",o=()=>{c=r},s=e=>{c===r&&(c=null,y({service:t,endpoint:null}),h((0,n.produce)(r=>{r[t]=e})),f((0,n.produce)(e=>{e[t]=null})))},a=()=>{o(),h((0,n.produce)(e=>{e[t]="fatal"}))};return R?{endpoint:R,userId:e,replId:d,isClientActiveObservable:S,callbacks:{onEndpointResolved:e=>{o(),y({service:t,endpoint:e})},onRetryBudgetExhausted:a,onTerminalError:()=>{i="fatal",a()},onSessionStatusChange:e=>{"connected"===e&&(o(),h((0,n.produce)(e=>{e[t]="ok"})))},onStateOwnershipClaimed:o,onStateOwnershipReleased:()=>s("ok"),onTeardown:()=>s(i)}}:null},[p,d,R,e,S,y,h,f]),E=(0,r.useCallback)(e=>(x&&(c=v.current),g.subscribe(x,e)),[g,x]),k=(0,r.useSyncExternalStore)(E,()=>g.getSnapshot(x),()=>null);return(0,r.useEffect)(()=>{k&&f((0,n.produce)(e=>{e["taskman-cell"]={label:"Close WebSocket",action:()=>{k.closeActiveWebSocket()}}}))},[k,f]),(0,t.jsx)(u.Provider,{value:k,children:m})},"useTaskmanBackend",0,function(){return(0,r.useContext)(u)?"cell":null},"useTaskmanInternalsContext",0,function(){return(0,r.useContext)(u)}])},510722,e=>{"use strict";var t=e.i(389959),r=e.i(131389),n=e.i(696693);e.s(["useTaskmanCellCallback",0,function(e,i=[]){let o=(0,r.useTaskmanInternalsContext)(),s=(0,n.useTaskmanSession)();return(0,t.useMemo)(()=>o&&s?e(o.client,s):null,[o,s,...i])}])},696693,e=>{"use strict";var t=e.i(389959),r=e.i(131389);e.s(["useTaskmanSession",0,function(){let e=(0,r.useTaskmanInternalsContext)(),n=e?.transport??null,i=e?.serverId??null,[o,s]=(0,t.useState)(null),a=(0,t.useRef)(null);return(0,t.useEffect)(()=>{if(!n||!i){a.current=null,s(null);return}let e=n.sessions.get(i);a.current=e?.id??null,s(e?{id:e.id}:null);let t=e=>{"created"===e.status?(s({id:e.session.id}),a.current=e.session.id):"closed"===e.status&&e.session.id===a.current&&(a.current=null,s(null))};return n.addEventListener("sessionStatus",t),()=>{n.removeEventListener("sessionStatus",t)}},[n,i]),o}])},336068,e=>{"use strict";var t=e.i(276385),r=e.i(389959);let n=(0,r.createContext)(void 0),i=(0,r.createContext)("resolving"),o=(0,r.createContext)(void 0);e.s(["ChateauAgentProvider",0,function({agentId:e,children:r}){return(0,t.jsx)(n.Provider,{value:e,children:r})},"ChateauAgentResolutionProvider",0,function({status:e,children:r}){return(0,t.jsx)(i.Provider,{value:e,children:r})},"ChateauSessionRootAgentProvider",0,function({agentId:e,children:r}){return(0,t.jsx)(o.Provider,{value:e,children:r})},"useChateauAgentResolutionStatus",0,function(){return(0,r.useContext)(i)},"useChateauSessionRootAgentId",0,function(){return(0,r.useContext)(o)??null},"useCurrentAgentId",0,function(){return(0,r.useContext)(n)??null},"useHasChateauSessionRootAgentProvider",0,function(){return void 0!==(0,r.useContext)(o)}])},721037,e=>{"use strict";var t=e.i(351623),r=e.i(344480);e.i(975473);var n=e.i(299020);let i={},o=t.gql`
+    fragment UserReplSettingsFragment on UserReplSettings {
+  agentSettings {
+    explicitFields
+    modelTier
+    liteModel
+    economyModel
+    powerModel
+    modelEfforts {
+      model
+      effort
+    }
+    isTurboEnabled
+    isHighEffortEnabled
+    isIntelligentAutoModeEnabled
+    isPlanModeEnabled
+    isAppTestingEnabled
+    isCodeOptimizationEnabled
+    isAutoCheckpointingEnabled
+    designModeSettings {
+      explicitFields
+      modelTier
+      liteModel
+      economyModel
+      powerModel
+      modelEfforts {
+        model
+        effort
+      }
+      isAppTestingEnabled
+    }
+  }
+  taskSettings {
+    explicitFields
+    isAutoApprovePlanEnabled
+    isAutoMergeEnabled
+  }
+}
+    `,s=t.gql`
+    query CurrentUserReplSettings($replId: String!) {
+  currentUser {
+    id
+  }
+  getRepl(id: $replId) {
+    ... on Repl {
+      id
+      currentUserSettings {
+        ...UserReplSettingsFragment
+      }
+    }
+  }
+}
+    ${o}`,a=t.gql`
+    mutation UpdateCurrentUserReplSettings($input: UpdateCurrentUserReplSettingsInput!) {
+  updateCurrentUserReplSettings(input: $input) {
+    __typename
+    ... on UpdateCurrentUserReplSettingsPayload {
+      userReplSettings {
+        ...UserReplSettingsFragment
+      }
+    }
+    ... on UserError {
+      message
+    }
+    ... on UnauthorizedError {
+      message
+    }
+    ... on NotFoundError {
+      message
+    }
+  }
+}
+    ${o}`;e.s(["CurrentUserReplSettingsDocument",0,s,"UserReplSettingsFragmentFragmentDoc",0,o,"useCurrentUserReplSettingsQuery",0,function(e){let t={...i,...e};return r.useQuery(s,t)},"useUpdateCurrentUserReplSettingsMutation",0,function(e){let t={...i,...e};return n.useMutation(a,t)}])},577671,e=>{"use strict";var t=e.i(389959),r=e.i(830675),n=e.i(721037);function i({cache:e,replId:t,settings:r}){e.updateQuery({query:n.CurrentUserReplSettingsDocument,variables:{replId:t}},e=>e?.getRepl.__typename!=="Repl"?e:{...e,getRepl:{...e.getRepl,currentUserSettings:r}}),e.modify({id:e.identify({__typename:"Repl",id:t}),fields:{currentUserSettings:e=>({...e,...r})}})}e.s(["useCurrentUserReplSettings",0,function(e){let{data:o,loading:s}=(0,n.useCurrentUserReplSettingsQuery)({variables:{replId:e}}),[a]=(0,n.useUpdateCurrentUserReplSettingsMutation)(),l=o?.getRepl?.__typename==="Repl"?o.getRepl:null,u=l?.currentUserSettings?.agentSettings??null,c=l?.currentUserSettings?.taskSettings??null;return{isResolved:null!==l,loading:s,agentSettings:u,taskSettings:c,updateSettings:(0,t.useCallback)(async t=>{try{let n=await a({variables:{input:{replId:e,...t}},update:(t,r)=>{let n=r.data?.updateCurrentUserReplSettings;n?.__typename==="UpdateCurrentUserReplSettingsPayload"&&i({cache:t,replId:e,settings:n.userReplSettings})}}),o=n.data?.updateCurrentUserReplSettings;if(o?.__typename==="UpdateCurrentUserReplSettingsPayload")return!0;return r.captureMessage("updateCurrentUserReplSettings returned non-payload",{extra:{replId:e,typename:o?.__typename,message:o&&"message"in o?o.message:void 0}}),!1}catch(n){return r.captureException(n,{extra:{message:"Error updating current user repl settings",replId:e,input:t}}),!1}},[e,a])}},"writeCurrentUserReplSettingsToCache",0,i])},734135,e=>{"use strict";var t=e.i(351623),r=e.i(344480);e.i(975473);let n={},i=t.gql`
+    query GetShouldSeeFreemiumExperience($replId: String!) {
+  getRepl(id: $replId) {
+    __typename
+    ... on Repl {
+      id
+      authorizations {
+        viewFreemiumExperience {
+          isAuthorized
+        }
+      }
+    }
+  }
+}
+    `;e.s(["GetShouldSeeFreemiumExperienceDocument",0,i,"useGetShouldSeeFreemiumExperienceQuery",0,function(e){let t={...n,...e};return r.useQuery(i,t)}])},786864,e=>{"use strict";var t=e.i(734135);e.s(["useShouldSeeFreemiumExperience",0,function(e,r){let{data:n,loading:i,error:o,refetch:s}=(0,t.useGetShouldSeeFreemiumExperienceQuery)({variables:{replId:e},skip:r?.skip});return{shouldSeeFreemiumExperience:n?.getRepl.__typename==="Repl"&&n.getRepl.authorizations.viewFreemiumExperience.isAuthorized,loading:i,error:o,refetch:s}}])},925712,e=>{"use strict";var t=e.i(351623),r=e.i(721037),n=e.i(344480);e.i(975473);var i=e.i(299020);let o={},s=t.gql`
+    fragment UserReplSettingsBootstrapFragment on UserReplSettings {
+  isBootstrapped
+  ...UserReplSettingsFragment
+}
+    ${r.UserReplSettingsFragmentFragmentDoc}`,a=t.gql`
+    query UserReplSettingsBootstrap($replId: String!) {
+  currentUser {
+    id
+  }
+  getRepl(id: $replId) {
+    ... on Repl {
+      id
+      currentUserSettings {
+        ...UserReplSettingsBootstrapFragment
+      }
+    }
+  }
+}
+    ${s}`,l=t.gql`
+    mutation BootstrapCurrentUserReplSettings($input: BootstrapCurrentUserReplSettingsInput!) {
+  bootstrapCurrentUserReplSettings(input: $input) {
+    __typename
+    ... on BootstrapCurrentUserReplSettingsPayload {
+      didBootstrap
+      userReplSettings {
+        ...UserReplSettingsBootstrapFragment
+      }
+    }
+    ... on UserError {
+      message
+    }
+    ... on UnauthorizedError {
+      message
+    }
+    ... on NotFoundError {
+      message
+    }
+  }
+}
+    ${s}`;e.s(["useBootstrapCurrentUserReplSettingsMutation",0,function(e){let t={...o,...e};return i.useMutation(l,t)},"useUserReplSettingsBootstrapQuery",0,function(e){let t={...o,...e};return n.useQuery(a,t)}])},567314,e=>{"use strict";var t=e.i(389959),r=e.i(830675),n=e.i(925712),i=e.i(577671);let o=[250,1e3];async function s({attempt:e,bootstrap:t,replId:n}){try{let e=await t({variables:{input:{replId:n}}}),i=e.data?.bootstrapCurrentUserReplSettings;if(i?.__typename==="BootstrapCurrentUserReplSettingsPayload")return;r.captureMessage("bootstrapCurrentUserReplSettings returned non-payload",{extra:{replId:n,typename:i?.__typename,message:i&&"message"in i?i.message:void 0}})}catch(a){let r=o[e];if(null!=r){var i;return await (i=r,new Promise(e=>{setTimeout(e,i)})),s({attempt:e+1,bootstrap:t,replId:n})}throw a}}e.s(["useUserReplSettingsBootstrap",0,function(e,o){let a=(0,t.useRef)(new Set),[l,u]=(0,t.useState)(()=>({isComplete:!1,isBootstrapping:!1})),{data:c,loading:p}=(0,n.useUserReplSettingsBootstrapQuery)({variables:{replId:o??""},skip:!e||null===o}),[d]=(0,n.useBootstrapCurrentUserReplSettingsMutation)({update(e,t){let r=t.data?.bootstrapCurrentUserReplSettings;r?.__typename!=="BootstrapCurrentUserReplSettingsPayload"||null!==o&&(0,i.writeCurrentUserReplSettingsToCache)({cache:e,replId:o,settings:r.userReplSettings})}}),m=c?.getRepl.__typename==="Repl"?c.getRepl:null,g=c?.currentUser!=null,f=null!=m,h=m?.currentUserSettings?.isBootstrapped===!0;return(0,t.useEffect)(()=>{if(p)return void u({isComplete:!1,isBootstrapping:!1});if(null===o||!g||!f||h)return void u({isComplete:!0,isBootstrapping:!1});if(a.current.has(o))return;a.current.add(o);let e=!1;return u({isComplete:!1,isBootstrapping:!0}),(async()=>{try{await s({attempt:0,bootstrap:d,replId:o})}catch(e){r.captureException(e,{extra:{message:"Error bootstrapping current user repl settings",replId:o}})}finally{e||u({isComplete:!0,isBootstrapping:!1})}})(),()=>{e=!0}},[d,g,f,h,p,o]),l}])},46391,e=>{"use strict";var t=e.i(276385),r=e.i(389959),n=e.i(567314);let i=(0,r.createContext)({isComplete:!0,isBootstrapping:!1});e.s(["UserReplSettingsBootstrapProvider",0,function({children:e,enabled:o=!0,replId:s}){let a=(0,n.useUserReplSettingsBootstrap)(o,s),l=(0,r.useMemo)(()=>({isComplete:a.isComplete,isBootstrapping:a.isBootstrapping}),[a.isComplete,a.isBootstrapping]);return(0,t.jsx)(i.Provider,{value:l,children:e})},"useUserReplSettingsBootstrapState",0,function(){return(0,r.useContext)(i)}])},534141,e=>{"use strict";var t=e.i(276385),r=e.i(983420);e.s(["default",0,function(e){return(0,t.jsx)(r.default,{...e,children:(0,t.jsx)("path",{fillRule:"evenodd",d:"M19.182 1.25a3.57 3.57 0 0 1 2.644 5.964l-.122.128-13.348 13.35a2.75 2.75 0 0 1-.981.63l-.16.054-4.354 1.32H2.86a1.249 1.249 0 0 1-1.556-1.555v-.003l1.321-4.352.001-.002a2.75 2.75 0 0 1 .688-1.14l13.344-13.35a3.57 3.57 0 0 1 2.525-1.044m0 1.5a2.07 2.07 0 0 0-1.463.605L4.372 16.705a1.25 1.25 0 0 0-.313.516v.001l-1.185 3.902 3.904-1.184c.196-.06.375-.166.52-.31L20.644 6.281a2.07 2.07 0 0 0-1.462-3.532",clipRule:"evenodd"})})}])},82130,e=>{"use strict";var t=e.i(276385),r=e.i(983420);e.s(["default",0,function(e){return(0,t.jsx)(r.default,{...e,children:(0,t.jsx)("path",{fillRule:"evenodd",d:"M19 2.25A2.75 2.75 0 0 1 21.75 5v14A2.75 2.75 0 0 1 19 21.75H5A2.75 2.75 0 0 1 2.25 19V5A2.75 2.75 0 0 1 5 2.25zM5 3.75c-.69 0-1.25.56-1.25 1.25v14c0 .69.56 1.25 1.25 1.25h14c.69 0 1.25-.56 1.25-1.25V5c0-.69-.56-1.25-1.25-1.25z",clipRule:"evenodd"})})}])}]);
+
+//# debugId=c3f6062b-3b4f-c9f1-ff2b-4c9cfcc3302c
+//# sourceMappingURL=1n0dnn5oe24d6.js.map
