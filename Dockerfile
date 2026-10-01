@@ -6,5 +6,5 @@ RUN pnpm install --no-frozen-lockfile
 
 EXPOSE 3000
 
-# This bypasses the strict TypeScript compiler and directly boots the engine
-CMD ["node", "index.js"]
+# Tell Node to launch your server using the project's native start configuration
+CMD ["pnpm", "start"]
