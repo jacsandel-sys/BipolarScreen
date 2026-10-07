@@ -1,0 +1,19 @@
+{
+  "name": "bipolar-screen",
+  "version": "1.0.0",
+  "description": "An app to check if you have bipolar as bipolar have symptoms which overlaps with emotionally unstable personality disorder, Autism Spectrum Disorder and Attention Deficit Hyperactivity Disorder. It also has a wealth of information to assist in understanding your symptoms and seek appropriate treatment with a proviso to always seek profesio advice",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bipolar",
+    "mental-health",
+    "screening",
+    "symptoms"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
+}
